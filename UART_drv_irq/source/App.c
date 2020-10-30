@@ -34,7 +34,7 @@
 void App_Init(void)
 {
 	uart_cfg_t config = {9600, UART_PARITY_EVEN, UART_DATA_BITS_8};
-	uartInit(3, config);
+	uartInit(0, config);
 
 }
 
