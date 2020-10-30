@@ -34,20 +34,15 @@
 void App_Init(void)
 {
 	uart_cfg_t config = {9600, UART_PARITY_EVEN, UART_DATA_BITS_8};
-	uartInit(0, config);
+	uartInit(3, config);
 
 }
 
 /* Función que se llama constantemente en un ciclo infinito */
 void App_Run(void)
 {
-	static const char data[] = "The quick brown fox jumps over the lazy dog\r\n";
-	uint8_t i;
-	for(i = 0; i < sizeof(data)/sizeof(data[0]); i++ )
-	{
-		UART_Send_Data(data[i]);
-	}
-	UART_Recieve_Data();
+	unsigned char a = UART_Recieve_Data();
+	UART_Send_Data(a+1);
 }
 
 

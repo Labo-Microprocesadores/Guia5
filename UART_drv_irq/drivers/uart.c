@@ -43,23 +43,23 @@ void uartInit (uint8_t id, uart_cfg_t config)
 	UART_Type * ptr_s[] = UART_BASE_PTRS;
 	UART_Type * ptr = ptr_s[id];
 
-	PORT_Type * uart_port = PORTB;
+	PORT_Type * uart_port = PORTC;
 	uint8_t rx = 16;
 	uint8_t tx = 17;
 
 	/* VER CUAL PONER*/
 
-	SIM->SCGC4 |= SIM_SCGC4_UART0_MASK;
+	//SIM->SCGC4 |= SIM_SCGC4_UART0_MASK;
 	//SIM->SCGC4 |= SIM_SCGC4_UART1_MASK;
 	//SIM->SCGC4 |= SIM_SCGC4_UART2_MASK;
-	//SIM->SCGC4 |= SIM_SCGC4_UART3_MASK;
+	SIM->SCGC4 |= SIM_SCGC4_UART3_MASK;
 	//SIM->SCGC1 |= SIM_SCGC1_UART4_MASK;
 	//SIM->SCGC1 |= SIM_SCGC1_UART5_MASK;
 
-	NVIC_EnableIRQ(UART0_RX_TX_IRQn);
+	//NVIC_EnableIRQ(UART0_RX_TX_IRQn);
 	//NVIC_EnableIRQ(UART1_RX_TX_IRQn);
 	//NVIC_EnableIRQ(UART2_RX_TX_IRQn);
-	//NVIC_EnableIRQ(UART3_RX_TX_IRQn);
+	NVIC_EnableIRQ(UART3_RX_TX_IRQn);
 	//NVIC_EnableIRQ(UART4_RX_TX_IRQn);
 	//NVIC_EnableIRQ(UART5_RX_TX_IRQn);
 
