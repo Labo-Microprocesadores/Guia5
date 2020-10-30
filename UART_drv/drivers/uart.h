@@ -1,5 +1,5 @@
 /***************************************************************************//**
-  @file     UART.c
+  @file     UART.h
   @brief    UART Driver for K64F. Non-Blocking and using FIFO feature
   @author   Nicolás Magliola & Grupo 2
  ******************************************************************************/
@@ -12,7 +12,7 @@
  ******************************************************************************/
 
 #include <stdint.h>
-
+#include <stdbool.h>
 
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
@@ -24,11 +24,25 @@
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
+typedef enum uart_parity_t {
+	UART_PARITY_NONE,
+	UART_PARITY_EVEN,
+	UART_PARITY_ODD,
+	UART_PARITY_MARK,
+	UART_PARITY_SPACE
+} uart_parity_t;
+
+typedef enum uart_data_bits_t {
+	UART_DATA_BITS_5,
+	UART_DATA_BITS_6,
+	UART_DATA_BITS_7,
+	UART_DATA_BITS_8
+} uart_data_bits_t;
 
 typedef struct {
-    ???
-    ???
-    ???
+    uint32_t baudrate;
+    uart_parity_t parity;
+    uart_data_bits_t databits;
 } uart_cfg_t;
 
 
