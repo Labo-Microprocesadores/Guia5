@@ -1,3 +1,7 @@
 /.metadata/
 /UART_drv/Debug/
 /UART_drv/.settings/
+/UART3_drv/Debug/
+/UART3_drv/.settings/
+/UART_drv_irq/Debug/
+/UART_drv_irq/.settings/
