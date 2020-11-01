@@ -14,11 +14,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
 
-#define UART_CANT_IDS   ????
+#define UART_CANT_IDS   4
 
 
 /*******************************************************************************
@@ -28,8 +29,8 @@ typedef enum uart_parity_t {
 	UART_PARITY_NONE,
 	UART_PARITY_EVEN,
 	UART_PARITY_ODD,
-	UART_PARITY_MARK,
-	UART_PARITY_SPACE
+	//UART_PARITY_MARK,
+	//UART_PARITY_SPACE
 } uart_parity_t;
 
 typedef enum uart_data_bits_t {
@@ -44,6 +45,10 @@ typedef enum uart_stop_bits_t {
 	UART_STOP_BITS_1,
 	UART_STOP_BITS_2
 }uart_stop_bits_t;
+
+typedef enum uart_error_t{
+	UART_FULLBUFFER_ERROR
+}uart_error_t;
 
 typedef struct {
     uint32_t baudrate;
@@ -69,21 +74,21 @@ void UART_Send_Data(unsigned char tx_data);
  * @param id UART's number
  * @param config UART's configuration (baudrate, parity, etc.)
 */
-void uartInit (uint8_t id, uart_cfg_t config);
+void UART_init (uint8_t id, uart_cfg_t config);
 
 /**
  * @brief Check if a new byte was received
  * @param id UART's number
- * @return A new byte has being received
+ * @return A new byte has been received
 */
-uint8_t uartIsRxMsg(uint8_t id);
+bool UART_is_rx_msg(uint8_t id);
 
 /**
  * @brief Check how many bytes were received
  * @param id UART's number
  * @return Quantity of received bytes
 */
-uint8_t uartGetRxMsgLength(uint8_t id);
+uint8_t UART_get_rx_msg_length(uint8_t id);
 
 /**
  * @brief Read a received message. Non-Blocking
@@ -92,7 +97,7 @@ uint8_t uartGetRxMsgLength(uint8_t id);
  * @param cant Desired quantity of bytes to be pasted
  * @return Real quantity of pasted bytes
 */
-uint8_t uartReadMsg(uint8_t id, char* msg, uint8_t cant);
+uint8_t UART_read_msg(uint8_t id, char* msg, uint8_t cant);
 
 /**
  * @brief Write a message to be transmitted. Non-Blocking
@@ -100,15 +105,15 @@ uint8_t uartReadMsg(uint8_t id, char* msg, uint8_t cant);
  * @param msg Buffer with the bytes to be transfered
  * @param cant Desired quantity of bytes to be transfered
  * @return Real quantity of bytes to be transfered
-*/
-uint8_t uartWriteMsg(uint8_t id, const char* msg, uint8_t cant);
+ */
+uint8_t UART_write_msg(uint8_t id, const char* msg, uint8_t cant);
 
 /**
  * @brief Check if all bytes were transfered
  * @param id UART's number
  * @return All bytes were transfered
 */
-uint8_t uartIsTxMsgComplete(uint8_t id);
+bool UART_is_tx_msg_complete(uint8_t id);
 
 
 /*******************************************************************************
