@@ -5,3 +5,5 @@
 /UART3_drv/.settings/
 /UART_drv_irq/Debug/
 /UART_drv_irq/.settings/
+/SPI_drv/Debug/
+/SPI_drv/.settings/
