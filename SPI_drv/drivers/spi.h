@@ -34,7 +34,7 @@ enum SPIDataWidth_t {Data4Bits, Data5Bits, Data6Bits, Data7Bits, Data8Bits, Data
 enum SPISlaveSelect_t {SlaveSelect0, SlaveSelect1, SlaveSelect2, SlaveSelect3};
 enum SPISlavePolarity_t{};
 
-/*SPI Config*/
+/*Master Handle Config*/
  typedef struct
  {
     uint8_t *volatile txData;
@@ -51,7 +51,7 @@ enum SPISlavePolarity_t{};
     uint32_t 	configFlags; //OtherOptions
     SPITxFIFOWatermark_t txFIFOWatermark;
     SPIRxFIFOWatermark_t rxFIFOWatermark;
- }SPIConfig_t;
+ }SPIMasterHandle_t;
 
 /*Master Config*/
 typedef struct
@@ -83,6 +83,7 @@ typedef struct
   SPIRxFIFOWatermark_t rxFIFOWatermark;
 }SPISlaveConfig_t;
 
+
 /*Delay config*/
 typedef struct 
 {
@@ -97,10 +98,20 @@ typedef struct
 {
   uint8_t * 	txData; //send buffer
   uint8_t * 	rxData; //receive buffer
-  uint8_t 	configFlags; //Other options
+  uint32_t 	configFlags; //Other options
   size_t 	dataSize; //bytes
 }SPITransfer_t;
 
+/*Half Duplex Transfer*/
+typedef struct
+{
+  uint8_t * 	txData; //send buffer
+  uint8_t * 	rxData; //receive buffer
+  uint32_t 	configFlags; //Other options
+  size_t 	txDataSize; //bytes
+  size_t 	rxDataSize; //bytes
+  bool isPinAssertBetweenTransmitAndReceive, doesTransmitFirst;
+}SPIHalfDuplexTransfer_t;
 
 
 enum deviceRole{MASTER,SLAVE};
