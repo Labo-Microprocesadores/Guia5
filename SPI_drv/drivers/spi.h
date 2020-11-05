@@ -30,6 +30,51 @@
      /* data */
  }spi_config_t;
 
+
+
+typedef struct
+{
+
+	bool enableMaster, enableLoopback;
+	SPI_CTAR CTARUsed;
+	SPI_PCSignal PCSSignalSelect;
+	SPI_BitsPerFrame bitsPerFrame;
+	SPI_CLKDelayScaler clockDelayScaler, delayAfterTransfer, chipSelectToClkDelay;
+	SPI_DelayAfterTransferPreScale delayAfterTransferPreScale;
+	SPI_ChipSelectActiveState chipSelectActiveState;
+	SPIClockPolarity_t polarity;
+	SPIClockPhase_t phase;
+	SPIShiftDirection_t direction;
+  SPIDataWidth_t 	dataWidth;
+	SPI_OutputMode outputMode;
+	SPI_PinMode pinMode;
+	uint32_t baudRateBps;
+}SPIMasterConfig_t;
+
+
+typedef struct 
+{
+  /* data */
+}SPIClockPolarity_t;
+
+typedef struct 
+{
+  /* data */
+}SPIClockPhase_t;
+
+typedef struct 
+{
+  /* data */
+}SPIShiftDirection_t;
+
+typedef struct 
+{
+  /* data */
+}SPIDataWidth_t;
+
+
+
+
 enum deviceRole{MASTER,SLAVE};
 enum{SPI0,SPI1,SPI2};
 enum{DISABLE,ENABLE};
