@@ -25,12 +25,6 @@
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
- typedef struct spi_config_t
- {
-     /* data */
- }spi_config_t;
-
-
 enum SPIClockPolarity_t {ActiveHigh, ActiveLow};
 enum SPIClockPhase_t {FirstEdge, SecondEdge};
 enum SPIShiftDirection_t {MSBFirst, LSBFirst};
@@ -40,6 +34,11 @@ enum SPIDataWidth_t {Data4Bits, Data5Bits, Data6Bits, Data7Bits, Data8Bits, Data
 enum SPISlaveSelect_t {SlaveSelect0, SlaveSelect1, SlaveSelect2, SlaveSelect3};
 enum SPISlavePolarity_t{};
 
+/*SPI Config*/
+ typedef struct
+ {
+     /* data */
+ }SPIConfig_t;
 
 /*Master Config*/
 typedef struct
@@ -79,6 +78,15 @@ typedef struct
   uint8_t frameDelay;
   uint8_t transferDelay;
 }SPIDelayConfig_t;
+
+/*Transfer*/
+typedef struct
+{
+  uint8_t * 	txData; //send buffer
+  uint8_t * 	rxData; //receive buffer
+  uint8_t 	configFlags; //Other options
+  size_t 	dataSize; //bytes
+}SPITransfer_t;
 
 
 
