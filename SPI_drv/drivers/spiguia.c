@@ -8,6 +8,7 @@
 #include "CPUTimeMeasurement.h"
 #define BUFFER_SIZE					256
 
+//*Creates the array of spis and sets on the default value
 static SPI_Type * SPIs[] = SPI_BASE_ADDRS;
 
 
@@ -31,7 +32,7 @@ void SPI_ClearEOQ(SPI_Instance n);
 
 void SPI_MasterGetDefaultConfig(SPI_MasterConfig * config)
 {
-//	MCR config
+//*MCR config
 	config->enableRxFIFOverflowOverwrite = false;
 	config->disableTxFIFO = false;
 	config->disableRxFIFO = false;
@@ -42,7 +43,7 @@ void SPI_MasterGetDefaultConfig(SPI_MasterConfig * config)
 	config->continuousSerialCLK = false;		//CON ESTE HABILITO EL CONTINUOUS CLK
 	config->CTARUsed = SPI_CTAR_0;
 
-//	CTAR config
+//*CTAR config
 	config->bitsPerFrame = SPI_eightBitsFrame;
 	config->polarity = SPI_ClockActiveHigh;
 	config->phase = SPI_ClockPhaseSecondEdge;
@@ -82,62 +83,74 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 		SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
 		NVIC_EnableIRQ(SPI2_IRQn);
 	}
-	//* Check if the module is in stop state
+	//* Check if the module is in stop state (a register inside SPIx_SR)
 	ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
 
-
+	//* Check if in the actual config the master is enabled
 	if (config->enableMaster)
 	{
-	//	Clock and transfer attributes register (CTAR ON MASTER MODE)
+	//* Sets the clock and transfer attributes register (CTAR ON MASTER MODE) selected on config
 	SPIs[n]->CTAR[config->CTARUsed] =
 		SPI_CTAR_FMSZ(config->bitsPerFrame) |
 		SPI_CTAR_CPOL(config->polarity) |
 		SPI_CTAR_CPHA(config->phase) |
 		SPI_CTAR_LSBFE(config->direction) |
 
-		SPI_CTAR_PCSSCK(1) |
-		SPI_CTAR_CSSCK(config->chipSelectToClkDelay) |  // PCS to SCK Delay Scaler: t CSC = (1/fP ) x PCSSCK x CSSCK.
+		//! Cambiar por un define DEFAULT_PCS_TO_SCLK
+		SPI_CTAR_PCSSCK(1) | 								//* This function configures the PCS to SCK delay pre-scalar
+		SPI_CTAR_CSSCK(config->chipSelectToClkDelay) |  	//* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
 
-		SPI_CTAR_PASC(1) |
-		SPI_CTAR_ASC(config->clockDelayScaler) |		//After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC
+		//! Cambiar por un define DEFAULT_PASC
+		SPI_CTAR_PASC(1) | 									//* This function configures the after SCK delay delay pre-scalar
+		SPI_CTAR_ASC(config->clockDelayScaler) |			//*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
 
-		SPI_CTAR_PDT(3)|//config->delayAfterTransferPreScale) |
-		SPI_CTAR_DT(config->delayAfterTransfer) |  //Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
+		//! Cambiar por un define DEFAULT_PDT 
+		SPI_CTAR_PDT(3)|									//*This function configures delayAfterTransferPreScale (PDT)
+		SPI_CTAR_DT(config->delayAfterTransfer) |  			//*Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
 
-		SPI_CTAR_DBR(1)|
-		SPI_CTAR_PBR(0) |
-		SPI_CTAR_BR(config->baudRate);  // Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
+		//! Cambiar por un define DEFAULT_DBR and DEFAULT_PBR
+		SPI_CTAR_DBR(1)| 									//* Double Baud Rate, Doubles the effective baud rate of the Serial Communications Clock
+		SPI_CTAR_PBR(0)|									//* Sets the SCK Duty Cycle on 50/50
+		SPI_CTAR_BR(config->baudRate);  //* Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
 	}else
 	{
-	//	Clock and transfer attributes register (CTAR ON SLAVE MODE)
-	//	SPIs[n]->CTAR_SLAVE
+	//*	Clock and transfer attributes register (CTAR ON SLAVE MODE) or put all to sleep at least 
+	//*	SPIs[n]->CTAR_SLAVE
 	}
 
-	//SPI_HaltModule(n);
-	//	Module configuration register (MCR)
-	//	No estan configurados: MTFE, DOZE, SMPL_PT
-	// Enable the module clocks
+
+	//***********************************************
+	//*Module configuration register (MCR)
+	//***********************************************
+
+	//?Why?
+	//*No estan configurados: SMPL_PT 
+	//? End of why (creo que porque no es necesario)
+
+	//*Enable the module clock (0(~SPI_MCR_MDIS_MASK) Enables the module clocks and 1 (SPI_MCR_MDIS_MASK) allows external logic to disable the module clocks.)
 	SPIs[n]->MCR &= ~SPI_MCR_MDIS_MASK;
 	SPIs[n]->MCR =
-			SPI_MCR_MSTR(1) |
-			SPI_MCR_CONT_SCKE(config->continuousSerialCLK) |		//ACA HABILITO O DESHABILITO EL CONTINUOUS CLK
-			SPI_MCR_DCONF(0) |
-			SPI_MCR_FRZ(1) |
-			SPI_MCR_MTFE(0) |
-			SPI_MCR_PCSSE(0) |
-			SPI_MCR_ROOE(config->enableRxFIFOverflowOverwrite) |
-			SPI_MCR_PCSIS(config->chipSelectActiveState) |
-			SPI_MCR_DOZE(0) |
-			SPI_MCR_MDIS(0) |
-			SPI_MCR_DIS_TXF(config->disableTxFIFO) |
-			SPI_MCR_DIS_RXF(config->disableRxFIFO) |
-			SPI_MCR_HALT(1);
+			SPI_MCR_MSTR(1) | 									//* Enables Master mode
+			SPI_MCR_CONT_SCKE(config->continuousSerialCLK) | 	//* Enables continuos clock or not
+			SPI_MCR_DCONF(0) |									//* 0 is the only option available
+			SPI_MCR_FRZ(1) |									//* Halt serial transfers in Debug mode.
+			SPI_MCR_MTFE(0) |									//* Modified SPI transfer format disabled.
+			SPI_MCR_PCSSE(0) |									//* PCS5/ PCSS is used as the Peripheral Chip Select[5] signal.
+			SPI_MCR_ROOE(config->enableRxFIFOverflowOverwrite) |//* Receive FIFO Overflow Overwrite Enable (0 Incoming data is ignored. 1 Incoming data is shifted into the shift register.)
+			SPI_MCR_PCSIS(config->chipSelectActiveState) |		//* Peripheral Chip Select x Inactive State (0 The inactive state of PCSx is low. 1 The inactive state of PCSx is high.)
+			SPI_MCR_DOZE(0) |									//* Doze mode has no effect on the module
+			SPI_MCR_MDIS(0) |									//* Enables the module clocks
+			SPI_MCR_DIS_TXF(config->disableTxFIFO) |			//* 0 TX FIFO is enabled. 1 TX FIFO is disabled.
+			SPI_MCR_DIS_RXF(config->disableRxFIFO) |			//* 0 RX FIFO is enabled. 1 RX FIFO is disabled.
+			SPI_MCR_HALT(1);									//* 1 Stop transfers. until the program want to send something
 
-	//SPI_RunModule(n);
-//	PUSH Tx FIFO register in master mode
+
+	//*SPI_RunModule(n); to start transfer changing the value of halt
+
+	//	PUSH Tx FIFO register in master mode
 	//SPIs[n]->PUSHR = SPI_PUSHR_CONT(config->continuousChipSelect) | // Return CS signal to inactive state between transfers.
 	//		SPI_PUSHR_CTAS(config->CTARUsed) |
-//			SPI_PUSHR_PCS(1<<config->PCSSignalSelect);
+	//			SPI_PUSHR_PCS(1<<config->PCSSignalSelect);
 
 	//SPIs[n]->MCR |= SPI_MCR_MSTR(config->enableMaster);
 
