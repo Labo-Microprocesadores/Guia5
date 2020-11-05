@@ -60,6 +60,7 @@ void SPI_MasterGetDefaultConfig(SPI_MasterConfig * config)
 
 void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 {
+	//check if everything is fine
 	ASSERT(n<FSL_FEATURE_SOC_DSPI_COUNT);
 	ASSERT((config->CTARUsed)<FSL_FEATURE_DSPI_CTAR_COUNT);
 
@@ -86,25 +87,24 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 	if (config->enableMaster)
 	{
 	//	Clock and transfer attributes register (CTAR ON MASTER MODE)
-		SPIs[n]->CTAR[config->CTARUsed] =
+	SPIs[n]->CTAR[config->CTARUsed] =
+		SPI_CTAR_FMSZ(config->bitsPerFrame) |
+		SPI_CTAR_CPOL(config->polarity) |
+		SPI_CTAR_CPHA(config->phase) |
+		SPI_CTAR_LSBFE(config->direction) |
 
-				SPI_CTAR_FMSZ(config->bitsPerFrame) |
-				SPI_CTAR_CPOL(config->polarity) |
-				SPI_CTAR_CPHA(config->phase) |
-				SPI_CTAR_LSBFE(config->direction) |
+		SPI_CTAR_PCSSCK(1) |
+		SPI_CTAR_CSSCK(config->chipSelectToClkDelay) |  // PCS to SCK Delay Scaler: t CSC = (1/fP ) x PCSSCK x CSSCK.
 
-				SPI_CTAR_PCSSCK(1) |
-				SPI_CTAR_CSSCK(config->chipSelectToClkDelay) |  // PCS to SCK Delay Scaler: t CSC = (1/fP ) x PCSSCK x CSSCK.
+		SPI_CTAR_PASC(1) |
+		SPI_CTAR_ASC(config->clockDelayScaler) |		//After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC
 
-				SPI_CTAR_PASC(1) |
-				SPI_CTAR_ASC(config->clockDelayScaler) |		//After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC
+		SPI_CTAR_PDT(3)|//config->delayAfterTransferPreScale) |
+		SPI_CTAR_DT(config->delayAfterTransfer) |  //Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
 
-				SPI_CTAR_PDT(3)|//config->delayAfterTransferPreScale) |
-				SPI_CTAR_DT(config->delayAfterTransfer) |  //Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
-
-				SPI_CTAR_DBR(1)|
-				SPI_CTAR_PBR(0) |
-				SPI_CTAR_BR(config->baudRate);  // Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
+		SPI_CTAR_DBR(1)|
+		SPI_CTAR_PBR(0) |
+		SPI_CTAR_BR(config->baudRate);  // Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
 	}else
 	{
 	//	Clock and transfer attributes register (CTAR ON SLAVE MODE)
@@ -112,8 +112,8 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 	}
 
 	//SPI_HaltModule(n);
-//	Module configuration register (MCR)
-//	No estan configurados: MTFE, DOZE, SMPL_PT
+	//	Module configuration register (MCR)
+	//	No estan configurados: MTFE, DOZE, SMPL_PT
 	// Enable the module clocks
 	SPIs[n]->MCR &= ~SPI_MCR_MDIS_MASK;
 	SPIs[n]->MCR =
