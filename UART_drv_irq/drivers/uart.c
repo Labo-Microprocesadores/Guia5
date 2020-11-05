@@ -32,6 +32,8 @@
 #define ISR_PF(x) (((x) & UART_S1_PF_MASK) != 0x0)
 
 #define MSG_LEN(x,y,z) (((x)+(z)-(y)) % ((z) - 1 )) // MSG_LEN(rear, front, max_len)
+
+#define UART_PORTS	{PORTB, PORTC, PORTD, PORTC, PORTE}
 /*******************************************************************************
  * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
  ******************************************************************************/
@@ -59,10 +61,12 @@ void UART_init (uint8_t id, uart_cfg_t config)
 {
 	uint8_t i;
 
-	/*********VER COMO HACELO GENERICO***********/
-	PORT_Type * uart_port = PORTB;
-	uint8_t rx = 16;
-	uint8_t tx = 17;
+	/********* Tomo el puerto ***********/
+	PORT_Type * arr_uart_ports[] = UART_PORTS;
+	uint8_t ports_number[] = {16,3,2,16,25};
+	PORT_Type * uart_port = arr_uart_ports[id];
+	uint8_t rx = ports_number[id];
+	uint8_t tx = id == 4? ports_number[id]-1:ports_number[id]+1;
 	/********************************************/
 
 	UART_Type * ptr_s[] = UART_BASE_PTRS;
@@ -71,6 +75,8 @@ void UART_init (uint8_t id, uart_cfg_t config)
 
 	p_out_rear[id] = 0;
 	p_out_front[id] = 1;
+	p_in_rear[id] = 0;
+	p_in_front[id] = 1;
 	for(i = 0; i < MAX_BUFFER_LEN; i++)
 	{
 		buffer_out[id][i] = 0;
@@ -136,7 +142,7 @@ uint8_t UART_read_msg(uint8_t id, char* msg, uint8_t cant)
 
 uint8_t UART_write_msg(uint8_t id, const char* msg, uint8_t cant)
 {
-	uint8_t i,len_write = 0;
+	uint8_t len_write = 0;
 	UART_Type * ptr_s[] = UART_BASE_PTRS;
 
 	while((cant > len_write) && (((p_out_rear[id] + 2) % (MAX_BUFFER_LEN - 1)) != p_out_front[id])) // Buffer full
