@@ -71,7 +71,14 @@ typedef struct
   SPIRxFIFOWatermark_t rxFIFOWatermark;
 }SPISlaveConfig_t;
 
-
+/*Delay config*/
+typedef struct 
+{
+  uint8_t preDelay;
+  uint8_t postDelay;
+  uint8_t frameDelay;
+  uint8_t transferDelay;
+}SPIDelayConfig_t;
 
 
 
