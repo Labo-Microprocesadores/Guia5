@@ -37,7 +37,20 @@ enum SPISlavePolarity_t{};
 /*SPI Config*/
  typedef struct
  {
-     /* data */
+    uint8_t *volatile txData;
+    uint8_t *volatile rxData;
+    volatile size_t 	txRemainingDataBytes;
+    volatile size_t 	rxRemainingDataBytes;
+    volatile size_t 	receiveDataRemainingBytesCount;
+    size_t 	totalDataBytes;
+    volatile uint32_t 	internalState;
+    SPIMasterCallback_t 	masterCallback;
+    void * 	callbackParam;
+    uint8_t 	dataWidth; //1-16
+    uint8_t 	slaveSelectNum; //0-3
+    uint32_t 	configFlags; //OtherOptions
+    SPITxFIFOWatermark_t txFIFOWatermark;
+    SPIRxFIFOWatermark_t rxFIFOWatermark;
  }SPIConfig_t;
 
 /*Master Config*/
