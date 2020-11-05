@@ -86,5 +86,5 @@ static void SPI_slave_init(uint8_t id, spi_config_t config)
 
 static void SPI0_IRQHandler(void)
 {
-
+    //ME GUSTA LA FORMA DEL DRIVER OFICIAL, MUY BONITA Y MANEJA TX Y RX DE UNA! (PROBABLEMENTE HAYA PROBLAMAS CON LOS FLAGS QUE NO VAMOS A TENER)
 }
