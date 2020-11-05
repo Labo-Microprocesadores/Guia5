@@ -31,7 +31,17 @@
  }spi_config_t;
 
 
+enum SPIClockPolarity_t {ActiveHigh, ActiveLow};
+enum SPIClockPhase_t {FirstEdge, SecondEdge};
+enum SPIShiftDirection_t {MSBFirst, LSBFirst};
+enum SPITxFIFOWatermark_t {TxFIFO0, TxFIFO1, TxFIFO2, TxFIFO3, TxFIFO4, TxFIFO5, TxFIFO6, TxFIFO7}; //Number of watermarked items.
+enum SPIRxFIFOWatermark_t {RxFIFO1, RxFIFO2, RxFIFO3, RxFIFO4, RxFIFO5, RxFIFO6, RxFIFO7, RxFIFO8}; //Number of watermarked items.
+enum SPIDataWidth_t {Data4Bits, Data5Bits, Data6Bits, Data7Bits, Data8Bits, Data9Bits, Data10Bits, Data11Bits, Data12Bits, Data13Bits, Data14Bits, Data15Bits, Data16Bits};
+enum SPISlaveSelect_t {SlaveSelect0, SlaveSelect1, SlaveSelect2, SlaveSelect3};
+enum SPISlavePolarity_t{};
 
+
+/*Master Config*/
 typedef struct
 {
 	bool enableMaster, enableLoopback;
@@ -48,21 +58,20 @@ typedef struct
 }SPIMasterConfig_t;
 
 
-
-typedef struct 
+/*Slave Config*/
+typedef struct
 {
-  /* data */
-}SPISlavePolarity_t;
+	bool enableSlave;
+	SPIClockPolarity_t polarity;
+	SPIClockPhase_t phase;
+	SPIShiftDirection_t direction;
+  SPIDataWidth_t 	dataWidth;
+  SPISlavePolarity_t 	sselPol;
+  SPITxFIFOWatermark_t txFIFOWatermark;
+  SPIRxFIFOWatermark_t rxFIFOWatermark;
+}SPISlaveConfig_t;
 
 
-enum SPIClockPolarity_t {ActiveHigh, ActiveLow};
-enum SPIClockPhase_t {FirstEdge, SecondEdge};
-enum SPIShiftDirection_t {MSBFirst, LSBFirst};
-enum SPITxFIFOWatermark_t {TxFIFO0, TxFIFO1, TxFIFO2, TxFIFO3, TxFIFO4, TxFIFO5, TxFIFO6, TxFIFO7}; //Number of watermarked items.
-enum SPIRxFIFOWatermark_t {RxFIFO1, RxFIFO2, RxFIFO3, RxFIFO4, RxFIFO5, RxFIFO6, RxFIFO7, RxFIFO8}; //Number of watermarked items.
-enum SPIDataWidth_t {Data4Bits, Data5Bits, Data6Bits, Data7Bits, Data8Bits, Data9Bits, Data10Bits, Data11Bits, Data12Bits, Data13Bits, Data14Bits, Data15Bits, Data16Bits};
-enum SPISlaveSelect_t {SlaveSelect0, SlaveSelect1, SlaveSelect2, SlaveSelect3};
-enum SPISlavePolarity_t{};
 
 
 
