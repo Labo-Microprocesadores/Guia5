@@ -34,7 +34,7 @@ enum SPIDataWidth_t {Data4Bits, Data5Bits, Data6Bits, Data7Bits, Data8Bits, Data
 enum SPISlaveSelect_t {SlaveSelect0, SlaveSelect1, SlaveSelect2, SlaveSelect3};
 enum SPISlavePolarity_t{};
 
-/*Master Handle Config*/
+/*Master Handle*/
  typedef struct
  {
     uint8_t *volatile txData;
@@ -52,6 +52,9 @@ enum SPISlavePolarity_t{};
     SPITxFIFOWatermark_t txFIFOWatermark;
     SPIRxFIFOWatermark_t rxFIFOWatermark;
  }SPIMasterHandle_t;
+
+ /*Slave Handle*/
+typedef SPIMasterHandle_t SPISlaveHandle_t;
 
 /*Master Config*/
 typedef struct
