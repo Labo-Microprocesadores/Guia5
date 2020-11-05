@@ -1204,6 +1204,7 @@ static void DSPI_MasterTransferPrepare(SPI_Type *base, dspi_master_handle_t *han
  * param transfer Pointer to the dspi_transfer_t structure.
  * return status of status_t.
  */
+    
 status_t DSPI_MasterTransferNonBlocking(SPI_Type *base, dspi_master_handle_t *handle, dspi_transfer_t *transfer)
 {
     assert(NULL != handle);

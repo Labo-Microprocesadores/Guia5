@@ -36,6 +36,7 @@ enum SPI_SlavePolarity_t{};
 enum{SPI0,SPI1,SPI2} SPI_Type;
 enum SPI_CTARSelection_t {CTAR0, CTAR1, CTAR2, CTAR3, CTAR4, CTAR5, CTAR6, CTAR7};
 enum SPI_DelayType_t {PCtoSCK, LastSCKtoPC, BetweenTransfers};
+
 /*Master Handle*/
  typedef struct
  {

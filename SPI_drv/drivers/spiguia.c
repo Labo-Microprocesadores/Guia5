@@ -60,11 +60,13 @@ void SPI_MasterGetDefaultConfig(SPI_MasterConfig * config)
 
 void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 {
-	//check if everything is fine
+	//* Check if everything is fine
+	//* First check if the n passed is a possible value (<3)
 	ASSERT(n<FSL_FEATURE_SOC_DSPI_COUNT);
+	//* Second check if the CTAR used is a possible value (number between 0 and Number of CTAR registers (2) )
 	ASSERT((config->CTARUsed)<FSL_FEATURE_DSPI_CTAR_COUNT);
 
-	// Enable clock gating and NVIC
+	//* Enable clock gating and NVIC for the n SPI_Instance passed
 	if(n==SPI_0)
 	{
 		SIM->SCGC6 |= SIM_SCGC6_SPI0_MASK;
@@ -80,7 +82,7 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 		SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
 		NVIC_EnableIRQ(SPI2_IRQn);
 	}
-	// Check if the module is in stop state
+	//* Check if the module is in stop state
 	ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
 
 
