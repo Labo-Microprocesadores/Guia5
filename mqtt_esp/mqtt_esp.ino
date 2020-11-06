@@ -11,16 +11,16 @@ unsigned long  lastMillis;
 #define  CLOUD_MALE  0
 #define  CLOUD_SANTI 1
 
-<<<<<<< HEAD
-#define CLOUD CLOUD_SANTI
-=======
+
+
+
 #define CLOUD CLOUD_MALE
->>>>>>> fe1b6210765f8f326fc2ca962e813f486f2c22b0
+
 
 #if CLOUD==CLOUD_MALE
 char ssid[] = "Airport Extreme";
 char password[] = "malena1996";
-IPAddress MqttServer(192,168,0,2);
+IPAddress MqttServer(192,168,0,1);
 const unsigned int MqttPort=1883; 
 const char MqttUser[]="";
 const char MqttPassword[]="";
