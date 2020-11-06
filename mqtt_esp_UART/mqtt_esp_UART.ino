@@ -11,11 +11,7 @@ unsigned long  lastMillis;
 #define  CLOUD_MALE  0
 #define  CLOUD_SANTI 1
 
-<<<<<<< HEAD
-#define CLOUD CLOUD_SANTI
-=======
 #define CLOUD CLOUD_MALE
->>>>>>> fe1b6210765f8f326fc2ca962e813f486f2c22b0
 
 #if CLOUD==CLOUD_MALE
 char ssid[] = "Airport Extreme";
@@ -27,15 +23,9 @@ const char MqttPassword[]="";
 const char MqttClientID[]="";
 
 #elif CLOUD==CLOUD_SANTI
-<<<<<<< HEAD
-char ssid[] = "Speedy-Fibra-9C0FC1"; 
-char password[] = "54873eF953Ac7a9XFe3b"; 
-IPAddress MqttServer(192,168,1,37);
-=======
 char ssid[] = ""; //COMPLETAR
 char password[] = " "; //COMPLETAR
 IPAddress MqttServer(192,168,0,2); //COMPLETAR
->>>>>>> fe1b6210765f8f326fc2ca962e813f486f2c22b0
 const unsigned int MqttPort=1883; 
 const char MqttUser[]="";
 const char MqttPassword[]="";
@@ -94,6 +84,8 @@ void ParseTopic(char* topic, byte* payload, unsigned int length);
 void setup() 
 {
   Serial.begin(115200);
+  //Serial.begin(9600, SERIAL_8N1);
+  Serial.swap();    
   setup_gpios();         // initialize used GPIOS
   setup_wifi();          // initialize WIFI an connect to network
   setup_mqtt();          // initialize temperature mqtt server
