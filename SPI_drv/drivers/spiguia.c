@@ -2,7 +2,7 @@
 #include "hardware.h"
 #include "Assert.h"
 #include "GPIO.h"
-#include "PORT.h"
+#include "port.h"
 #include "CircularBuffer.h"
 #include "stdlib.h"
 #include "CPUTimeMeasurement.h"
@@ -61,13 +61,18 @@ void SPI_MasterGetDefaultConfig(SPI_MasterConfig * config)
 
 void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 {
-	//* Check if everything is fine
+	///////////////////////////////////////////////////////////////////////
+	//*						Check if everything is fine
+	///////////////////////////////////////////////////////////////////////
 	//* First check if the n passed is a possible value (<3)
 	ASSERT(n<FSL_FEATURE_SOC_DSPI_COUNT);
 	//* Second check if the CTAR used is a possible value (number between 0 and Number of CTAR registers (2) )
 	ASSERT((config->CTARUsed)<FSL_FEATURE_DSPI_CTAR_COUNT);
 
-	//* Enable clock gating and NVIC for the n SPI_Instance passed
+
+	///////////////////////////////////////////////////////////////////////
+	//*		Enable clock gating and NVIC for the n SPI_Instance passed
+	///////////////////////////////////////////////////////////////////////
 	if(n==SPI_0)
 	{
 		SIM->SCGC6 |= SIM_SCGC6_SPI0_MASK;
@@ -86,6 +91,11 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 	//* Check if the module is in stop state (a register inside SPIx_SR)
 	ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
 
+	///////////////////////////////////////////////////////////////////////
+	//*				Clock and Transfer Attributes Register (CTAR)
+	///////////////////////////////////////////////////////////////////////
+
+
 	//* Check if in the actual config the master is enabled
 	if (config->enableMaster)
 	{
@@ -95,23 +105,15 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 		SPI_CTAR_CPOL(config->polarity) |
 		SPI_CTAR_CPHA(config->phase) |
 		SPI_CTAR_LSBFE(config->direction) |
-
-		//! Cambiar por un define DEFAULT_PCS_TO_SCLK
 		SPI_CTAR_PCSSCK(1) | 								//* This function configures the PCS to SCK delay pre-scalar
 		SPI_CTAR_CSSCK(config->chipSelectToClkDelay) |  	//* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
-
-		//! Cambiar por un define DEFAULT_PASC
 		SPI_CTAR_PASC(1) | 									//* This function configures the after SCK delay delay pre-scalar
 		SPI_CTAR_ASC(config->clockDelayScaler) |			//*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
-
-		//! Cambiar por un define DEFAULT_PDT 
-		SPI_CTAR_PDT(3)|									//*This function configures delayAfterTransferPreScale (PDT)
+		SPI_CTAR_PDT(3)|									//*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
 		SPI_CTAR_DT(config->delayAfterTransfer) |  			//*Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
-
-		//! Cambiar por un define DEFAULT_DBR and DEFAULT_PBR
 		SPI_CTAR_DBR(1)| 									//* Double Baud Rate, Doubles the effective baud rate of the Serial Communications Clock
 		SPI_CTAR_PBR(0)|									//* Sets the SCK Duty Cycle on 50/50
-		SPI_CTAR_BR(config->baudRate);  //* Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
+		SPI_CTAR_BR(config->baudRate);  					//* Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
 	}else
 	{
 	//*	Clock and transfer attributes register (CTAR ON SLAVE MODE) or put all to sleep at least 
@@ -119,9 +121,9 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 	}
 
 
-	//***********************************************
-	//*Module configuration register (MCR)
-	//***********************************************
+	///////////////////////////////////////////////////////////////////////
+	//*				   Module configuration register (MCR)
+	///////////////////////////////////////////////////////////////////////
 
 	//?Why?
 	//*No estan configurados: SMPL_PT 
@@ -145,27 +147,20 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 			SPI_MCR_HALT(1);									//* 1 Stop transfers. until the program want to send something
 
 
-	//*SPI_RunModule(n); to start transfer changing the value of halt
+	///////////////////////////////////////////////////////////////////////
+	//*				   Output Config
+	///////////////////////////////////////////////////////////////////////
 
-	//	PUSH Tx FIFO register in master mode
-	//SPIs[n]->PUSHR = SPI_PUSHR_CONT(config->continuousChipSelect) | // Return CS signal to inactive state between transfers.
-	//		SPI_PUSHR_CTAS(config->CTARUsed) |
-	//			SPI_PUSHR_PCS(1<<config->PCSSignalSelect);
-
-	//SPIs[n]->MCR |= SPI_MCR_MSTR(config->enableMaster);
-
-	pinMode(PORTNUM2PIN(PC,5),OUTPUT);
-	PORT_Config portConfig;
+	gpioMode(PORTNUM2PIN(PC,5),OUTPUT);
+	PORT_igConf portConfig;
 	PORT_GetPinDefaultConfig(&portConfig);
-	PORT_PinConfig(PORT_D, 0, &portConfig); // CS
-	PORT_PinConfig(PORT_D, 1, &portConfig); // SCK
-	PORT_PinConfig(PORT_D, 2, &portConfig); // SOUT
-	PORT_PinConfig(PORT_D, 3, &portConfig); // SIN
-	PORT_PinMux(PORT_D, 0, PORT_MuxAlt2);
-	PORT_PinMux(PORT_D, 1, PORT_MuxAlt2);
-	PORT_PinMux(PORT_D, 2, PORT_MuxAlt2);
-	PORT_PinMux(PORT_D, 3, PORT_MuxAlt2);
+	PORT_PinConfig(PORT_D, 0, &portConfig, PORT_MuxAlt2); //* CS
+	PORT_PinConfig(PORT_D, 1, &portConfig, PORT_MuxAlt2); //* SCK
+	PORT_PinConfig(PORT_D, 2, &portConfig, PORT_MuxAlt2); //* SOUT
+	PORT_PinConfig(PORT_D, 3, &portConfig, PORT_MuxAlt2); //* SIN
 }
+
+
 
 void SPI_EnableTxFIFOFillDMARequests(SPI_Instance n)
 {
@@ -300,9 +295,6 @@ void SPI0_IRQHandler(void)
 			uint8_t byte;
 			if(pop(&transmitBuffer, &byte))
 			{
-				int b=0;
-				if(byte == 5)
-					b=5;
 				// If its last byte, set end of queue bit
 				if(isEmpty(&transmitBuffer))
 				{
@@ -324,4 +316,97 @@ void SPI0_IRQHandler(void)
 
 	}
 
+}
+
+void receiveData(void)
+{
+	SPIs[0]->MCR |= SPI_MCR_HALT(1);
+	SPIs[0]->MCR |= (SPI_MCR_DIS_TXF(config->disableTxFIFO) |			
+			SPI_MCR_DIS_RXF(config->disableRxFIFO));
+	SPIs[0]->SR |= (SPI_SR_TCF_MASK | SPI_SR_EOQF_MASK | SPI_SR_TFUF_MASK | SPI_SR_TFFF_MASK | SPI_SR_RFOF_MASK | SPI_SR_RFDF_MASK); //clear the status bits (write-1-to-clear)
+ 	SPIs[0]->TCR |= SPI_TCR_SPI_TCNT_MASK;
+	SPIs[0]->MCR &=  ~SPI_MCR_HALT_MASK;
+	SPIs[0]->PUSHR = (SPI_PUSHR_CONT_MASK |  SPI_PUSHR_PCS_MASK | 0x9F); //command byte
+
+  	while (!(SPIs[0]->SR & SPI_SR_RFDF_MASK)  );
+
+	SPI0_POPR; //dummy read
+
+	SPIs[0]->SR = SPI_SR_RFDF_MASK;   // clear the reception flag (not self-clearing)
+
+	SPIs[0]->PUSHR = (SPI_PUSHR_CONT_MASK | SPI_PUSHR_PCS0_ON | 0xFF); //dummy byte to read
+
+	while (!(SPIs[0]->SR & SPI_SR_RFDF_MASK)  );
+
+	receiveBuffer[0] = SPI0_POPR; //read
+
+	SPIs[0]->SR = SPI_SR_RFDF_MASK;   // clear the reception flag (not self-clearing)
+
+	SPIs[0]->PUSHR = (SPI_PUSHR_CONT_MASK |  SPI_PUSHR_PCS0_ON | 0xFF); //dummy byte to read
+
+	while (!(SPIs[0]->SR & SPI_SR_RFDF_MASK)  );
+
+	receiveBuffer[1] = SPI0_POPR; //read
+
+	SPIs[0]->SR = SPI_SR_RFDF_MASK;   // clear the reception flag (not self-clearing)
+
+	SPIs[0]->PUSHR = (SPI_PUSHR_EOQ_MASK | SPI_PUSHR_PCS0_ON | 0xFF); //send last dummy byte to read
+
+	while (!(SPIs[0]->SR & SPI_SR_RFDF_MASK)  );
+
+	receiveBuffer[2] = SPI0_POPR; //read
+
+	SPIs[0]->SR = SPI_SR_RFDF_MASK;   // clear the reception flag (not self-clearing)
+}
+
+
+/*!
+ * brief DSPI master transfer data using interrupts.
+ *
+ * This function transfers data using interrupts. This is a non-blocking function, which returns right away. When all
+ * data is transferred, the callback function is called.
+
+ * param base DSPI peripheral base address.
+ * param handle Pointer to the dspi_master_handle_t structure which stores the transfer state.
+ * param transfer Pointer to the dspi_transfer_t structure.
+ * return status of status_t.
+ */
+    
+int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, dspi_master_handle_t *handle, dspi_transfer_t *transfer)
+{
+    /* If the transfer count is zero, then return immediately.*/
+    if (transfer->dataSize == 0U || handle==NULL || transfer==NULL)
+    {
+        return -1;
+    }
+
+    /* Check that we're not busy.*/
+    if (handle->state == (uint8_t)kDSPI_Busy)
+    {
+        return 0;
+    }
+
+    handle->state = (uint8_t)kDSPI_Busy;
+
+    /* Disable the NVIC for DSPI peripheral. */
+    (void)DisableIRQ(s_dspiIRQ[DSPI_GetInstance(base)]); //ESTO CREO QUE NO HACE FALTA, LO HARIA EN EL INIT Y FUE, QUE ESTE ACTIBVO TODO EL TIEMPO
+
+    DSPI_MasterTransferPrepare(base, handle, transfer); //ESTA ES UNA CAGADA, SOLAMENTE PREPARA TODO PARA ARRANCAR UNA TRANSMIION NUEVA, CREO QUE SE PUEDE REDUCIR BASTANTE SI USAMOS BUFFERS PROPIOS INTERNOS
+
+    /* RX FIFO Drain request: RFDF_RE to enable RFDF interrupt
+     * Since SPI is a synchronous interface, we only need to enable the RX interrupt.
+     * The IRQ handler will get the status of RX and TX interrupt flags.
+     */
+    s_dspiMasterIsr = DSPI_MasterTransferHandleIRQ; //!ESTA ES MAS COMPLICADA, MANEJA TODO -> GANAS DE LLORAR INTENSIFIES
+
+    DSPI_EnableInterrupts(base, (uint32_t)kDSPI_RxFifoDrainRequestInterruptEnable); //!ESTA QUEDA, ES PARA ACTIVAR QUE LAS INTERRUPCIONES DE LAS FIFO TE HAGAN SALTAR EL NVIC
+    DSPI_StartTransfer(base); //ESTE ES SOLO CAMBIAR EL FLAG DE HALT
+
+    /* Fill up the Tx FIFO to trigger the transfer. */
+    DSPI_MasterTransferFillUpTxFifo(base, handle);  //ESTA NO SE QUE TAN NECESARIA ES
+
+    /* Enable the NVIC for DSPI peripheral. */
+    (void)EnableIRQ(s_dspiIRQ[DSPI_GetInstance(base)]); // ESTA CREO QUE SI LO HACEMOS EN EL INIT VUELA.
+
+    return 1;
 }
