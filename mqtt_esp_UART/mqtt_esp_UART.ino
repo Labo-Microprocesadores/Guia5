@@ -115,6 +115,7 @@ void loop()
     if(debug)
     {
     client.publish("holaTopic","holaaaa",false);
+    //Serial.write(3);
     }
   }
 }

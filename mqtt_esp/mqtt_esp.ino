@@ -20,7 +20,7 @@ unsigned long  lastMillis;
 #if CLOUD==CLOUD_MALE
 char ssid[] = "Airport Extreme";
 char password[] = "malena1996";
-IPAddress MqttServer(192,168,0,1);
+IPAddress MqttServer(192,168,0,2);
 const unsigned int MqttPort=1883; 
 const char MqttUser[]="";
 const char MqttPassword[]="";
