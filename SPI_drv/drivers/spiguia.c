@@ -1,11 +1,11 @@
-#include "SPI.h"
+#include "spiguia.h"
 #include "hardware.h"
 #include "Assert.h"
 #include "GPIO.h"
 #include "port.h"
 #include "CircularBuffer.h"
 #include "stdlib.h"
-#include "CPUTimeMeasurement.h"
+//#include "CPUTimeMeasurement.h"
 #define BUFFER_SIZE					256
 
 //*Creates the array of spis and sets on the default value
@@ -151,8 +151,8 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig * config)
 	//*				   Output Config
 	///////////////////////////////////////////////////////////////////////
 
-	gpioMode(PORTNUM2PIN(PC,5),OUTPUT);
-	PORT_igConf portConfig;
+	//gpioMode(PORTNUM2PIN(PC,5),OUTPUT);
+	PORT_Config portConfig;
 	PORT_GetPinDefaultConfig(&portConfig);
 	PORT_PinConfig(PORT_D, 0, &portConfig, PORT_MuxAlt2); //* CS
 	PORT_PinConfig(PORT_D, 1, &portConfig, PORT_MuxAlt2); //* SCK
@@ -410,3 +410,4 @@ int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, dspi_master_handle_t *hand
 
     return 1;
 }
+

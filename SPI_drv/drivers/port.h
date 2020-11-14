@@ -6,16 +6,6 @@
 #include "stdint.h"
 
 //* The configuration of the pin that will be used
-typedef struct{
-	PORT_Lock lk;
-	PORT_Mux mux;
-	PORT_Pull pull;
-	PORT_SlewRate sr;
-	PORT_OpenDrain od;
-	PORT_PassiveFilter filter;
-	PORT_DriveStrength ds;
-	PORT_Interrupt interrupt;
-}PORT_Config;
 
 
 typedef enum {
@@ -84,26 +74,23 @@ typedef enum {
 	PORT_SlowSlewRate = 1U 
 }PORT_SlewRate;
 
+
+typedef struct{
+	PORT_Lock lk;
+	PORT_Mux mux;
+	PORT_Pull pull;
+	PORT_SlewRate sr;
+	PORT_OpenDrain od;
+	PORT_PassiveFilter filter;
+	PORT_DriveStrength ds;
+	PORT_Interrupt interrupt;
+}PORT_Config;
+
 ////////////////////////////////////////////////////////
 //*         End of typedef to default config 
 ////////////////////////////////////////////////////////
 
 void PORT_PinConfig (PORT_Instance n, uint32_t pin, PORT_Config *config, PORT_Mux mux);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -118,7 +105,7 @@ void PORT_PinConfig (PORT_Instance n, uint32_t pin, PORT_Config *config, PORT_Mu
  */
 void PORT_GetPinDefaultConfig(PORT_Config * config);
 
-void PORT_PinConfig (PORT_Instance n, uint32_t pin, PORT_Config *config, PORT_Mux mux)
+void PORT_PinConfig (PORT_Instance n, uint32_t pin, PORT_Config *config, PORT_Mux mux);
 
 void 	PORT_MultiplePinsConfig (PORT_Instance n, uint32_t mask, PORT_Config *config);
 
