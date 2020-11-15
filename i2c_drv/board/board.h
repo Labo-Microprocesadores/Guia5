@@ -35,6 +35,10 @@
 #define SW_ACTIVE       LOW
 #define SW_INPUT_TYPE   INPUT_PULLDOWN
 
+//Accelerometer pins
+#define I2C_SDA			PORTNUM2PIN(PB,3) //PTE25
+#define I2C_SCL			PORTNUM2PIN(PB,2) //PTE24
+
 /*******************************************************************************
  ******************************************************************************/
 

@@ -11,6 +11,7 @@
 #include "uart.h"
 #include "Timer.h"
 #include "Led.h"
+#include "i2c.h"
 #include <stdbool.h>
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
@@ -43,6 +44,8 @@ void App_Init(void)
 	Timer_Init();
 	idtimer = Timer_AddCallback(&send_msg, 5000, false);
 	send_msg();
+	i2cInit(I2C_0);
+
 }
 
 /* Función que se llama constantemente en un ciclo infinito */
@@ -50,6 +53,7 @@ void App_Run(void)
 {
 	static char msg[105] = {0};
 
+	/*
 	if(UART_is_rx_msg(3))
 	{
 		//const char men[] = "Recibi: ";
@@ -67,6 +71,20 @@ void App_Run(void)
 		//UART_write_msg(0, &men, sizeof(men)/sizeof(men[0]));
 		//mlen = UART_write_msg(0, &msg, mlen+2);
 	}
+	*/
+	I2C_com_control_t i2c_testing;
+	testing.callback=toggle_led;
+	uint8_t data [3]={1,2,3};
+	testing.data = data;
+	testing.data_size = 3;
+	testing.register_address=0x0E;
+	testing.slave_address = 0x1D;
+}
+
+
+void toggle_led(void)
+{
+	Led_Toggle(LED_RED);
 }
 
 
