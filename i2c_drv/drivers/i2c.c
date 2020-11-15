@@ -264,9 +264,9 @@ void i2cInit (I2C_ChannelType channel)
 	 NVIC_EnableIRQ(i2c_irqs[channel]);
 
 
-	 port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
+	 port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(2);//(5); // cambia los pines a alternativa i2c
 	 port_SDA->PCR[pin_SDA] |= PORT_PCR_ODE_MASK;
-	 port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
+	 port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(2);//(5);
 	 port_SCL->PCR[pin_SCL] |= PORT_PCR_ODE_MASK;
 }
 
