@@ -48,7 +48,7 @@ bool Timer_Init (void);
  * @brief Adds a callback to be periodically called by Timer.
  * @param newCallback The function to be called. Must receive and return void. Usually a PISR.
  * @param period The period in ms with which the callback is called. Must be greater than TIMER_ISR_PERIOD (or equal).
- * 			Example: period = 2000 is equivalent to 2ms
+ * 			Example: period = 2000 is equivalent to 2s
  * @param callOnce The callback will be called only once and the cancelled.
  * @return 	An ID to represent the callback element if no error occurred.
  * 			Must use this ID in case the calling needs to be cancelled or the period needs to be changed.
