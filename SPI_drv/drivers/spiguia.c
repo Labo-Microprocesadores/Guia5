@@ -372,7 +372,7 @@ void receiveData(void)
  * return status of status_t.
  */
     
-int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, dspi_master_handle_t *handle, dspi_transfer_t *transfer)
+int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_MasterHandle_t *handle, SPI_Transfer_t *transfer)
 {
     /* If the transfer count is zero, then return immediately.*/
     if (transfer->dataSize == 0U || handle==NULL || transfer==NULL)
