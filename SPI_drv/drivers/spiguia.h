@@ -156,6 +156,13 @@ typedef struct
     uint32_t configFlags; //Transfer config flags.
 } SPI_Transfer_t;
 
+enum SPI_TransferState
+{
+    SPI_IDLE_STATE = 0x0U, 
+    SPI_BUSY_STATE,        
+    SPI_ERROR_STATE        /*!< Transfer error. */
+};
+
 void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig *config);
 
 typedef void (*SPI_Callback)(void);

@@ -47,57 +47,11 @@ static typedef enum {
 static int frame;     /* used as delay counter for the piece drop-down */
 static int piece_ptr; /* current piece */
 
-
-
-/*******************************************************************************
- *                        GLOBAL FUNCTION DEFINITIONS
- ******************************************************************************/
-
-/*******************************************************************************
- *                       LOCAL FUNCTION DEFINITIONS
- ******************************************************************************/
-static void SCI_send(const char *str) {
-  debug_printf((const char*)str);
-}
-
-static uint8_t SCI_read_nb(void) {
-  /* nonblocking read of character */
-  uint8_t c;
-
-  LPUART_HAL_Getchar(LPUART0_BASE_PTR, &c); /* returns 0 if no character was received */
-  return c;
-}
-
-static TETRIS_Action read_keypad(void) {
-  bool btn1, btn2;
-
-  btn1 = !GPIO_DRV_ReadPinInput(Button1);
-  if (btn1) {
-    OSA_TimeDelay(20);
-    btn1 = !GPIO_DRV_ReadPinInput(Button1);
-  }
-  btn2 = !GPIO_DRV_ReadPinInput(Button2);
-  if (btn2) {
-    OSA_TimeDelay(20);
-    btn2 = !GPIO_DRV_ReadPinInput(Button2);
-  }
-  if (btn1 && !btn2) {
-    return TETRIS_Action_MoveLeft;
-  }
-  if (!btn1 && btn2) {
-    return TETRIS_Action_MoveRight;
-  }
-  if (btn1 && btn2) {
-    return TETRIS_Action_Rotate;
-  }
-  return TETRIS_Action_None;
-}
-
-
-
-
 static unsigned char framebuffer[WIDTH][HEIGHT];
 
+	///////////////////////////////////////////////////////////////////////
+	//*		Enable clock gating and NVIC for the n SPI_Instance passed
+	///////////////////////////////////////////////////////////////////////
 static const unsigned char pieces_long[2*4*4] = {
   ' ',SQU,' ',' ',
   ' ',SQU,' ',' ',
@@ -207,6 +161,57 @@ static const unsigned char pieces_L2[4*4*4] = {
   ' ',SQU,' ',' ',
   ' ',' ',' ',' ',
 };
+
+
+/*******************************************************************************
+ *                        GLOBAL FUNCTION DEFINITIONS
+ ******************************************************************************/
+
+/*******************************************************************************
+ *                       LOCAL FUNCTION DEFINITIONS
+ ******************************************************************************/
+static void SCI_send(const char *str) {
+  debug_printf((const char*)str);
+}
+
+static uint8_t SCI_read_nb(void) {
+  /* nonblocking read of character */
+  uint8_t c;
+
+  LPUART_HAL_Getchar(LPUART0_BASE_PTR, &c); /* returns 0 if no character was received */
+  return c;
+}
+
+static TETRIS_Action read_keypad(void) {
+  bool btn1, btn2;
+
+  btn1 = !GPIO_DRV_ReadPinInput(Button1);
+  if (btn1) {
+    OSA_TimeDelay(20);
+    btn1 = !GPIO_DRV_ReadPinInput(Button1);
+  }
+  btn2 = !GPIO_DRV_ReadPinInput(Button2);
+  if (btn2) {
+    OSA_TimeDelay(20);
+    btn2 = !GPIO_DRV_ReadPinInput(Button2);
+  }
+  if (btn1 && !btn2) {
+    return TETRIS_Action_MoveLeft;
+  }
+  if (!btn1 && btn2) {
+    return TETRIS_Action_MoveRight;
+  }
+  if (btn1 && btn2) {
+    return TETRIS_Action_Rotate;
+  }
+  return TETRIS_Action_None;
+}
+
+
+
+
+
+
 
 static piece pieces[7] = {
   {2,0,0,WIDTH/2,1,false,&pieces_long[0]},

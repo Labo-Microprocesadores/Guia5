@@ -381,12 +381,12 @@ int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_MasterHandle_t *handle
     }
 
     /* Check that we're not busy.*/
-    if (handle->state == (uint8_t)kDSPI_Busy)
+    if (handle->state == (uint8_t)SPI_BUSY_STATE)
     {
         return 0;
     }
 
-    handle->state = (uint8_t)kDSPI_Busy;
+    handle->state = (uint8_t)SPI_BUSY_STATE;
 
     /* Disable the NVIC for DSPI peripheral. */
     (void)DisableIRQ(s_dspiIRQ[DSPI_GetInstance(base)]); //ESTO CREO QUE NO HACE FALTA, LO HARIA EN EL INIT Y FUE, QUE ESTE ACTIVO TODO EL TIEMPO
