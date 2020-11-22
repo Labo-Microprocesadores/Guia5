@@ -9,7 +9,7 @@
  ******************************************************************************/
 
 #if PL_CONFIG_HAS_TETIRS
-#include "Tetris.h"
+#include "TetrisGame.h"
 #include "DbgCs1.h"
 #include "gpio1.h"
 #include "fsl_lpuart_hal.h"
@@ -43,6 +43,10 @@ static typedef enum {
   TETRIS_Action_Rotate,
   TETRIS_Action_Drop,
 } TETRIS_Action;
+
+static int frame;     /* used as delay counter for the piece drop-down */
+static int piece_ptr; /* current piece */
+
 
 
 /*******************************************************************************
@@ -91,18 +95,6 @@ static TETRIS_Action read_keypad(void) {
 
 
 
-static int frame;     /* used as delay counter for the piece drop-down */
-static int piece_ptr; /* current piece */
-
-typedef struct {
-  unsigned char numOfRotates;
-  unsigned char currentRotate;
-  unsigned char pieceType;
-  unsigned char x;
-  unsigned char y;
-  char attached;
-  const unsigned char *shapes;
-} piece;
 
 static unsigned char framebuffer[WIDTH][HEIGHT];
 
