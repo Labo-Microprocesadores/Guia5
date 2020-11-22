@@ -306,7 +306,8 @@ static void printFrameBuffer(void){
   }
 }
 
-
+//* This function print the piece into the board (the frame buffer), 
+//* to do that checks for the shape and the rotation of the piece if there is a "SQU"
 static void printPiece(piece *p, unsigned char c){
   int x,y;
   unsigned char v;
@@ -407,6 +408,7 @@ static void movePieceLeft(piece *p){
   }
 }
 
+//* it puts the piece on the board (framebuffer) if it can, if is not able to do that it gives up and return false
 static char createPiece(piece *p){
   int x,y;
   unsigned char v;
@@ -516,6 +518,8 @@ static void PrintWelcome(void) {
   SCI_send("Press any to start game. \r\n");
 }
 
+//* this function reads the new key entered by the user
+//! Modificar segun los inputs que tengamos
 static TETRIS_Action ReadKey(void) {
   TETRIS_Action action;
 
@@ -533,7 +537,7 @@ static TETRIS_Action ReadKey(void) {
 }
 
 //*This function is called when it is time to play
-  /* return true if game is lost (with the variable lostFlag) */
+/* return true if game is lost (with the variable lostFlag) */
 static unsigned char Play(void) {
   unsigned char lostFlag = false;
   TETRIS_Action action;
@@ -543,24 +547,31 @@ static unsigned char Play(void) {
   if(checkAttach(&pieces[piece_ptr])==false){
     printPiece(&pieces[piece_ptr],' ');
   } else {
+    //* Configurate the piece 
     pieces[piece_ptr].y = 1;
     pieces[piece_ptr].x = WIDTH/2;
     pieces[piece_ptr].currentRotate = 0;
     pieces[piece_ptr].attached = false;
+
+    //* increments the pointer to the limit and complete the lap
     piece_ptr++;
     if(piece_ptr>6){
       piece_ptr = 0;
     }
+
+    //* It trys to create the piece and if it can not => game over
     if(createPiece(&pieces[piece_ptr])==false){
       lostFlag = true;
     }
   }
+  //* if you pass through here 10 times then the piece descends
   frame++;
   if(frame==10){
     pieces[piece_ptr].y++;
     updateScreen = true;
     frame = 0;
   }
+
   action = ReadKey();
   if(action==TETRIS_Action_MoveRight) {
     movePieceRight(&pieces[piece_ptr]);

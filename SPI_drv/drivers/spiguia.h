@@ -122,45 +122,45 @@ typedef struct
 } SPI_MasterConfig;
 
 /* SPI master transfer handle struct */
-typedef struct 
+typedef struct
 {
-    uint32_t bitsPerFrame;         
-    volatile uint32_t command;     //Data command
-    volatile uint32_t lastCommand; //Last data command
+	uint32_t bitsPerFrame;
+	volatile uint32_t command;	   //Data command
+	volatile uint32_t lastCommand; //Last data command
 
-    uint8_t fifoSize; //Fifo datasize
+	uint8_t fifoSize; //Fifo datasize
 
-    volatile bool
-        isPcsActiveAfterTransfer;   //After last frame transfer
-    volatile bool isThereExtraByte; 
+	volatile bool
+		isPcsActiveAfterTransfer; //After last frame transfer
+	volatile bool isThereExtraByte;
 
-    uint8_t *volatile txData;                  
-    uint8_t *volatile rxData;                  
-    volatile size_t remainingSendByteCount;    
-    volatile size_t remainingReceiveByteCount; 
-    size_t totalByteCount;                    
+	uint8_t *volatile txData;
+	uint8_t *volatile rxData;
+	volatile size_t remainingSendByteCount;
+	volatile size_t remainingReceiveByteCount;
+	size_t totalByteCount;
 
-    volatile uint8_t state; //Transfer state
+	volatile uint8_t state; //Transfer state
 
-    SPI_Callback callback; //onComplete
-    void *userData;                           //callback param
-}SPI_MasterHandle_t;
+	SPI_Callback callback; //onComplete
+	void *userData;		   //callback param
+} SPI_MasterHandle_t;
 
 /*Transfer struct.*/
 typedef struct
 {
-    uint8_t *txData;          
-    uint8_t *rxData;          
-    volatile size_t dataSize;
+	uint8_t *txData;
+	uint8_t *rxData;
+	volatile size_t dataSize;
 
-    uint32_t configFlags; //Transfer config flags.
+	uint32_t configFlags; //Transfer config flags.
 } SPI_Transfer_t;
 
 enum SPI_TransferState
 {
-    SPI_IDLE_STATE = 0x0U, 
-    SPI_BUSY_STATE,        
-    SPI_ERROR_STATE        /*!< Transfer error. */
+	SPI_IDLE_STATE = 0x0U,
+	SPI_BUSY_STATE,
+	SPI_ERROR_STATE /*!< Transfer error. */
 };
 
 void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig *config);
