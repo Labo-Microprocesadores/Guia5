@@ -84,6 +84,7 @@ static int piece_ptr; /* current piece */
 
 static unsigned char framebuffer[WIDTH][HEIGHT];
 
+//*Array with the different types of pieces
 static piece pieces[7] = {
   {2,0,0,WIDTH/2,1,false,&pieces_long[0]},
   {4,0,1,WIDTH/2,1,false,&pieces_three[0]},
@@ -369,7 +370,7 @@ static char checkAttach(piece *p){
 }
 
 //? I think that maybe the x=1, y=1 is the upper-left corner 
-//
+//? if that is the case, this function checks the game over
 static char lost(piece *p){
   int x;
 
@@ -495,6 +496,7 @@ void TETRIS_Start(void) {
   TETRIS_state = TETRIS_INIT;
 }
 
+//*This function is called at the beginning of the game is like the instructions manual 
 static void PrintWelcome(void) {
   /* clear any pending events */
   SCI_send("\033[2J\033[1;1H"); /* control codes */
@@ -530,8 +532,9 @@ static TETRIS_Action ReadKey(void) {
   return action;
 }
 
+//*This function is called when it is time to play
+  /* return true if game is lost (with the variable lostFlag) */
 static unsigned char Play(void) {
-  /* return true if game is lost */
   unsigned char lostFlag = false;
   TETRIS_Action action;
 
@@ -580,6 +583,7 @@ static unsigned char Play(void) {
   return !lostFlag;
 }
 
+//* this is a very simple state machine that controlls the game
 int TETRIS_Run(void) {
   switch(TETRIS_state) {
     case TETRIS_INIT:
