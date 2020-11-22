@@ -17,6 +17,14 @@ typedef struct {
   const unsigned char *shapes;
 } piece;
 
+typedef enum {
+  TETRIS_INIT,
+  TETRIS_WAIT_FOR_START,
+  TETRIS_START,
+  TETRIS_PLAY,
+  TETRIS_LOST,
+  TETRIS_END
+} TETRIS_State;
 
 void TETRIS_Start(void);
 

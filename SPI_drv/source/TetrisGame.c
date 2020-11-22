@@ -32,6 +32,41 @@ static void SCI_send(const char *str);
 static uint8_t SCI_read_nb(void);
 
 static TETRIS_Action read_keypad(void);
+
+static void paintEdges(void);
+
+static void initFramebuffer(void);
+
+static void printFrameBuffer(void);
+
+static void printPiece(piece *p, unsigned char c);
+
+static void eatlines(void);
+
+static char checkAttach(piece *p);
+
+static char lost(piece *p);
+
+static void movePieceLeft(piece *p);
+
+static void movePieceLeft(piece *p);
+
+static char createPiece(piece *p);
+
+static void movePieceRight(piece *p);
+
+static void rotatePiece(piece *p);
+
+void TETRIS_Start(void);
+
+static void PrintWelcome(void);
+
+static TETRIS_Action ReadKey(void);
+
+static unsigned char Play(void);
+
+int TETRIS_Run(void);
+
 /*******************************************************************************
  * PRIVATE VARIABLES WITH FILE LEVEL SCOPE
  ******************************************************************************/
@@ -49,9 +84,20 @@ static int piece_ptr; /* current piece */
 
 static unsigned char framebuffer[WIDTH][HEIGHT];
 
-	///////////////////////////////////////////////////////////////////////
-	//*		Enable clock gating and NVIC for the n SPI_Instance passed
-	///////////////////////////////////////////////////////////////////////
+static piece pieces[7] = {
+  {2,0,0,WIDTH/2,1,false,&pieces_long[0]},
+  {4,0,1,WIDTH/2,1,false,&pieces_three[0]},
+  {1,0,2,WIDTH/2,1,false,&pieces_square[0]},
+  {2,0,3,WIDTH/2,1,false,&pieces_right[0]},
+  {2,0,4,WIDTH/2,1,false,&pieces_left[0]},
+  {4,0,5,WIDTH/2,1,false,&pieces_L1[0]},
+  {4,0,6,WIDTH/2,1,false,&pieces_L2[0]},
+};
+
+///////////////////////////////////////////////////////////////////////
+//*		Pieces 
+///////////////////////////////////////////////////////////////////////
+
 static const unsigned char pieces_long[2*4*4] = {
   ' ',SQU,' ',' ',
   ' ',SQU,' ',' ',
@@ -161,8 +207,13 @@ static const unsigned char pieces_L2[4*4*4] = {
   ' ',SQU,' ',' ',
   ' ',' ',' ',' ',
 };
+///////////////////////////////////////////////////////////////////////
+//*		End of Pieces 
+///////////////////////////////////////////////////////////////////////
 
+static unsigned char updateScreen = false;
 
+static TETRIS_State TETRIS_state = TETRIS_INIT;
 /*******************************************************************************
  *                        GLOBAL FUNCTION DEFINITIONS
  ******************************************************************************/
@@ -208,21 +259,8 @@ static TETRIS_Action read_keypad(void) {
 }
 
 
-
-
-
-
-
-static piece pieces[7] = {
-  {2,0,0,WIDTH/2,1,false,&pieces_long[0]},
-  {4,0,1,WIDTH/2,1,false,&pieces_three[0]},
-  {1,0,2,WIDTH/2,1,false,&pieces_square[0]},
-  {2,0,3,WIDTH/2,1,false,&pieces_right[0]},
-  {2,0,4,WIDTH/2,1,false,&pieces_left[0]},
-  {4,0,5,WIDTH/2,1,false,&pieces_L1[0]},
-  {4,0,6,WIDTH/2,1,false,&pieces_L2[0]},
-};
-
+//* This fuction prints the borders
+// ? I think that is not important for us
 static void paintEdges(void){
   int x,y;
 
@@ -236,6 +274,7 @@ static void paintEdges(void){
   }
 }
 
+//* This fuction initialize the bord of the game without pieces
 static void initFramebuffer(void){
   int x,y;
 
@@ -247,8 +286,7 @@ static void initFramebuffer(void){
   paintEdges();
 }
 
-static unsigned char updateScreen = false;
-
+//* This function prints the board
 static void printFrameBuffer(void){
   int x,y;
   unsigned char c[2];
@@ -267,6 +305,7 @@ static void printFrameBuffer(void){
   }
 }
 
+
 static void printPiece(piece *p, unsigned char c){
   int x,y;
   unsigned char v;
@@ -281,6 +320,7 @@ static void printPiece(piece *p, unsigned char c){
   }
 }
 
+//* this function is called when there is a complete floor
 static void eatlines(void) {
   int x,y,y2;
 
@@ -304,6 +344,8 @@ static void eatlines(void) {
   }
 }
 
+
+//? maybe this function is called when the piece touch the floor but i have no idea
 static char checkAttach(piece *p){
   int x,y;
   unsigned char v;
@@ -326,6 +368,8 @@ static char checkAttach(piece *p){
   return false;
 }
 
+//? I think that maybe the x=1, y=1 is the upper-left corner 
+//
 static char lost(piece *p){
   int x;
 
@@ -446,17 +490,6 @@ static void rotatePiece(piece *p){
     p->currentRotate = previousState;
   }
 }
-
-typedef enum {
-  TETRIS_INIT,
-  TETRIS_WAIT_FOR_START,
-  TETRIS_START,
-  TETRIS_PLAY,
-  TETRIS_LOST,
-  TETRIS_END
-} TETRIS_State;
-
-static TETRIS_State TETRIS_state = TETRIS_INIT;
 
 void TETRIS_Start(void) {
   TETRIS_state = TETRIS_INIT;
