@@ -1,15 +1,44 @@
-/*
- * Tetris.c
- *
- *  Original source code: unknown :-(
- */
+/*******************************************************************************
+  @file     TetrisGame.c
+  @brief    files with the game
+  @author   Grupo 2 - Lab de Micros
+ ******************************************************************************/
 
-#include "Platform.h"
+/*******************************************************************************
+ * INCLUDE HEADER FILES
+ ******************************************************************************/
+
 #if PL_CONFIG_HAS_TETIRS
 #include "Tetris.h"
 #include "DbgCs1.h"
 #include "gpio1.h"
 #include "fsl_lpuart_hal.h"
+
+/*******************************************************************************
+ * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
+ ******************************************************************************/
+#define SQU 223 /* character code for a square on terminal */
+
+#define WIDTH  20 /* Width of play area */
+#define HEIGHT 20 /* Height of play area */
+
+#define true 1
+#define false 0
+/*******************************************************************************
+ * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
+ ******************************************************************************/
+
+/*******************************************************************************
+ * PRIVATE VARIABLES WITH FILE LEVEL SCOPE
+ ******************************************************************************/
+
+/*******************************************************************************
+ *                        GLOBAL FUNCTION DEFINITIONS
+ ******************************************************************************/
+
+/*******************************************************************************
+ *                       LOCAL FUNCTION DEFINITIONS
+ ******************************************************************************/
 
 typedef enum {
   TETRIS_Action_None,
@@ -57,13 +86,7 @@ static TETRIS_Action read_keypad(void) {
   return TETRIS_Action_None;
 }
 
-#define SQU 223 /* character code for a square on terminal */
 
-#define WIDTH  20 /* Width of play area */
-#define HEIGHT 20 /* Height of play area */
-
-#define true 1
-#define false 0
 
 static int frame;     /* used as delay counter for the piece drop-down */
 static int piece_ptr; /* current piece */

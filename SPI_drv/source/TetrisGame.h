@@ -1,8 +1,7 @@
 /*
- * Tetris.h
+ * TetrisGame.h
  *
- *  Created on: 09.10.2015
- *      Author: Erich Styger
+ *      Author: Grupo 2
  */
 
 #ifndef SOURCES_TETRIS_H_
