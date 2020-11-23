@@ -184,3 +184,22 @@ int SPI_SendFrame(uint8_t * data, uint8_t length, SPI_onTransferCompleteCallback
 	SPIs[currentSPIInstance]->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
 	return bytesSent;
 }
+
+int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_MasterHandle_t *handle, SPI_Transfer_t *transfer)
+{
+    /* If the transfer count is zero, then return immediately.*/
+	if (transfer->dataSize == 0U || handle == NULL || transfer == NULL)
+	{
+		return -1;
+	}
+
+    /* Check that we're not busy.*/
+	if (handle->state == (uint8_t)SPI_BUSY_STATE)
+	{
+		return 0;
+	}
+
+    handle->state = (uint8_t)SPI_BUSY_STATE;
+}
+
+
