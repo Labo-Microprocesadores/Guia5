@@ -16,9 +16,6 @@ static uint8_t bytesLeft;
 
 static SPI_Callback transferCallback;
 
-NEW_CIRCULAR_BUFFER(transmitBuffer, BUFFER_SIZE, sizeof(uint8_t));
-NEW_CIRCULAR_BUFFER(recieveBuffer, BUFFER_SIZE, sizeof(uint8_t));
-
 void SPI_ClearTxFIFO(SPI_Instance n);
 void SPI_StartCountingTxFIFO(SPI_Instance n);
 void SPI_HaltModule(SPI_Instance n);
@@ -78,8 +75,7 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig *config)
 	}
 	else if (n == SPI_2)
 	{
-		S
-IM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
+		SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
 		NVIC_EnableIRQ(SPI2_IRQn);
 	}
 	//* Check if the module is in stop state (a register inside SPIx_SR)

@@ -113,6 +113,8 @@ typedef struct
     SPI_ClockConfig_t clockConfig;
     SPI_SlaveSelectPolarity_t chipSelectPolarity;
     SPI_BitOrder_t bitOrder;
+    uint8_t delayAfterTransfer;
+    uint8_t clockDelayScaler;
     uint32_t baudRate;
 } SPI_MasterConfig_t;
 

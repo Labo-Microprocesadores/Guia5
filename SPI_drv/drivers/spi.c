@@ -6,8 +6,14 @@
 #include "CircularBuffer.h"
 #include "stdlib.h"
 
-NEW_CIRCULAR_BUFFER(transmitBuffer, BUFFER_SIZE, sizeof(uint8_t));
-NEW_CIRCULAR_BUFFER(recieveBuffer, BUFFER_SIZE, sizeof(uint8_t));
+#define BUFFER_SIZE 100
+#define TX_QUEUE_SIZE 100
+#define RX_QUEUE_SIZE 100
+
+static CircularBuffer_t txCircularBuffer;
+static CircularBuffer_t rxCircularBuffer;
+uint32_t transmitBuffer[TX_QUEUE_SIZE]; // Buffer for tx
+uint16_t recieveBuffer[RX_QUEUE_SIZE];  // Buffer for rx
 
 //*Creates the array of spis and sets on the default value
 static SPI_Type *SPIs[] = SPI_BASE_ADDRS;
@@ -47,14 +53,6 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         NVIC_EnableIRQ(SPI2_IRQn);
     }
 
-    /* Clock gating of the PORT peripheral
-  	SIM->SCGC5 |= SIM_SCGC5_PORTA(1);
-  	SIM->SCGC5 |= SIM_SCGC5_PORTB(1);
-  	SIM->SCGC5 |= SIM_SCGC5_PORTC(1);
-  	SIM->SCGC5 |= SIM_SCGC5_PORTD(1);
-  	SIM->SCGC5 |= SIM_SCGC5_PORTE(1);
-	*/
-
     //* Check if the module is in stop state (a register inside SPIx_SR)
     ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
 
@@ -73,13 +71,13 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
             SPI_CTAR_LSBFE(config->bitOrder) |
             SPI_CTAR_PCSSCK(1) | //* This function configures the PCS to SCK delay pre-scalar
             //SPI_CTAR_CSSCK(config->chipSelectToClkDelay) | //* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
-            SPI_CTAR_PASC(1) | //* This function configures the after SCK delay delay pre-scalar
-            //SPI_CTAR_ASC(config->clockDelayScaler) |	   //*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
-            SPI_CTAR_PDT(3) | //*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
-            //SPI_CTAR_DT(config->delayAfterTransfer) |	   //*Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
-            SPI_CTAR_DBR(1) |              //* Double Baud Rate, Doubles the effective baud rate of the Serial Communications Clock
-            SPI_CTAR_PBR(0) |              //* Sets the SCK Duty Cycle on 50/50
-            SPI_CTAR_BR(config->baudRate); //* Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
+            SPI_CTAR_PASC(1) |                        //* This function configures the after SCK delay delay pre-scalar
+            SPI_CTAR_ASC(config->clockDelayScaler) |  //*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
+            SPI_CTAR_PDT(3) |                         //*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
+            SPI_CTAR_DT(config->delayAfterTransfer) | //*Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
+            SPI_CTAR_DBR(1) |                         //* Double Baud Rate, Doubles the effective baud rate of the Serial Communications Clock
+            SPI_CTAR_PBR(0) |                         //* Sets the SCK Duty Cycle on 50/50
+            SPI_CTAR_BR(config->baudRate);            //* Baud Rate Scaler: SCK baud rate = (fP /PBR) x [(1+DBR)/BR]
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -103,8 +101,26 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         SPI_MCR_HALT(1);
 
     ///////////////////////////////////////////////////////////////////////
+    //*				  Interruption Config for SPI
+    ///////////////////////////////////////////////////////////////////////
+    //* Status Register (SPIx_SR)
+    SPIs[n]->SR =
+        SPI_SR_EOQF(1) |
+        SPI_SR_TCF(1) |
+        SPI_SR_TFUF(1) |
+        SPI_SR_TFFF(1) |
+        SPI_SR_RFOF(1) |
+        SPI_SR_RFDF(1);
+    //* DMA/Interrupt Request Select and Enable Register (SPIx_RSER)
+    SPIs[n]->RSER =
+        SPI_RSER_RFDF_RE(1) |
+        SPI_RSER_EOQF_RE(1);
+    ///////////////////////////////////////////////////////////////////////
     //*				   Output Config
     ///////////////////////////////////////////////////////////////////////
+    // Clock gating of the PORT peripheral
+    SIM->SCGC5 |= SIM_SCGC5_PORTD(1);
+
     //gpioMode(PORTNUM2PIN(PC,5),OUTPUT);
     PORT_Config portConfig;
     PORT_GetPinDefaultConfig(&portConfig);
@@ -112,6 +128,9 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     PORT_PinConfig(PORT_D, 1, &portConfig, PORT_MuxAlt2); //* SCK
     PORT_PinConfig(PORT_D, 2, &portConfig, PORT_MuxAlt2); //* SOUT
     PORT_PinConfig(PORT_D, 3, &portConfig, PORT_MuxAlt2); //* SIN
+
+    txCircularBuffer = newCircularBuffer(transmitBuffer, BUFFER_SIZE, sizeof(uint8_t));
+    rxCircularBuffer = newCircularBuffer(recieveBuffer, BUFFER_SIZE, sizeof(uint8_t));
 }
 
 int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback callback)
@@ -142,13 +161,35 @@ int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback 
     return bytesSent;
 }
 
-int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t len, bool onlyRead)
+bool DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t messageLength, bool onlyRead)
 {
-    /**
-     * Pasos:
-     *  1. Chequear que la cola no este llena
-     *  2. Pushear mensaje a la cola. Si solo se quiere hacer un read -> mensaje = basura
-     *  3. Empezar la transmision
-     * */
+    /*1. Chequear que la cola no este llena*/
+    if (isFull(&txCircularBuffer))
+        return false;
 
+    /*2. Pushear mensaje a enviar a la cola. Si solo se desea realizar una lectura -> Enviar basura (cualquier caracter)*/
+    for (int i = 0; i < messageLength; i++)
+    {
+        if (onlyRead)
+            push(&txCircularBuffer, 'a'); //Send trash
+        else
+            push(&txCircularBuffer, message[i]);
+    }
+
+    /*3. Comenzar la transmision*/
+    while ((SPIs[currentSPIInstance]->SR & SPI_SR_TFFF_MASK) && !isEmpty(&txCircularBuffer))
+    {
+        uint16_t bufferData;
+        if (pop(&transmitBuffer, &bufferData))
+        {
+            //TODO: Adaptarlo a nuestro circular buffer
+            SPIs[currentSPIInstance]->PUSHR = SPI_PUSHR_CONT(1) | SPI_PUSHR_CTAS(0b000) | SPI_PUSHR_EOQ(package->eoq) |
+                                              SPI_PUSHR_CTCNT(1) | SPI_PUSHR_PCS(package->slaves) | SPI_PUSHR_TXDATA(package->frame);
+
+            SPIs[currentSPIInstance]->SR = SPI_SR_TFFF_MASK;
+        }
+    }
+
+    SPIs[currentSPIInstance]->MCR = (SPIs[currentSPIInstance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(0);
+    return true;
 }
