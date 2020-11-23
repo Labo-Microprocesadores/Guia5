@@ -7,7 +7,8 @@
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
-#include "Posicionamiento.h"
+//#include "Posicionamiento.h"
+#include "AccelMagn_drv.h"
 #include "board.h"
 #include "uart.h"
 #include "Timer.h"
@@ -34,6 +35,7 @@ void send_msg(void);
 void send_i2c_msg(void);
 void callback_init(void);
 void read(void);
+void Position_Update(void);
 int idtimer1 = 0;
 int idtimer2 = 0;
 int idtimer = 0;
@@ -45,37 +47,47 @@ uint8_t fsm = ROLL_REFRESH;
 //tim_id_t timPeriodico;
 //tim_id_t timerUpdatePos;
 
+/*
 roll_t roll_app;
 pitching_t pitching_app;
 orientation_t orientation_app;
+*/
 
 /*******************************************************************************
  *******************************************************************************
                         FUNCTION DEFINITIONS
  *******************************************************************************
  ******************************************************************************/
-static bool finish = false;
+//static bool finish = false;
 //uint8_t Buffer[13];
+static read_data accel_Read;
+//static bool reading = false;
 
 /* Función que se llama 1 vez, al comienzo del programa */
 void App_Init(void)
 {
-
+	Led_Init();
+	I2C_STATUS realStatus = _mqx_ints_FXOS8700CQ_start();//AccelMagn_init();
 	uart_cfg_t config = {9600, UART_PARITY_NONE, UART_DATA_BITS_8, UART_STOP_BITS_1};
 	UART_init(0, config);
-
-	Position_InitDrv(test);
-	Led_Init();
+	//Position_InitDrv(test);
 	UART_init(3, config);
 	Timer_Init();
+	//Led_Init();
+	//I2C_STATUS realStatus = AccelMagn_init();
+	if(realStatus ==I2C_ERROR){
+		toggle_led();
+	}
 	//i2cInit(I2C_0);
 	//idtimer = Timer_AddCallback(&send_msg, 5000, false);
 	//send_msg();
 	//id2timer = Timer_AddCallback(&send_i2c_msg, 5000, false);
 
 	//idtimer = Timer_AddCallback(&read, 5000, false);
+
+
 	idtimer1 = Timer_AddCallback(&Position_Update,200,false);
-	idtimer2 = Timer_AddCallback(&periodicRefresh,1000,false);
+	//idtimer2 = Timer_AddCallback(&periodicRefresh,1000,false);
 
 	//i2cInit(I2C_0);
 
@@ -102,10 +114,6 @@ void App_Init(void)
 	*/
 }
 
-void callback_init(void)
-{
-	finish = true;
-}
 
 /* Función que se llama constantemente en un ciclo infinito */
 void App_Run(void)
@@ -147,6 +155,14 @@ void App_Run(void)
 
 }
 
+void Position_Update(void){
+
+	//if(reading == false)
+	//{
+		AccelMagn_getData(&accel_Read);
+	//}
+
+}
 
 void toggle_led(void)
 {
@@ -166,6 +182,8 @@ void test(void)
 void periodicRefresh(void)
 {
 	// Cada 1 segundo refresca uno de los parámetros
+
+	/*
 	switch (fsm) {
 		case ROLL_REFRESH:
 			roll_app = Position_GetRoll();
@@ -190,6 +208,7 @@ void periodicRefresh(void)
 	{
 		fsm++;
 	}
+	*/
 }
 
 void read(void)

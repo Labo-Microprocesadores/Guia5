@@ -12,7 +12,6 @@
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
 
-
 #define I2C_START_SIGNAL         (i2c->C1 |= I2C_C1_MST_MASK) //generates start signal
 #define I2C_STOP_SIGNAL          (i2c->C1 &= ~I2C_C1_MST_MASK)//generetes stop signal
 #define I2C_REPEAT_START_SIGNAL  (i2c->C1 |= I2C_C1_RSTA_MASK) //generetes repeated start signal
@@ -264,9 +263,9 @@ void i2cInit (I2C_ChannelType channel)
 	 NVIC_EnableIRQ(i2c_irqs[channel]);
 
 
-	 port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(2);//(5); // cambia los pines a alternativa i2c
+	 port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
 	 port_SDA->PCR[pin_SDA] |= PORT_PCR_ODE_MASK;
-	 port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(2);//(5);
+	 port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
 	 port_SCL->PCR[pin_SCL] |= PORT_PCR_ODE_MASK;
 }
 
@@ -338,7 +337,6 @@ void i2cWriteMsg(I2C_COM_CONTROL * i2c_comm)
 	return;
 
 }
-
 
 
 
@@ -596,6 +594,3 @@ I2C_FAULT i2cReadMsgBlocking (uint8_t * buffer, uint8_t data_size,	uint8_t regis
 	return I2C_NO_FAULT;
 
 }
-
-//*/
-

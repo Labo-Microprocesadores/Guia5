@@ -19,11 +19,25 @@ typedef struct
 	int16_t z;
 } SRAWDATA;
 
+typedef enum {I2C_ERROR, I2C_OK} I2C_STATUS;
+
+typedef void (*callbackp)(void);
+
+typedef struct {
+	SRAWDATA * pMagnData;
+	SRAWDATA * pAccelData;
+	callbackp callback;
+	I2C_STATUS error;
+} read_data;
+
+
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
-
+I2C_STATUS _mqx_ints_FXOS8700CQ_start(void);
+//I2C_STATUS AccelMagn_init(void);
+void AccelMagn_getData(read_data * data);
 
 
 

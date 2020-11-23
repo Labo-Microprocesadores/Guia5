@@ -1,160 +1,182 @@
-/*******************************************************************************
-  @file     gpio.c
-  @brief    Gpio Driver
-  @author   Grupo 2 - Lab de Micros
- ******************************************************************************/
-
-/*******************************************************************************
- * INCLUDE HEADER FILES
- ******************************************************************************/
 #include "gpio.h"
-#include "MK64F12.h"
-#include "core_cm4.h"
-#include "hardware.h"
 
-/*******************************************************************************
- * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
- ******************************************************************************/
-#define PORT2_SIM_SCGC5_MASK(p) (SIM_SCGC5_PORTA_MASK << (((p) >> 5) & 0x07))
+static GPIO_Type* gpioPtrs[] = GPIO_BASE_PTRS;
+static PORT_Type* portPtrs[] = PORT_BASE_PTRS;
+static uint32_t simMasks[] = {SIM_SCGC5_PORTA_MASK, SIM_SCGC5_PORTB_MASK, SIM_SCGC5_PORTC_MASK, SIM_SCGC5_PORTD_MASK, SIM_SCGC5_PORTE_MASK };
+static SIM_Type* sim_ptr = SIM;
+static pinIrqFun_t isr_Matrix [PORTS_CNT][PINS_CNT];
 
-/*******************************************************************************
- * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
- ******************************************************************************/
-void interruptHandler(uint8_t port);
 
-/*******************************************************************************
- * PRIVATE VARIABLES WITH FILE LEVEL SCOPE
- ******************************************************************************/
-static PORT_Type *ports[] = PORT_BASE_PTRS;
-static GPIO_Type *gpioPorts[] = GPIO_BASE_PTRS;
-static void (*callbacks[5][32])(void);
+/* * @brief Configures the specified pin to behave either as an input or an output
+ * @param pin the pin whose mode you wish to set (according PORTNUM2PIN)
+ * @param mode INPUT, OUTPUT, INPUT_PULLUP or INPUT_PULLDOWN.
+ */
 
-/*******************************************************************************
- *                        GLOBAL FUNCTION DEFINITIONS
- ******************************************************************************/
 
-void gpioMode(pin_t pin, uint8_t mode)
-{
 
-	SIM->SCGC5 |= PORT2_SIM_SCGC5_MASK(pin);
+__ISR__ PORTD_IRQHandler (void){
 
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
-
-	ports[port]->PCR[num] = 0x0;
-	ports[port]->PCR[num] |= PORT_PCR_MUX(1); //Set MUX to GPIO
-
-	if (mode == OUTPUT) // Output
+	uint8_t i = 0;
+	while ( !((PORTD -> ISFR) & (1<<i)) && (i < PINS_CNT)) //atiende primero a la interrupcion que viene de un pin con numero mas bajo
 	{
-		ports[port]->PCR[num] &= ~PORT_PCR_PE(0);
-		gpioPorts[port]->PDDR |= (1 << num);
+		i++;
 	}
-	else // Input
+
+	isr_Matrix[PD][i]();
+	PORT_ClearInterruptFlag(PORTNUM2PIN(PD,i));
+}
+
+__ISR__ PORTA_IRQHandler (void){
+
+	uint8_t i = 0;
+	while ( !((PORTA -> ISFR) & (1<<i)) && (i < PINS_CNT)) //atiende primero a la interrupcion que viene de un pin con numero mas bajo
 	{
-		if (mode == INPUT)
-		{
-			ports[port]->PCR[num] &= ~PORT_PCR_PE(0);
-		}
-		else
-		{
-			ports[port]->PCR[num] |= PORT_PCR_PE(1);
-			if (mode == INPUT_PULLUP)
-			{
-				ports[port]->PCR[num] |= PORT_PCR_PS(1);
-			}
-			else
-			{
-				ports[port]->PCR[num] &= ~PORT_PCR_PS(0);
-			}
-		}
-		gpioPorts[port]->PDDR &= ~(1 << num);
+		i++;
+	}
+
+	isr_Matrix[PA][i]();
+	PORT_ClearInterruptFlag(PORTNUM2PIN(PA,i));
+}
+
+__ISR__ PORTB_IRQHandler (void){
+
+	uint8_t i = 0;
+	while ( !((PORTB -> ISFR) & (1<<i)) && (i < PINS_CNT)) //atiende primero a la interrupcion que viene de un pin con numero mas bajo
+	{
+		i++;
+	}
+
+	isr_Matrix[PB][i]();
+	PORT_ClearInterruptFlag(PORTNUM2PIN(PB,i));
+}
+
+__ISR__ PORTE_IRQHandler (void){
+
+	uint8_t i = 0;
+	while ( !((PORTE -> ISFR) & (1<<i)) && (i < PINS_CNT)) //atiende primero a la interrupcion que viene de un pin con numero mas bajo
+	{
+		i++;
+	}
+
+	isr_Matrix[PE][i]();
+	PORT_ClearInterruptFlag(PORTNUM2PIN(PE,i));
+}
+
+
+__ISR__ PORTC_IRQHandler (void){
+
+	uint8_t i = 0;
+	while ( !((PORTC -> ISFR) & (1<<i)) && (i < PINS_CNT)) //atiende primero a la interrupcion que viene de un pin con numero mas bajo
+	{
+		i++;
+	}
+
+	isr_Matrix[PC][i]();
+	PORT_ClearInterruptFlag(PORTNUM2PIN(PC,i));
+}
+
+void gpioMode (pin_t pin, uint8_t mode){
+
+	sim_ptr->SCGC5 |= simMasks[PIN2PORT(pin)]; // activo clock gating
+	PORT_Type *port = portPtrs[PIN2PORT(pin)];
+	GPIO_Type *gpio = gpioPtrs[PIN2PORT(pin)];
+
+	uint32_t num = PIN2NUM(pin); // num es el numero de pin
+
+	// connect to gpio (hay un PCR por pin)
+	port->PCR[num] = 0x00;
+	port->PCR[num] |= PORT_PCR_MUX(1);
+	//port->PCR[num] |= PORT_PCR_DSE(1);
+	port->PCR[num] |= PORT_PCR_IRQC(0);
+	// PCR solo -> uint32_t array[32]
+	// PCR[num] -> uint32_t
+
+	switch(mode){
+		case INPUT:
+			gpio->PDDR &= ~ (1<<num); // seteamos el pin como input
+			break;
+		case OUTPUT:
+			gpio->PDDR |= 1<<num;// seteamos el pin como output
+			break;
+		case INPUT_PULLUP:
+			gpio->PDDR &= ~ (1<<num); // seteamos el pin como input
+			port->PCR[num] |= HIGH<<1; //PULL ENABLE en 1
+			port->PCR[num] |= HIGH<<0; //PULL SELECT en 1 (PULLUP)
+			break;
+		case INPUT_PULLDOWN:
+			gpio->PDDR &= ~ (1<<num); // seteamos el pin como input
+			port->PCR[num] |= HIGH<<1; //PULL ENABLE en 1
+			port->PCR[num] &= ~(HIGH); //PULL SELECT en 0 (PULLDOWN)
+			break;
+	}
+
+}
+
+/**
+ * @brief Write a HIGH or a LOW value to a digital pin
+ * @param pin the pin to write (according PORTNUM2PIN)
+ * @param val Desired value (HIGH or LOW)
+ */
+void gpioWrite (pin_t pin, bool value){
+	uint32_t port_name = PIN2PORT(pin);
+	uint32_t num = PIN2NUM(pin);
+	GPIO_Type *gpio = gpioPtrs[port_name];
+	if(value == HIGH){
+		gpio->PDOR |= (1<<num);
+	}else{
+		gpio->PDOR &= ~ (1<<num);
 	}
 }
 
-void gpioToggle(pin_t pin)
-{
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
-	gpioPorts[port]->PTOR |= (1 << num);
+/**
+ * @brief Toggle the value of a digital pin (HIGH<->LOW)
+ * @param pin the pin to toggle (according PORTNUM2PIN)
+ */
+void gpioToggle (pin_t pin){
+	uint32_t port_name = PIN2PORT(pin);
+	uint32_t num = PIN2NUM(pin);
+	GPIO_Type *gpio = gpioPtrs[port_name];
+	if( (gpio->PTOR & (1<<num) ) == 1<<num){ //si esta prendido el toggle
+		gpio->PTOR &= ~ (1<<num); //lo apagamos
+	}else{
+		gpio->PTOR |= (1<<num);
+	}
 }
 
-bool gpioRead(pin_t pin)
-{
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
-	bool ret = (bool)(gpioPorts[port]->PDIR & (1 << num));
-	return ret;
+/**
+ * @brief Reads the value from a specified digital pin, either HIGH or LOW.
+ * @param pin the pin to read (according PORTNUM2PIN)
+ * @return HIGH or LOW
+ */
+bool gpioRead (pin_t pin){
+	uint32_t port_name = PIN2PORT(pin);
+	uint32_t num = PIN2NUM(pin);
+	GPIO_Type *gpio = gpioPtrs[port_name];
+	return ( (1<<num) & gpio->PDIR ) == 1<<num ;
 }
-
-void gpioWrite(pin_t pin, bool value)
-{
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
-	gpioPorts[port]->PDOR = (gpioPorts[port]->PDOR & ~(1 << num)) | (value << num);
+/*
+void gpioEnableInterrupts(pin_t pin){
+	PORT_Type *port = portPtrs[PIN2PORT(pin)];
+	port->PCR[PIN2NUM(pin)] |= (1<<24);
+	bool aux = (port->PCR[PIN2NUM(pin)] & (1<<24)) == (1<<24);
 }
+*/
 
-bool gpioIRQ(pin_t pin, uint8_t irqMode, pinIrqFun_t irqFun)
-{
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
 
-	ports[port]->PCR[num] |= PORT_PCR_IRQC(irqMode);
-	NVIC_EnableIRQ(PORTA_IRQn + port);
+bool gpioIRQ(pin_t pin, uint8_t irqMode, pinIrqFun_t irqFun){
 
-	callbacks[port][num] = irqFun;
-	bool result = NVIC_GetEnableIRQ(PORTA_IRQn + port); // not implemented yet
-	return result;
-}
+	PORT_Type *port = portPtrs[PIN2PORT(pin)];
+	port->PCR[PIN2NUM(pin)] &= ~PORT_PCR_IRQC_MASK;
+	port->PCR[PIN2NUM(pin)] |= PORT_PCR_IRQC(irqMode+8);
+	isr_Matrix[PIN2PORT(pin)][PIN2NUM(pin)] = irqFun;
 
-bool PORT_ClearInterruptFlag(pin_t pin)
-{
-	uint8_t port = PIN2PORT(pin);
-	uint8_t num = PIN2NUM(pin);
-	ports[port]->PCR[num] |= PORT_PCR_ISF_MASK;
 	return true;
 }
 
+
+void PORT_ClearInterruptFlag (pin_t pin){
+	PORT_Type *port = portPtrs[PIN2PORT(pin)];
+	port->PCR[PIN2NUM(pin)] |= PORT_PCR_ISF_MASK;
+}
 /*******************************************************************************
- *                       LOCAL FUNCTION DEFINITIONS
  ******************************************************************************/
-
-void interruptHandler(uint8_t port)
-{
-	int i;
-	uint32_t isfr = ports[port]->ISFR;
-	for (i = 0; i < 32; i++)
-	{
-		if (callbacks[port][i] && (isfr & 0x1))
-		{
-			ports[port]->PCR[i] |= PORT_PCR_ISF_MASK;
-			callbacks[port][i]();
-			break;
-		}
-		isfr >>= 1;
-	}
-}
-
-__ISR__ PORTA_IRQHandler(void)
-{
-	interruptHandler(0);
-}
-
-__ISR__ PORTB_IRQHandler(void)
-{
-	interruptHandler(1);
-}
-
-__ISR__ PORTC_IRQHandler(void)
-{
-	interruptHandler(2);
-}
-
-__ISR__ PORTD_IRQHandler(void)
-{
-	interruptHandler(3);
-}
-
-__ISR__ PORTE_IRQHandler(void)
-{
-	interruptHandler(4);
-}
