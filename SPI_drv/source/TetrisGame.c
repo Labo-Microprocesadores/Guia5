@@ -82,6 +82,25 @@ static typedef enum {
   TETRIS_Action_Drop,
 } TETRIS_Action;
 
+typedef struct {
+  unsigned char numOfRotates;
+  unsigned char currentRotate;
+  unsigned char pieceType;
+  unsigned char x;
+  unsigned char y;
+  char attached;
+  const unsigned char *shapes;
+} piece;
+
+typedef enum {
+  TETRIS_INIT,
+  TETRIS_WAIT_FOR_START,
+  TETRIS_START,
+  TETRIS_PLAY,
+  TETRIS_LOST,
+  TETRIS_END
+} TETRIS_State;
+
 //* used as delay counter for the piece drop-down
 static int frame;     
 //* pointer to the current piece
