@@ -26,6 +26,9 @@
 //? Es necesario?
 #define true 1
 #define false 0
+
+#define GAME_OVER 0
+#define GAME_RUNNING 1
 /*******************************************************************************
  * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
  ******************************************************************************/
@@ -93,6 +96,7 @@ typedef struct {
 } piece;
 
 typedef enum {
+  NO_TETRIS,
   TETRIS_INIT,
   TETRIS_WAIT_FOR_START,
   TETRIS_START,
@@ -238,7 +242,7 @@ static const unsigned char pieces_L2[4*4*4] = {
 
 static unsigned char updateScreen = false;
 //* State of the game, at the beginning TETRIS_INIT is set.
-static TETRIS_State TETRIS_state = TETRIS_INIT;
+static TETRIS_State TETRIS_state = NO_TETRIS;
 /*******************************************************************************
  *                        GLOBAL FUNCTION DEFINITIONS
  ******************************************************************************/
@@ -533,7 +537,7 @@ void TETRIS_Start(void) {
 }
 
 //! Creo que no nos sirve pero podriamos usar la idea de imprimir algo al inicio del juego
-//*This function is called at the beginning of the game is like the instructions manual 
+//* This function is called at the beginning of the game is like the instructions manual 
 static void PrintWelcome(void) {
   /* clear any pending events */
   SCI_send("\033[2J\033[1;1H"); /* control codes */
@@ -644,6 +648,8 @@ static unsigned char Play(void) {
 //* this is a very simple state machine that controlls the game
 int TETRIS_Run(void) {
   switch(TETRIS_state) {
+    case NO_TETRIS:
+      break;
     case TETRIS_INIT:
       PrintWelcome();
       TETRIS_state = TETRIS_WAIT_FOR_START;
@@ -675,9 +681,9 @@ int TETRIS_Run(void) {
     case TETRIS_END:
       if (SCI_read_nb()!='\0' || read_keypad()!=TETRIS_Action_None) {
         TETRIS_state = TETRIS_START;
-        return 0;/* end */
+        return GAME_OVER;/* end */
       }
       break;
   }/* switch */
-  return 1;/* continue */
+  return GAME_RUNNING;/* continue */
 }

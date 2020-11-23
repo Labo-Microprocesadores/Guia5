@@ -7,8 +7,8 @@
 // Clock polarity
 typedef enum
 {
-    SPI_CLOCK_POLARITY_LOW,
-    SPI_CLOCK_POLARITY_HIGH
+    SPI_CLOCK_POLARITY_ACTIVE_HIGH,
+    SPI_CLOCK_POLARITY_ACTIVE_LOW
 } SPI_ClockPolarity_t;
 
 // Clock phase
@@ -111,6 +111,7 @@ typedef struct
     SPI_PCSignal_t PCSSignalSelect;
     SPI_BitsPerFrame_t bitsPerFrame;
     SPI_ClockConfig_t clockConfig;
+    SPI_SlaveSelectPolarity_t chipSelectPolarity;
     SPI_BitOrder_t bitOrder;
     uint32_t baudRate;
 } SPI_MasterConfig_t;
