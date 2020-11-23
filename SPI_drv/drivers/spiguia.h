@@ -10,6 +10,21 @@ typedef enum
 	SPI_CTAR_1
 } SPI_CTAR;
 
+
+/*SPI interrupt source.*/
+typedef enum _dspi_interrupt_enable
+{
+    kDSPI_TxCompleteInterruptEnable         = (int)SPI_RSER_TCF_RE_MASK, /*!< TCF  interrupt enable.*/
+    kDSPI_EndOfQueueInterruptEnable         = SPI_RSER_EOQF_RE_MASK,     /*!< EOQF interrupt enable.*/
+    kDSPI_TxFifoUnderflowInterruptEnable    = SPI_RSER_TFUF_RE_MASK,     /*!< TFUF interrupt enable.*/
+    kDSPI_TxFifoFillRequestInterruptEnable  = SPI_RSER_TFFF_RE_MASK,     /*!< TFFF interrupt enable, DMA disable.*/
+    kDSPI_RxFifoOverflowInterruptEnable     = SPI_RSER_RFOF_RE_MASK,     /*!< RFOF interrupt enable.*/
+    kDSPI_RxFifoDrainRequestInterruptEnable = SPI_RSER_RFDF_RE_MASK,     /*!< RFDF interrupt enable, DMA disable.*/
+    kDSPI_AllInterruptEnable = (int)(SPI_RSER_TCF_RE_MASK | SPI_RSER_EOQF_RE_MASK | SPI_RSER_TFUF_RE_MASK |
+                                     SPI_RSER_TFFF_RE_MASK | SPI_RSER_RFOF_RE_MASK | SPI_RSER_RFDF_RE_MASK)
+    /*!< All above interrupts enable.*/
+};
+
 typedef enum
 {
 	SPI_PCS_0,

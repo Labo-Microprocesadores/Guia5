@@ -8,7 +8,6 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 
-#if PL_CONFIG_HAS_TETIRS
 #include "TetrisGame.h"
 #include "DbgCs1.h"
 #include "gpio1.h"
@@ -17,11 +16,14 @@
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
+//! medio inutil para nosotros porque va a imprimirse en el display de puntos y no en consola
 #define SQU 223 /* character code for a square on terminal */
 
+//! Modificar con el tamaño en puntos del display
 #define WIDTH  20 /* Width of play area */
 #define HEIGHT 20 /* Height of play area */
 
+//? Es necesario?
 #define true 1
 #define false 0
 /*******************************************************************************
@@ -70,6 +72,7 @@ int TETRIS_Run(void);
 /*******************************************************************************
  * PRIVATE VARIABLES WITH FILE LEVEL SCOPE
  ******************************************************************************/
+//* Actions that we can do with the pieces 
 static typedef enum {
   TETRIS_Action_None,
   TETRIS_Action_MoveLeft,
@@ -79,9 +82,11 @@ static typedef enum {
   TETRIS_Action_Drop,
 } TETRIS_Action;
 
-static int frame;     /* used as delay counter for the piece drop-down */
-static int piece_ptr; /* current piece */
-
+//* used as delay counter for the piece drop-down
+static int frame;     
+//* pointer to the current piece
+static int piece_ptr; 
+//* Board of the game
 static unsigned char framebuffer[WIDTH][HEIGHT];
 
 //*Array with the different types of pieces
@@ -213,7 +218,7 @@ static const unsigned char pieces_L2[4*4*4] = {
 ///////////////////////////////////////////////////////////////////////
 
 static unsigned char updateScreen = false;
-
+//* State of the game, at the beginning TETRIS_INIT is set.
 static TETRIS_State TETRIS_state = TETRIS_INIT;
 /*******************************************************************************
  *                        GLOBAL FUNCTION DEFINITIONS
@@ -222,10 +227,14 @@ static TETRIS_State TETRIS_state = TETRIS_INIT;
 /*******************************************************************************
  *                       LOCAL FUNCTION DEFINITIONS
  ******************************************************************************/
+//! Deberiamos cambiar esta funcion para que mande lo necesario para imprimir al display de ptos 
+//! esta funcion se usa en otras funciones como printFrameBuffer
+//* Fuction to send the information to the screen
 static void SCI_send(const char *str) {
   debug_printf((const char*)str);
 }
 
+//! No se bien que hace pero deberiamos modificarlo para lo que necesitamos, se llama para saber los inputs del teclado segun tengo entendido
 static uint8_t SCI_read_nb(void) {
   /* nonblocking read of character */
   uint8_t c;
@@ -234,6 +243,8 @@ static uint8_t SCI_read_nb(void) {
   return c;
 }
 
+//! Modificar segun los inputs que tengamos
+//* Reads the key entered by the user and returns it (if there was no key pressed, returns TETRIS_Action_None)
 static TETRIS_Action read_keypad(void) {
   bool btn1, btn2;
 
@@ -259,9 +270,8 @@ static TETRIS_Action read_keypad(void) {
   return TETRIS_Action_None;
 }
 
-
+//! Creo que esta funcion no nos interesa (salvo que queramos desperdiciar un borde de ptos)
 //* This fuction prints the borders
-// ? I think that is not important for us
 static void paintEdges(void){
   int x,y;
 
@@ -275,7 +285,7 @@ static void paintEdges(void){
   }
 }
 
-//* This fuction initialize the bord of the game without pieces
+//* This fuction initialize the board of the game without pieces
 static void initFramebuffer(void){
   int x,y;
 
@@ -287,6 +297,7 @@ static void initFramebuffer(void){
   paintEdges();
 }
 
+//! Deberiamos modificar esta funcion para que imprima de la manera que queramos en el screen
 //* This function prints the board
 static void printFrameBuffer(void){
   int x,y;
@@ -347,7 +358,7 @@ static void eatlines(void) {
 }
 
 
-//? maybe this function is called when the piece touch the floor but i have no idea
+//* this function is called when the piece touch the floor 
 static char checkAttach(piece *p){
   int x,y;
   unsigned char v;
@@ -370,8 +381,8 @@ static char checkAttach(piece *p){
   return false;
 }
 
-//? I think that maybe the x=1, y=1 is the upper-left corner 
-//? if that is the case, this function checks the game over
+//* the x=1, y=1 is the upper-left corner 
+//* this function checks the game over
 static char lost(piece *p){
   int x;
 
@@ -385,6 +396,7 @@ static char lost(piece *p){
   return false;
 }
 
+//* This function moves the piece a position to the left
 static void movePieceLeft(piece *p){
   int x,y;
   unsigned char v;
@@ -430,6 +442,7 @@ static char createPiece(piece *p){
   return true;
 }
 
+//* This function moves the piece a position to the right
 static void movePieceRight(piece *p){
   int x,y;
   unsigned char v;
@@ -450,6 +463,7 @@ static void movePieceRight(piece *p){
   }
 }
 
+//* This function rotate the piece.
 static void rotatePiece(piece *p){
   int x,y;
   unsigned char minX,minY,maxX,maxY,previousState,v;
@@ -494,10 +508,12 @@ static void rotatePiece(piece *p){
   }
 }
 
+//* Just change the state
 void TETRIS_Start(void) {
   TETRIS_state = TETRIS_INIT;
 }
 
+//! Creo que no nos sirve pero podriamos usar la idea de imprimir algo al inicio del juego
 //*This function is called at the beginning of the game is like the instructions manual 
 static void PrintWelcome(void) {
   /* clear any pending events */
@@ -518,8 +534,8 @@ static void PrintWelcome(void) {
   SCI_send("Press any to start game. \r\n");
 }
 
-//* this function reads the new key entered by the user
 //! Modificar segun los inputs que tengamos
+//* this function reads the new key entered by the user
 static TETRIS_Action ReadKey(void) {
   TETRIS_Action action;
 
@@ -564,6 +580,7 @@ static unsigned char Play(void) {
       lostFlag = true;
     }
   }
+
   //* if you pass through here 10 times then the piece descends
   frame++;
   if(frame==10){
@@ -572,23 +589,34 @@ static unsigned char Play(void) {
     frame = 0;
   }
 
+  //* now the program reads the key and according to the value does different things
   action = ReadKey();
-  if(action==TETRIS_Action_MoveRight) {
+  switch (action)
+  {
+  case TETRIS_Action_MoveRight:
     movePieceRight(&pieces[piece_ptr]);
-  } else if(action==TETRIS_Action_MoveLeft){
+    break;
+  case TETRIS_Action_MoveLeft:
     movePieceLeft(&pieces[piece_ptr]);
-  } else if((action==TETRIS_Action_Drop)){
+    break;
+  case TETRIS_Action_Drop:
     while (checkAttach(&pieces[piece_ptr])==false){
       pieces[piece_ptr].y++;
     }
-  } else if((action==TETRIS_Action_MoveDown)){
+    break;
+  case TETRIS_Action_MoveDown:
     if (checkAttach(&pieces[piece_ptr])==false){
       pieces[piece_ptr].y++;
     }
-  } else if(action==TETRIS_Action_Rotate) { /* rotate */
-    printPiece(&pieces[piece_ptr],' '); /* clear */
-    rotatePiece(&pieces[piece_ptr]); /* rotate */
-    printPiece(&pieces[piece_ptr],SQU); /* redraw */
+    break;
+  case TETRIS_Action_Rotate:
+    printPiece(&pieces[piece_ptr],' ');   /* clear */
+    rotatePiece(&pieces[piece_ptr]);      /* rotate */
+    printPiece(&pieces[piece_ptr],SQU);   /* redraw */
+    break;
+  default:
+    lostFlag = true;
+    break;
   }
   lostFlag = lost(&pieces[piece_ptr]) || lostFlag;
   return !lostFlag;
@@ -628,11 +656,9 @@ int TETRIS_Run(void) {
     case TETRIS_END:
       if (SCI_read_nb()!='\0' || read_keypad()!=TETRIS_Action_None) {
         TETRIS_state = TETRIS_START;
-        return 0; /* end */
+        return 0;/* end */
       }
       break;
-  } /* switch */
-  return 1; /* continue */
+  }/* switch */
+  return 1;/* continue */
 }
-
-#endif /* PL_CONFIG_HAS_TETIRS */

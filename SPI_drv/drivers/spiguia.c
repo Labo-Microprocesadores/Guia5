@@ -376,7 +376,7 @@ int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_MasterHandle_t *handle
 	/* Disable the NVIC for DSPI peripheral. */
 	(void)DisableIRQ(s_dspiIRQ[DSPI_GetInstance(base)]); //ESTO CREO QUE NO HACE FALTA, LO HARIA EN EL INIT Y FUE, QUE ESTE ACTIVO TODO EL TIEMPO
 
-	DSPI_MasterTransferPrepare(base, handle, transfer); //ESTA ES UNA CAGADA, SOLAMENTE PREPARA TODO PARA ARRANCAR UNA TRANSMIION NUEVA, CREO QUE SE PUEDE REDUCIR BASTANTE SI USAMOS BUFFERS PROPIOS INTERNOS
+	DSPI_MasterTransferPrepare(base, handle, transfer); //ESTA ES UNA CAGADA, SOLAMENTE PREPARA TODO PARA ARRANCAR UNA TRANSMISION NUEVA, CREO QUE SE PUEDE REDUCIR BASTANTE SI USAMOS BUFFERS PROPIOS INTERNOS
 
 	/* RX FIFO Drain request: RFDF_RE to enable RFDF interrupt
      * Since SPI is a synchronous interface, we only need to enable the RX interrupt.
