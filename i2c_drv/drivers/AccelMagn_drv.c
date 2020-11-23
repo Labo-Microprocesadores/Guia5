@@ -44,14 +44,14 @@ void callback_init (void);
 //I2C_STATUS AccelMagn_init(void)
 I2C_STATUS _mqx_ints_FXOS8700CQ_start(void)
 {
-	//Led_Toggle(LED_RED);
+	Led_Toggle(LED_RED);
 	i2cInit(I2C_0);
 	uint8_t databyte;
 
 	// read and check the FXOS8700CQ WHOAMI register
 	if (i2cReadMsgBlocking(&databyte, 1, FXOS8700CQ_WHOAMI, FXOS8700CQ_SLAVE_ADDR)!= I2C_NO_FAULT)
 	{
-		Led_Toggle(LED_RED);
+		//Led_Toggle(LED_RED);
 		return (I2C_ERROR);
 	}
 	if (databyte != FXOS8700CQ_WHOAMI_VAL)
@@ -59,7 +59,7 @@ I2C_STATUS _mqx_ints_FXOS8700CQ_start(void)
 		//Led_Toggle(LED_RED);
 		return (I2C_ERROR);
 	}
-	//Led_Toggle(LED_RED);
+	Led_Toggle(LED_RED);
 
 	// write 0000 0000 = 0x00 to accelerometer control register 1 to place FXOS8700CQ into standby
 	// [7-1] = 0000 000
@@ -78,7 +78,7 @@ I2C_STATUS _mqx_ints_FXOS8700CQ_start(void)
 	while (finish == false)
 	{
 		if (test){
-			Led_Toggle(LED_RED);
+			//Led_Toggle(LED_RED);
 			test = 0;
 		}
 		if(i2c_com.fault != I2C_NO_FAULT)
