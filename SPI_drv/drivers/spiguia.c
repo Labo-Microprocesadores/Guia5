@@ -78,7 +78,8 @@ void SPI_MasterInit(SPI_Instance n, SPI_MasterConfig *config)
 	}
 	else if (n == SPI_2)
 	{
-		SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
+		S
+IM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
 		NVIC_EnableIRQ(SPI2_IRQn);
 	}
 	//* Check if the module is in stop state (a register inside SPIx_SR)

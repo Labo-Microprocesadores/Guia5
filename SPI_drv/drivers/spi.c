@@ -6,6 +6,17 @@
 #include "CircularBuffer.h"
 #include "stdlib.h"
 
+NEW_CIRCULAR_BUFFER(transmitBuffer, BUFFER_SIZE, sizeof(uint8_t));
+NEW_CIRCULAR_BUFFER(recieveBuffer, BUFFER_SIZE, sizeof(uint8_t));
+
+//*Creates the array of spis and sets on the default value
+static SPI_Type *SPIs[] = SPI_BASE_ADDRS;
+
+static SPI_onTransferCompleteCallback transferCallback;
+// Bytes left in current transfer
+static uint8_t bytesLeft;
+static SPI_Instance_t currentSPIInstance;
+
 typedef struct
 {
     SPI_BitsPerFrame_t bitsPerFrame;
@@ -47,6 +58,7 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     //* Second check if the CTAR used is a possible value (number between 0 and Number of CTAR registers (2) )
     ASSERT((config->CTARUsed) < FSL_FEATURE_DSPI_CTAR_COUNT);
 
+    currentSPIInstance = n; //Store SPI instance
     ///////////////////////////////////////////////////////////////////////
     //*		Enable clock gating and NVIC for the n SPI_Instance passed
     ///////////////////////////////////////////////////////////////////////
@@ -65,6 +77,27 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
         NVIC_EnableIRQ(SPI2_IRQn);
     }
+	
+
+	/* Clock gating of the PORT peripheral
+  	SIM->SCGC5 |= SIM_SCGC5_PORTA(1);
+  	SIM->SCGC5 |= SIM_SCGC5_PORTB(1);
+  	SIM->SCGC5 |= SIM_SCGC5_PORTC(1);
+  	SIM->SCGC5 |= SIM_SCGC5_PORTD(1);
+  	SIM->SCGC5 |= SIM_SCGC5_PORTE(1);
+	*/
+
+
+
+
+
+
+
+
+
+
+
+
     //* Check if the module is in stop state (a register inside SPIx_SR)
     ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
 
@@ -122,4 +155,32 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     PORT_PinConfig(PORT_D, 1, &portConfig, PORT_MuxAlt2); //* SCK
     PORT_PinConfig(PORT_D, 2, &portConfig, PORT_MuxAlt2); //* SOUT
     PORT_PinConfig(PORT_D, 3, &portConfig, PORT_MuxAlt2); //* SIN
+}
+
+int SPI_SendFrame(uint8_t * data, uint8_t length, SPI_onTransferCompleteCallback callback)
+{
+	ASSERT(data != NULL);
+	ASSERT(length < spaceLeft(&transmitBuffer));
+
+	int bytesSent = 0;
+	for (int i = 0; i < length; i++)
+		if (push(&transmitBuffer, data + i) == false)
+		{
+			bytesSent = i;
+			break;
+		}
+
+	if (bytesSent == 0) // If didn't break..
+		bytesSent = length;
+
+	// Store bytes left
+	bytesLeft = bytesSent;
+
+	transferCallback = callback;
+
+	// Enable interrupts to start copying bytes from circular buffer to SPI module
+    SPIs[currentSPIInstance]->MCR |= SPI_MCR_CLR_TXF_MASK;
+    SPIs[currentSPIInstance]->RSER |= SPI_RSER_TFFF_RE_MASK;
+	SPIs[currentSPIInstance]->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
+	return bytesSent;
 }
