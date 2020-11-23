@@ -17,37 +17,6 @@ static SPI_onTransferCompleteCallback transferCallback;
 static uint8_t bytesLeft;
 static SPI_Instance_t currentSPIInstance;
 
-typedef struct
-{
-    SPI_BitsPerFrame_t bitsPerFrame;
-    //volatile uint32_t command;	   //Data command
-    //volatile uint32_t lastCommand; //Last data command
-
-    uint8_t fifoSize; //Fifo datasize
-
-    //volatile bool isPcsActiveAfterTransfer; //After last frame transfer
-    //volatile bool isThereExtraByte;
-
-    uint8_t *volatile txData;
-    uint8_t *volatile rxData;
-    volatile size_t remainingSendByteCount;
-    volatile size_t remainingReceiveByteCount;
-    size_t totalByteCount;
-
-    volatile uint8_t state; //Transfer state
-
-    SPI_onTransferCompleteCallback callback; //onComplete
-    void *userData;                          //callback param
-} SPI_MasterHandle_t;
-
-/*Transfer struct.*/
-typedef struct
-{
-    uint8_t *txData;
-    uint8_t *rxData;
-    volatile size_t dataSize;
-} SPI_Transfer_t;
-
 void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
 {
     ///////////////////////////////////////////////////////////////////////
@@ -77,26 +46,14 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         SIM->SCGC3 |= SIM_SCGC3_SPI2_MASK;
         NVIC_EnableIRQ(SPI2_IRQn);
     }
-	
 
-	/* Clock gating of the PORT peripheral
+    /* Clock gating of the PORT peripheral
   	SIM->SCGC5 |= SIM_SCGC5_PORTA(1);
   	SIM->SCGC5 |= SIM_SCGC5_PORTB(1);
   	SIM->SCGC5 |= SIM_SCGC5_PORTC(1);
   	SIM->SCGC5 |= SIM_SCGC5_PORTD(1);
   	SIM->SCGC5 |= SIM_SCGC5_PORTE(1);
 	*/
-
-
-
-
-
-
-
-
-
-
-
 
     //* Check if the module is in stop state (a register inside SPIx_SR)
     ASSERT((SPIs[n]->SR & SPI_SR_TXRXS_MASK) != SPI_SR_TXRXS_MASK);
@@ -157,49 +114,41 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     PORT_PinConfig(PORT_D, 3, &portConfig, PORT_MuxAlt2); //* SIN
 }
 
-int SPI_SendFrame(uint8_t * data, uint8_t length, SPI_onTransferCompleteCallback callback)
+int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback callback)
 {
-	ASSERT(data != NULL);
-	ASSERT(length < spaceLeft(&transmitBuffer));
+    ASSERT(data != NULL);
+    ASSERT(length < spaceLeft(&transmitBuffer));
 
-	int bytesSent = 0;
-	for (int i = 0; i < length; i++)
-		if (push(&transmitBuffer, data + i) == false)
-		{
-			bytesSent = i;
-			break;
-		}
+    int bytesSent = 0;
+    for (int i = 0; i < length; i++)
+        if (push(&transmitBuffer, data + i) == false)
+        {
+            bytesSent = i;
+            break;
+        }
 
-	if (bytesSent == 0) // If didn't break..
-		bytesSent = length;
+    if (bytesSent == 0) // If didn't break..
+        bytesSent = length;
 
-	// Store bytes left
-	bytesLeft = bytesSent;
+    // Store bytes left
+    bytesLeft = bytesSent;
 
-	transferCallback = callback;
+    transferCallback = callback;
 
-	// Enable interrupts to start copying bytes from circular buffer to SPI module
+    // Enable interrupts to start copying bytes from circular buffer to SPI module
     SPIs[currentSPIInstance]->MCR |= SPI_MCR_CLR_TXF_MASK;
     SPIs[currentSPIInstance]->RSER |= SPI_RSER_TFFF_RE_MASK;
-	SPIs[currentSPIInstance]->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
-	return bytesSent;
+    SPIs[currentSPIInstance]->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
+    return bytesSent;
 }
 
-int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_MasterHandle_t *handle, SPI_Transfer_t *transfer)
+int8_t DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t len, bool onlyRead)
 {
-    /* If the transfer count is zero, then return immediately.*/
-	if (transfer->dataSize == 0U || handle == NULL || transfer == NULL)
-	{
-		return -1;
-	}
+    /**
+     * Pasos:
+     *  1. Chequear que la cola no este llena
+     *  2. Pushear mensaje a la cola. Si solo se quiere hacer un read -> mensaje = basura
+     *  3. Empezar la transmision
+     * */
 
-    /* Check that we're not busy.*/
-	if (handle->state == (uint8_t)SPI_BUSY_STATE)
-	{
-		return 0;
-	}
-
-    handle->state = (uint8_t)SPI_BUSY_STATE;
 }
-
-
