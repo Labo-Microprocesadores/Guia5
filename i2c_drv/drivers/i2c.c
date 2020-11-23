@@ -342,6 +342,7 @@ void i2cWriteMsg(I2C_COM_CONTROL * i2c_comm)
 
 
 
+
 I2C_FAULT i2cWriteMsgBlocking (uint8_t * msg, uint8_t data_size,	uint8_t register_address, uint8_t slave_address )
 {
 	NVIC_DisableIRQ(i2c_irqs[ch]);

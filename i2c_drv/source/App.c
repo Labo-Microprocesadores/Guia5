@@ -7,7 +7,7 @@
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
-
+#include "Posicionamiento.h"
 #include "board.h"
 #include "uart.h"
 #include "Timer.h"
@@ -24,22 +24,38 @@
  ******************************************************************************/
 
 void toggle_led(void);
+void test(void);
 
 /*******************************************************************************
  * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
  ******************************************************************************/
+void periodicRefresh(void);
 void send_msg(void);
 void send_i2c_msg(void);
 void callback_init(void);
+void read(void);
+int idtimer1 = 0;
+int idtimer2 = 0;
 int idtimer = 0;
-int id2timer = 0;
-I2C_COM_CONTROL i2c_com;
+//I2C_COM_CONTROL i2c_com;
+
+enum{ROLL_REFRESH, PITCH_REFRESH, ORIENT_REFRESH};
+uint8_t fsm = ROLL_REFRESH;
+
+//tim_id_t timPeriodico;
+//tim_id_t timerUpdatePos;
+
+roll_t roll_app;
+pitching_t pitching_app;
+orientation_t orientation_app;
+
 /*******************************************************************************
  *******************************************************************************
                         FUNCTION DEFINITIONS
  *******************************************************************************
  ******************************************************************************/
 static bool finish = false;
+//uint8_t Buffer[13];
 
 /* Función que se llama 1 vez, al comienzo del programa */
 void App_Init(void)
@@ -47,15 +63,23 @@ void App_Init(void)
 
 	uart_cfg_t config = {9600, UART_PARITY_NONE, UART_DATA_BITS_8, UART_STOP_BITS_1};
 	UART_init(0, config);
+
+	Position_InitDrv(test);
 	Led_Init();
 	UART_init(3, config);
 	Timer_Init();
-	idtimer = Timer_AddCallback(&send_msg, 5000, false);
-	send_msg();
-	id2timer = Timer_AddCallback(&send_i2c_msg, 200, false);
+	//i2cInit(I2C_0);
+	//idtimer = Timer_AddCallback(&send_msg, 5000, false);
+	//send_msg();
+	//id2timer = Timer_AddCallback(&send_i2c_msg, 5000, false);
 
-	i2cInit(I2C_0);
+	//idtimer = Timer_AddCallback(&read, 5000, false);
+	idtimer1 = Timer_AddCallback(&Position_Update,200,false);
+	idtimer2 = Timer_AddCallback(&periodicRefresh,1000,false);
 
+	//i2cInit(I2C_0);
+
+	/*
 	uint8_t databyte = 0x00;
 	finish = false;
 	i2c_com.callback = callback_init;
@@ -63,9 +87,11 @@ void App_Init(void)
 	i2c_com.data_size = 1;
 	i2c_com.slave_address =0x1D;
 	i2c_com.register_address = 0x2A;
+	*/
 
-	i2cWriteMsg(&i2c_com);
+	//i2cWriteMsg(&i2c_com);
 
+	/*
 	while (finish == false)
 	{
 		if(i2c_com.fault != I2C_NO_FAULT)
@@ -73,6 +99,7 @@ void App_Init(void)
 			//return (I2C_ERROR);
 		}
 	}
+	*/
 }
 
 void callback_init(void)
@@ -117,6 +144,7 @@ void App_Run(void)
 	i2cWriteMsg(&testing);
 	UART_write_msg(0,'hola\r\n',6);
 	*/
+
 }
 
 
@@ -129,8 +157,61 @@ void toggle_led(void)
 
 /*******************************************************************************
  *******************************************************************************/
+
+void test(void)
+{
+
+}
+
+void periodicRefresh(void)
+{
+	// Cada 1 segundo refresca uno de los parámetros
+	switch (fsm) {
+		case ROLL_REFRESH:
+			roll_app = Position_GetRoll();
+			// ENVIAR A PC NUEVO DATO POR UART
+			break;
+		case PITCH_REFRESH:
+			pitching_app = Position_GetPitch();
+			// Enviar a PC NUEVO DATO POR UART
+			break;
+		case ORIENT_REFRESH:
+			orientation_app = Position_GetOrientation();
+			// ENVIAR A PC NUEVO DATO POR UART
+			break;
+	}
+
+
+	if(fsm == ORIENT_REFRESH)
+	{
+		fsm = ROLL_REFRESH;
+	}
+	else
+	{
+		fsm++;
+	}
+}
+
+void read(void)
+{
+	//r_data = data;
+	/*
+	i2c_com.callback = toggle_led;
+	i2c_com.data = Buffer;
+	i2c_com.data_size = 13;
+	i2c_com.register_address = 0x00;
+	i2c_com.slave_address = 0x1D;
+
+	i2cReadMsg(&i2c_com);
+	*/
+
+	// normal return
+	return;
+}
+
 void send_i2c_msg(void)
 {
+	/*
 	I2C_COM_CONTROL testing;
 	finish = false;
 		testing.callback=toggle_led;
@@ -150,6 +231,7 @@ void send_i2c_msg(void)
 				//return (I2C_ERROR);
 			}
 		}
+		*/
 }
 
 void send_msg(void)
