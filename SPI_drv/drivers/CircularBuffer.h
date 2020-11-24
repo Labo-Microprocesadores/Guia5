@@ -98,6 +98,14 @@ void flush(CircularBuffer_t *this);
  */
 int numel(CircularBuffer_t *this);
 
+
+/**
+ * @brief Number of elements until the buffer gets full;
+ * @param this Pointer to the buffer structure.
+ * @return The number of elements left.
+ */
+int numberOfElementsLeft(CircularBuffer_t *this);
+
 /**
  * @brief Check if the buffer is empty
  * @return True if the buffer is empty

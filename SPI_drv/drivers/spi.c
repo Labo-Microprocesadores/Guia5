@@ -23,6 +23,13 @@ static SPI_onTransferCompleteCallback transferCallback;
 static uint8_t bytesLeft;
 static SPI_Instance_t currentSPIInstance;
 
+typedef struct
+{
+    SPI_PCSignal_t pcsSignal;
+    bool eoq;
+    uint16_t message;
+} SPI_Data_t;
+
 void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
 {
     ///////////////////////////////////////////////////////////////////////
@@ -161,19 +168,45 @@ int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback 
     return bytesSent;
 }
 
-bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t messageLength, bool onlyRead)
+bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t messageToSend[], size_t messageLength, bool onlyRead)
 {
-    /*1. Chequear que la cola no este llena*/
-    if (isFull(&txCircularBuffer))
+    /*1. Check available space in the buffer*/
+    if (numberOfElementsLeft(&txCircularBuffer) < messageLength)
         return false;
 
-    /*2. Pushear mensaje a enviar a la cola. Si solo se desea realizar una lectura -> Enviar basura (cualquier caracter)*/
-    for (int i = 0; i < messageLength; i++)
+    /*2.Push the message to the circular buffer. If only read is needed -> Send any character as trash*/
+
+    if (onlyRead)
     {
-        if (onlyRead)
-            push(&txCircularBuffer, 'a'); //Send trash
-        else
-            push(&txCircularBuffer, message[i]);
+        for (int i = 0; i < messageLength; i++)
+        {
+            push(&txCircularBuffer, 'a'); //Trash
+        }
+    }
+    else
+    {
+        int untilFifoSizeCounter = 0; //Counter that reinitiates when it equals fifoSize. Function: send an "eoq" when this happens.
+        for (int i = 0; i < messageLength; i++)
+        {
+            bool reachedFifoSize = false; //untilFifoSizeCounter reached fifoSize.
+            bool eoq = false;             //eoq flag to send.
+
+            if (++untilFifoSizeCounter == SPIs[currentSPIInstance].hwFifoSize)
+            {
+                reachedFifoSize = true;
+                untilFifoSizeCounter = 0; //Reinitiates counter.
+            }
+
+            if (i == messageLength - 1 || reachedFifoSize) //The message ends or untilFifoSizeCounter reached fifoSize.
+                eoq = true;
+
+            SPI_Data_t sendingData = {
+                .message = messageToSend[i],
+                .pcsSignal = pcsSignal,
+                .eoq = eoq};
+
+            push(&txCircularBuffer, (void *)&sendingData);
+        }
     }
 
     /*3. Comenzar la transmision*/

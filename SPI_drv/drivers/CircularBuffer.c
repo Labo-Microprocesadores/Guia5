@@ -57,6 +57,11 @@ int numel(CircularBuffer_t *this)
 	return this->count;
 }
 
+int numberOfElementsLeft(CircularBuffer_t *this)
+{
+	return this->capacity - this->count;
+}
+
 bool isEmpty(CircularBuffer_t *this)
 {
 	return (this->count == 0);

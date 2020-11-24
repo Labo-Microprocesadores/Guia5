@@ -63,7 +63,7 @@ typedef enum
     SPI_PCS_1,
     SPI_PCS_2,
     SPI_PCS_3,
-    SPI_PCS_4,
+    SPI_PCS_4 ,
     SPI_PCS_5
 } SPI_PCSignal_t;
 
