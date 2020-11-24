@@ -15,13 +15,14 @@ static CircularBuffer_t rxCircularBuffer;
 uint32_t transmitBuffer[TX_QUEUE_SIZE]; // Buffer for tx
 uint16_t recieveBuffer[RX_QUEUE_SIZE];  // Buffer for rx
 
+static void turnTheWheel(SPI_Instance_t instance);
+
 //*Creates the array of spis and sets on the default value
 static SPI_Type *SPIs[] = SPI_BASE_ADDRS;
 
 static SPI_onTransferCompleteCallback transferCallback;
 // Bytes left in current transfer
 static uint8_t bytesLeft;
-static SPI_Instance_t currentSPIInstance;
 
 typedef struct
 {
@@ -40,7 +41,6 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     //* Second check if the CTAR used is a possible value (number between 0 and Number of CTAR registers (2) )
     ASSERT((config->CTARUsed) < FSL_FEATURE_DSPI_CTAR_COUNT);
 
-    currentSPIInstance = n; //Store SPI instance
     ///////////////////////////////////////////////////////////////////////
     //*		Enable clock gating and NVIC for the n SPI_Instance passed
     ///////////////////////////////////////////////////////////////////////
@@ -140,35 +140,7 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
     rxCircularBuffer = newCircularBuffer(recieveBuffer, BUFFER_SIZE, sizeof(uint8_t));
 }
 
-int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback callback)
-{
-    ASSERT(data != NULL);
-    ASSERT(length < spaceLeft(&transmitBuffer));
-
-    int bytesSent = 0;
-    for (int i = 0; i < length; i++)
-        if (push(&transmitBuffer, data + i) == false)
-        {
-            bytesSent = i;
-            break;
-        }
-
-    if (bytesSent == 0) // If didn't break..
-        bytesSent = length;
-
-    // Store bytes left
-    bytesLeft = bytesSent;
-
-    transferCallback = callback;
-
-    // Enable interrupts to start copying bytes from circular buffer to SPI module
-    SPIs[currentSPIInstance]->MCR |= SPI_MCR_CLR_TXF_MASK;
-    SPIs[currentSPIInstance]->RSER |= SPI_RSER_TFFF_RE_MASK;
-    SPIs[currentSPIInstance]->RSER &= ~SPI_RSER_TFFF_DIRS_MASK;
-    return bytesSent;
-}
-
-bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t messageToSend[], size_t messageLength, bool onlyRead)
+bool SPI_SendMessage(SPI_Instance_t instance, SPI_PCSignal_t pcsSignal, const uint16_t messageToSend[], size_t messageLength, bool onlyRead)
 {
     /*1. Check available space in the buffer*/
     if (numberOfElementsLeft(&txCircularBuffer) < messageLength)
@@ -191,7 +163,7 @@ bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t me
             bool reachedFifoSize = false; //untilFifoSizeCounter reached fifoSize.
             bool eoq = false;             //eoq flag to send.
 
-            if (++untilFifoSizeCounter == SPIs[currentSPIInstance].hwFifoSize)
+            if (++untilFifoSizeCounter == SPIs[instance].hwFifoSize)
             {
                 reachedFifoSize = true;
                 untilFifoSizeCounter = 0; //Reinitiates counter.
@@ -209,19 +181,90 @@ bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t me
         }
     }
 
-    /*3. Comenzar la transmision*/
-    while ((SPIs[currentSPIInstance]->SR & SPI_SR_TFFF_MASK) && !isEmpty(&txCircularBuffer))
+    /*3. Start the transmition*/
+    turnTheWheel(instance);
+    SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(0);
+    return true;
+}
+
+static void turnTheWheel(SPI_Instance_t instance)
+{
+    while ((SPIs[instance]->SR & SPI_SR_TFFF_MASK) && !isEmpty(&txCircularBuffer))
     {
         uint32_t bufferData;
         if (pop(&txCircularBuffer, &bufferData))
         {
-            //TODO: Adaptarlo a nuestro circular buffer
-            SPIs[currentSPIInstance]->PUSHR = bufferData;
+            SPIs[instance]->PUSHR = SPI_PUSHR_CONT(1) | SPI_PUSHR_CTAS(0b000) | SPI_PUSHR_EOQ(bufferData.eoq) |
+                                    SPI_PUSHR_CTCNT(1) | SPI_PUSHR_PCS(1 << bufferData.pcsSignal) | SPI_PUSHR_TXDATA(bufferData.message);
 
-            SPIs[currentSPIInstance]->SR = SPI_SR_TFFF_MASK;
+            SPIs[instance]->SR = SPI_SR_TFFF_MASK;
         }
     }
+}
 
-    SPIs[currentSPIInstance]->MCR = (SPIs[currentSPIInstance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(0);
-    return true;
+//TODO: CAMBIAR DESDE ACA
+
+__ISR__  SPI0_IRQHandler(void)
+{
+  SPI_IRQDispatcher(SPI_0);
+}
+
+__ISR__  SPI1_IRQHandler(void)
+{
+  SPI_IRQDispatcher(SPI_1);
+}
+
+__ISR__  SPI2_IRQHandler(void)
+{
+  SPI_IRQDispatcher(SPI_2); 
+}
+
+static void SPI_IRQDispatcher(SPI_Instance_t instance)
+{
+  // Read Status Register
+  uint32_t sr = SPIs[instance]->SR;
+
+  // If last package was sent
+  if (sr & SPI_SR_EOQF_MASK)
+  {
+    // Clear flag
+    SPIs[instance]->SR = SPI_SR_EOQF_MASK;
+    // Do what needs to be done
+    SPI_EOQFDispatcher(instance);
+  }
+
+  // If something was 
+  if (sr & SPI_SR_RFDF_MASK)
+  {
+    // Clear flag
+    SPIs[instance]->SR = SPI_SR_RFDF_MASK;
+    // Do what needs to be done
+    SPI_RFDFDispatcher(instance);
+  }
+}
+
+static void SPI_EOQFDispatcher(SPI_Instance_t instance)
+{
+  if (isEmpty(&(spiInstances[id].txQueue)))
+  {
+    SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(1);
+    SPIs[instance].transferComplete = true;
+  }
+  else
+  {
+    softQueue2HardFIFO(id);
+  }
+}
+
+static void SPI_RFDFDispatcher(SPI_Instance_t instance)
+{
+  // Read RX Hardware FIFO
+  if (SPIs[instance]->SR & SPI_SR_RXCTR_MASK)
+  {
+    uint16_t newFrame = SPIs[instance]->POPR;
+    if (emptySize(&(spiInstances[id].rxQueue)) > 0)
+    {
+	  push(&(spiInstances[id].rxQueue), (void*) &newFrame);
+    }
+  }
 }
