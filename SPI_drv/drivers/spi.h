@@ -126,4 +126,6 @@ bool SPI_SendByte(uint8_t byte);
 
 int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback callback);
 
+bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t messageLength, bool onlyRead);
+
 #endif /* SPI_H_ */

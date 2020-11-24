@@ -161,7 +161,7 @@ int SPI_SendFrame(uint8_t *data, uint8_t length, SPI_onTransferCompleteCallback 
     return bytesSent;
 }
 
-bool DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t messageLength, bool onlyRead)
+bool SPI_SendMessage(SPI_Type *base, SPI_PCSignal_t pcsSignal, const uint16_t message[], size_t messageLength, bool onlyRead)
 {
     /*1. Chequear que la cola no este llena*/
     if (isFull(&txCircularBuffer))
