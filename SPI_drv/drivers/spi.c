@@ -179,12 +179,11 @@ bool DSPI_MasterTransferNonBlocking(SPI_Type *base, SPI_PCSignal_t pcsSignal, co
     /*3. Comenzar la transmision*/
     while ((SPIs[currentSPIInstance]->SR & SPI_SR_TFFF_MASK) && !isEmpty(&txCircularBuffer))
     {
-        uint16_t bufferData;
-        if (pop(&transmitBuffer, &bufferData))
+        uint32_t bufferData;
+        if (pop(&txCircularBuffer, &bufferData))
         {
             //TODO: Adaptarlo a nuestro circular buffer
-            SPIs[currentSPIInstance]->PUSHR = SPI_PUSHR_CONT(1) | SPI_PUSHR_CTAS(0b000) | SPI_PUSHR_EOQ(package->eoq) |
-                                              SPI_PUSHR_CTCNT(1) | SPI_PUSHR_PCS(package->slaves) | SPI_PUSHR_TXDATA(package->frame);
+            SPIs[currentSPIInstance]->PUSHR = bufferData;
 
             SPIs[currentSPIInstance]->SR = SPI_SR_TFFF_MASK;
         }
