@@ -17,8 +17,12 @@ uint16_t recieveBuffer[RX_QUEUE_SIZE];  // Buffer for rx
 
 static void turnTheWheel(SPI_Instance_t instance);
 
+__ISR__  SPI0_IRQn(void);
+__ISR__  SPI1_IRQn(void);
+__ISR__  SPI2_IRQn(void);
+
 //*Creates the array of spis and sets on the default value
-static SPI_Type *SPIs[] = SPI_BASE_ADDRS;
+static SPI_Instance_t *SPIs[] = SPI_BASE_ADDRS;
 
 static SPI_onTransferCompleteCallback transferCallback;
 // Bytes left in current transfer
@@ -204,55 +208,51 @@ static void turnTheWheel(SPI_Instance_t instance)
 
 //TODO: CAMBIAR DESDE ACA
 
-__ISR__  SPI0_IRQHandler(void)
+__ISR__  SPI0_IRQn(void)
 {
-  SPI_IRQDispatcher(SPI_0);
+  SPI_IRQHandler(SPI_0);
 }
 
-__ISR__  SPI1_IRQHandler(void)
+__ISR__  SPI1_IRQn(void)
 {
-  SPI_IRQDispatcher(SPI_1);
+  SPI_IRQHandler(SPI_1);
 }
 
-__ISR__  SPI2_IRQHandler(void)
+__ISR__  SPI2_IRQn(void)
 {
-  SPI_IRQDispatcher(SPI_2); 
+  SPI_IRQHandler(SPI_2); 
 }
 
-static void SPI_IRQDispatcher(SPI_Instance_t instance)
+static void SPI_IRQHandler(SPI_Instance_t instance)
 {
-  // Read Status Register
-  uint32_t sr = SPIs[instance]->SR;
+  // save status register
+  uint32_t statusRegister = SPIs[instance]->SR; 
 
-  // If last package was sent
-  if (sr & SPI_SR_EOQF_MASK)
+  
+  if (statusRegister & SPI_SR_RFDF_MASK)// if RX harware buffer is full
   {
-    // Clear flag
-    SPIs[instance]->SR = SPI_SR_EOQF_MASK;
-    // Do what needs to be done
-    SPI_EOQFDispatcher(instance);
-  }
-
-  // If something was 
-  if (sr & SPI_SR_RFDF_MASK)
-  {
-    // Clear flag
+  
     SPIs[instance]->SR = SPI_SR_RFDF_MASK;
-    // Do what needs to be done
     SPI_RFDFDispatcher(instance);
+  } 
+   
+  if (statusRegister & SPI_SR_EOQF_MASK) // When last frame in tx buffer was sent
+  {
+    SPIs[instance]->SR = SPI_SR_EOQF_MASK;
+    SPI_EOQFDispatcher(instance);
   }
 }
 
 static void SPI_EOQFDispatcher(SPI_Instance_t instance)
 {
-  if (isEmpty(&(spiInstances[id].txQueue)))
-  {
-    SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(1);
+  if (isEmpty(&(spiInstances[id].txQueue))) //if there's nothing else to send
+  {1
+    SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(1); //stop transmission!
     SPIs[instance].transferComplete = true;
   }
   else
   {
-    softQueue2HardFIFO(id);
+    turnTheWheel(id);
   }
 }
 
