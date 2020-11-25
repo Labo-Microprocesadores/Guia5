@@ -1,6 +1,6 @@
 #include "spi.h"
 #include "hardware.h"
-#include "Assert.h"
+#include <assert.h>
 #include "GPIO.h"
 #include "port.h"
 #include "CircularBuffer.h"
@@ -37,12 +37,12 @@ typedef struct
   CircularBuffer_t rxCircularBuffer;
   uint32_t transmitBuffer[TX_QUEUE_SIZE]; // Buffer for tx
   uint16_t recieveBuffer[RX_QUEUE_SIZE];  // Buffer for rx
-  volatile size_t remainingSendByteCount; /*!< A number of bytes remaining to send.*/
+  volatile bool communicationFinished; 	/*!< A number of bytes remaining to send.*/
   size_t totalByteCount;                  /*!< A number of transfer bytes*/
 
 } SPI_MasterHandle;
 
-SPI_MasterHandle SPI_Handlers[SPI_INSTANCE_AMOUNT];
+SPI_MasterHandle SPI_Handlers[FSL_FEATURE_SOC_DSPI_COUNT] = {{.fifoSize = 4},{.fifoSize = 1},{.fifoSize = 1}};
 
 void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
 {
@@ -176,7 +176,7 @@ bool SPI_SendMessage(SPI_Instance_t instance, SPI_PCSignal_t pcsSignal, const ui
       bool reachedFifoSize = false; //untilFifoSizeCounter reached fifoSize.
       bool eoq = false;             //eoq flag to send.
 
-      if (++untilFifoSizeCounter == SPIs[instance]->hwFifoSize)
+      if (++untilFifoSizeCounter == SPI_Handlers[instance].fifoSize)
       {
         reachedFifoSize = true;
         untilFifoSizeCounter = 0; //Reinitiates counter.
@@ -194,7 +194,7 @@ bool SPI_SendMessage(SPI_Instance_t instance, SPI_PCSignal_t pcsSignal, const ui
     }
   }
 
-  /*3. Start the transmition*/
+  /*3. Start the transmission*/
   turnTheWheel(instance);
   SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(0);
   return true;
@@ -254,7 +254,7 @@ static void SPI_EOQFDispatcher(SPI_Instance_t instance)
   if (isEmpty(&(SPI_Handlers[instance].txCircularBuffer))) //if there's nothing else to send
   {
     SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(1); //stop transmission!
-    SPIs[instance].transferComplete = true;
+    SPI_Handlers[instance].communicationFinished = true;
   }
   else
   {
@@ -268,7 +268,7 @@ static void SPI_RFDFDispatcher(SPI_Instance_t instance)
   if (SPIs[instance]->SR & SPI_SR_RXCTR_MASK)
   {
     uint16_t newFrame = SPIs[instance]->POPR;
-    if (emptySize(&(SPI_Handlers[instance].rxCircularBuffer)) > 0)
+    if (numberOfElementsLeft(&(SPI_Handlers[instance].rxCircularBuffer)) > 0)
     {
       push(&(SPI_Handlers[instance].rxCircularBuffer), (void *)&newFrame);
     }
