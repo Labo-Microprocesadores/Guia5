@@ -1,0 +1,294 @@
+/*
+ * Posicionamiento.c
+ *
+ *  Created on: 20 Sep 2019
+ *      Author: Marcelo
+ */
+/*******************************************************************************
+ * INCLUDE HEADER FILES
+ ******************************************************************************/
+#include "Posicionamiento.h"
+//#include "Sensores.h"
+#include "AccelMagn_drv.h"
+#include "timer.h"
+#include <math.h>
+
+/*******************************************************************************
+ * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
+ ******************************************************************************/
+enum{CLOCKWISE, COUNTER_CLOCKWISE, ZERO};
+
+/*******************************************************************************
+ * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
+ ******************************************************************************/
+SRAWDATA accel_cords = {.x = -1, .y = -1, .z = -1};  // Aca guardar las coordenadas
+SRAWDATA magnet_cords = {.x = 0, .y = -1, .z = 0}; //
+
+roll_t roll = 0; 		// Form -179° to 180°
+roll_t prev_roll = 0;
+bool roll_change = false;
+
+pitching_t pitching = 0;	// Form -179° to 180°
+pitching_t prev_pitching = 0;
+bool pitching_change = false;
+
+orientation_t orientation = 0;	// Form -179° to 180°
+orientation_t prev_orientation = 0;
+bool orientation_change = false;
+
+static read_data accel_Read;
+static bool reading = false;
+
+void (*changeCallback)(void);
+
+
+/*******************************************************************************
+ * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
+ ******************************************************************************/
+
+void Position_CalculateRoll(void);
+void Position_CalculatePitching(void);
+void Position_CalculateOrientation(void);
+void callback_updatePos (void);
+
+/*******************************************************************************
+ *******************************************************************************
+                        GLOBAL FUNCTION DEFINITIONS
+ *******************************************************************************
+ ******************************************************************************/
+void Position_InitDrv(void (*funcallback)(void)){
+	// Inicializar los sensores
+	//_mqx_ints_FXOS8700CQ_start(ACA VA EL PUNTERO);
+
+	I2C_STATUS realStatus =_mqx_ints_FXOS8700CQ_start();
+
+	changeCallback = funcallback;
+	accel_Read.callback = callback_updatePos;
+	accel_Read.pAccelData = &accel_cords;
+	accel_Read.pMagnData = &magnet_cords;
+}
+
+void callback_updatePos (void)
+{
+	if(accel_Read.error == I2C_OK)
+	{
+		Position_CalculateRoll();
+		Position_CalculatePitching();
+		Position_CalculateOrientation();
+	}
+	reading = false;
+}
+
+void Position_Update(void){
+
+	if(reading == false)
+	{
+		ReadAccelMagnData(&accel_Read);
+	}
+
+}
+
+roll_t Position_GetRoll(void){
+
+	return roll;
+}
+
+pitching_t Position_GetPitch(void){
+
+	return pitching;
+}
+
+orientation_t Position_GetOrientation(void){
+
+	return orientation;
+}
+
+int Position_GetChangeEvent(void){
+	if(roll_change)
+	{
+		roll_change = false;
+		return ROLL_EVENT;
+	}
+	else if(pitching_change)
+	{
+		pitching_change = false;
+		return PITCHING_EVENT;
+	}
+	else if(orientation_change)
+	{
+		orientation_change = false;
+		return ORIENTATION_EVENT;
+	}
+}
+
+void Position_CalculateRoll(void){
+	uint8_t clock_type;
+	int tita;
+
+	if(accel_cords.x < 0){
+		clock_type = CLOCKWISE;
+	}else if(accel_cords.x > 0){
+		clock_type = COUNTER_CLOCKWISE;
+	}else{
+		clock_type = ZERO;
+	}
+
+	if(clock_type != ZERO){
+
+		tita = (int)180*atan((float)accel_cords.z/ (float)accel_cords.x)/M_PI;
+
+	}else{
+		tita = 90;
+	}
+
+	switch (clock_type) {
+		case CLOCKWISE:
+			if(accel_cords.z != 0){
+				prev_roll = - 90 - tita;
+			}else{
+				prev_roll = - 90;
+			}
+			break;
+		case COUNTER_CLOCKWISE:
+			if(accel_cords.z != 0){
+				prev_roll = 90 - tita;
+			}else{
+				prev_roll = 90;
+			}
+			break;
+
+		case ZERO:
+			if(accel_cords.z > 0){
+				prev_roll = 0;
+			}else if(accel_cords.z < 0){
+				prev_roll = 180; // Por defecto, podria ser tambien
+			}
+			break;
+	}
+
+	int diference = fabsf((fabsf(prev_roll) - fabsf(roll)));
+
+	if(diference > 5) // Condicion de consigna para tomar nuevo cambio
+	{
+		roll = prev_roll;
+		roll_change = true;
+		changeCallback(); // Aviso a App que cambio el angulo mas de 5°
+	}
+}
+
+void Position_CalculatePitching(void){
+	uint8_t clock_type;
+	int tita;
+
+	if(accel_cords.y < 0){
+		clock_type = CLOCKWISE;
+	}else if(accel_cords.y > 0){
+		clock_type = COUNTER_CLOCKWISE;
+	}else{
+		clock_type = ZERO;
+	}
+
+	if(clock_type != ZERO){
+
+		tita = (int)180*atan((float)accel_cords.z/ (float)accel_cords.y)/M_PI;
+
+	}else{
+		tita = 90;
+	}
+
+	switch (clock_type) {
+		case CLOCKWISE:
+			if(accel_cords.z != 0){
+				prev_pitching = - 90 - tita;
+			}else{
+				prev_pitching = - 90;
+			}
+			break;
+		case COUNTER_CLOCKWISE:
+			if(accel_cords.z != 0){
+				prev_pitching = 90 - tita;
+			}else{
+				prev_pitching = 90;
+			}
+			break;
+		case ZERO:
+			if(accel_cords.z < 0){
+				prev_pitching = 0;
+			}else if(accel_cords.z > 0){
+				prev_pitching = 180; // Por defecto, podria ser tambien
+			}
+			break;
+	}
+
+	int diference = fabsf(fabsf(prev_pitching) - fabsf(pitching));
+
+	if(diference > 5)
+	{
+		pitching = prev_pitching;
+		pitching_change = true;
+		changeCallback(); // Aviso a App que cambio el angulo mas de 5°
+	}
+}
+
+void Position_CalculateOrientation(void){
+
+	uint8_t clock_type;
+	int tita;
+
+	if(magnet_cords.y < 0){
+		clock_type = CLOCKWISE;
+	}else if(magnet_cords.y > 0){
+		clock_type = COUNTER_CLOCKWISE;
+	}else{
+		clock_type = ZERO;
+	}
+
+	if(clock_type != ZERO){
+
+		tita = (int)180*atan((float)magnet_cords.y/ (float)magnet_cords.x)/M_PI;
+
+	}else{
+		tita = 90;
+	}
+
+	switch (clock_type) {
+		case CLOCKWISE:
+			if(magnet_cords.x > 0){
+				prev_orientation = - 90 + tita;
+			}else if(magnet_cords.x < 0){
+				prev_orientation = 90 + tita;
+			}else{
+				prev_orientation = 180;
+			}
+			break;
+		case COUNTER_CLOCKWISE:
+			if(magnet_cords.x < 0){
+				prev_orientation = 90 + tita;
+			}else if(magnet_cords.x > 0){
+				prev_orientation = - 90 + tita;
+			}else{
+				prev_orientation = 0;
+			}
+			break;
+		case ZERO:
+			if(magnet_cords.x < 0){
+				prev_orientation = tita;
+			}else if(magnet_cords.x > 0){
+				prev_orientation = 0 - tita; // Por defecto, podria ser tambien
+			}
+			break;
+	}
+
+
+	int diference = fabsf(fabsf(prev_orientation) - fabsf(orientation));
+
+	if(diference > 5)
+	{
+		orientation = prev_orientation;
+		orientation_change = true;
+		changeCallback(); // Aviso a App que cambio el angulo mas de 5°
+	}
+}
+
+/*******************************************************************************
+ ******************************************************************************/

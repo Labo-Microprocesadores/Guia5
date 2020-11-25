@@ -1,0 +1,10 @@
+Posicionamiento.c:58:6:Position_InitDrv	16	static
+Posicionamiento.c:70:6:callback_updatePos	8	static
+Posicionamiento.c:81:6:Position_Update	8	static
+Posicionamiento.c:90:8:Position_GetRoll	4	static
+Posicionamiento.c:95:12:Position_GetPitch	4	static
+Posicionamiento.c:100:15:Position_GetOrientation	4	static
+Posicionamiento.c:105:5:Position_GetChangeEvent	4	static
+Posicionamiento.c:123:6:Position_CalculateRoll	40	static
+Posicionamiento.c:178:6:Position_CalculatePitching	40	static
+Posicionamiento.c:232:6:Position_CalculateOrientation	40	static

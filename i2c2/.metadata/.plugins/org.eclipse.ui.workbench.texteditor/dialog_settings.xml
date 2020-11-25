@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="Msg" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="Msg"/>
+			<item value="i2c"/>
+			<item value="BUS_BUSY"/>
+			<item value="finish_com"/>
+			<item value="I2C_STATE_READ_DATA"/>
+			<item value="I2C_STATE_READ_DUMMY_DATA"/>
+			<item value="I2C_STATE_WRITE_REG_ADDRESS"/>
+			<item value="I2C_STATE_WRITE_DEV_ADDRESS_R"/>
+			<item value="I2C_STATE_WRITE_DEV_ADDRESS_W"/>
+			<item value="I2C_STATE_WRITE_DATA"/>
+			<item value="I2C_W_DEV_ADDRESS_W"/>
+			<item value="I2C_W_DEV_ADDR_W"/>
+			<item value="I2C_MODE"/>
+			<item value="IC20_IRQHandler"/>
+			<item value="ch "/>
+		</list>
+		<list key="replacehistory">
+			<item value="Message"/>
+			<item value="I2C_EndCommunication"/>
+			<item value="I2C_FinishCommunication"/>
+			<item value="I2C_R_DATA"/>
+			<item value="I2C_R_DUMMY_DATA"/>
+			<item value="I2C_W_REG_ADDR"/>
+			<item value="I2C_W_DEV_ADDR_R"/>
+			<item value="I2C_W_DEV_ADDR_W"/>
+			<item value="I2C_W_DATA"/>
+			<item value="state"/>
+			<item value="STATE"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="327" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-30|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="437" key="DIALOG_HEIGHT"/>
+		<item value="1078" key="DIALOG_X_ORIGIN"/>
+		<item value="369" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

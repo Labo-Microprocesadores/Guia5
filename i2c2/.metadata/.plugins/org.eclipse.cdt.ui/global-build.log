@@ -1,0 +1,2729 @@
+00:27:32 **** Clean-only build of configuration Debug for project Blink ****
+make -r -j8 clean 
+rm -rf  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o  ./source/App.d ./source/Posicionamiento.d ./source/Sensores.d ./source/SysTick.d ./source/gpio.d ./source/i2c.d ./source/timer.d ./source/uart.d  ./SDK/startup/hardware.d ./SDK/startup/main.d ./SDK/startup/semihost_hardfault.d ./SDK/startup/startup_mk64f12.d  ./SDK/CMSIS/system_MK64F12.d  Blink.axf
+ 
+00:27:32 **** Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/Posicionamiento.c
+Building file: ../source/Sensores.c
+Building file: ../source/SysTick.c
+Building file: ../source/gpio.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Sensores.d" -MT"source/Sensores.o" -MT"source/Sensores.d" -o "source/Sensores.o" "../source/Sensores.c"
+Invoking: MCU C Compiler
+Building file: ../source/i2c.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick.d" -MT"source/SysTick.o" -MT"source/SysTick.d" -o "source/SysTick.o" "../source/SysTick.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/gpio.d" -MT"source/gpio.o" -MT"source/gpio.d" -o "source/gpio.o" "../source/gpio.c"
+Building file: ../source/timer.c
+Building file: ../source/uart.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/timer.d" -MT"source/timer.o" -MT"source/timer.d" -o "source/timer.o" "../source/timer.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/uart.d" -MT"source/uart.o" -MT"source/uart.d" -o "source/uart.o" "../source/uart.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:62:11: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+           ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:121:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/App.c
+ 
+Building file: ../SDK/startup/hardware.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/hardware.d" -MT"SDK/startup/hardware.o" -MT"SDK/startup/hardware.d" -o "SDK/startup/hardware.o" "../SDK/startup/hardware.c"
+Finished building: ../source/Sensores.c
+Finished building: ../source/SysTick.c
+ 
+ 
+Building file: ../SDK/startup/main.c
+Building file: ../SDK/startup/semihost_hardfault.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/main.d" -MT"SDK/startup/main.o" -MT"SDK/startup/main.d" -o "SDK/startup/main.o" "../SDK/startup/main.c"
+Invoking: MCU C Compiler
+Finished building: ../source/Posicionamiento.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/semihost_hardfault.d" -MT"SDK/startup/semihost_hardfault.o" -MT"SDK/startup/semihost_hardfault.d" -o "SDK/startup/semihost_hardfault.o" "../SDK/startup/semihost_hardfault.c"
+Finished building: ../source/gpio.c
+Finished building: ../source/uart.c
+Finished building: ../source/timer.c
+ 
+Finished building: ../source/i2c.c
+ 
+ 
+ 
+ 
+Building file: ../SDK/startup/startup_mk64f12.c
+Building file: ../SDK/CMSIS/system_MK64F12.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/startup_mk64f12.d" -MT"SDK/startup/startup_mk64f12.o" -MT"SDK/startup/startup_mk64f12.d" -o "SDK/startup/startup_mk64f12.o" "../SDK/startup/startup_mk64f12.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/CMSIS/system_MK64F12.d" -MT"SDK/CMSIS/system_MK64F12.o" -MT"SDK/CMSIS/system_MK64F12.d" -o "SDK/CMSIS/system_MK64F12.o" "../SDK/CMSIS/system_MK64F12.c"
+Finished building: ../SDK/startup/semihost_hardfault.c
+ 
+Finished building: ../SDK/startup/hardware.c
+ 
+Finished building: ../SDK/startup/main.c
+Finished building: ../SDK/startup/startup_mk64f12.c
+ 
+ 
+Finished building: ../SDK/CMSIS/system_MK64F12.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12376 B         1 MB      1.18%
+      SRAM_UPPER:       10096 B       192 KB      5.14%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12304	     72	  10024	  22400	   5780	Blink.axf
+ 
+00:28:43 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:28:50 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:30:45 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:30:57 **** Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:30:58 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:31:24 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:32:39 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:33:03 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:33:13 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:43:54 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/Timer2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer2.d" -MT"source/Timer2.o" -MT"source/Timer2.d" -o "source/Timer2.o" "../source/Timer2.c"
+In file included from ../source/App.c:13:0:
+../source/Timer2.h:32:2: error: unknown type name 'bool'
+  bool paused;
+  ^~~~
+../source/Timer2.h:33:2: error: unknown type name 'bool'
+  bool callOnce;
+  ^~~~
+../source/Timer2.h:45:1: error: unknown type name 'bool'; did you mean '_Bool'?
+ bool Timer_Init (void);
+ ^~~~
+ _Bool
+../source/Timer2.h:58:62: error: unknown type name 'bool'; did you mean '_Bool'?
+ int Timer_AddCallback(void (*newCallback)(void), int period, bool callOnce);
+                                                              ^~~~
+                                                              _Bool
+../source/App.c:23:1: error: unknown type name 'tim_id_t'
+ tim_id_t timPeriodico;
+ ^~~~~~~~
+../source/App.c:24:1: error: unknown type name 'tim_id_t'
+ tim_id_t timerUpdatePos;
+ ^~~~~~~~
+../source/App.c: In function 'App_Init':
+../source/App.c:100:13: warning: implicit declaration of function 'Timer_AddCallback' [-Wimplicit-function-declaration]
+  idtimer1 = Timer_AddCallback(&Position_Update,200,false);
+             ^~~~~~~~~~~~~~~~~
+make: *** [source/App.o] Error 1
+make: *** Waiting for unfinished jobs....
+../source/Timer2.c: In function 'Timer_Init':
+../source/Timer2.c:39:2: error: too few arguments to function 'SysTick_Init'
+  SysTick_Init(); //Initialization of Systick's driver.
+  ^~~~~~~~~~~~
+In file included from ../source/Timer2.c:15:0:
+../source/SysTick.h:40:6: note: declared here
+ bool SysTick_Init (void (*funcallback)(void));
+      ^~~~~~~~~~~~
+../source/Timer2.c:40:2: warning: implicit declaration of function 'SysTick_AddCallback'; did you mean 'Timer_AddCallback'? [-Wimplicit-function-declaration]
+  SysTick_AddCallback(&Timer_PISR, TIMER_ISR_PERIOD); //Requests SysTick to periodically call the Timer's ISR.
+  ^~~~~~~~~~~~~~~~~~~
+  Timer_AddCallback
+make: *** [source/Timer2.o] Error 1
+00:47:31 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/SysTick2.c
+Building file: ../source/Timer2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick2.d" -MT"source/SysTick2.o" -MT"source/SysTick2.d" -o "source/SysTick2.o" "../source/SysTick2.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer2.d" -MT"source/Timer2.o" -MT"source/Timer2.d" -o "source/Timer2.o" "../source/Timer2.c"
+In file included from ../source/App.c:13:0:
+../source/Timer2.h:32:2: error: unknown type name 'bool'
+  bool paused;
+  ^~~~
+../source/Timer2.h:33:2: error: unknown type name 'bool'
+  bool callOnce;
+  ^~~~
+../source/Timer2.h:45:1: error: unknown type name 'bool'; did you mean '_Bool'?
+ bool Timer_Init (void);
+ ^~~~
+ _Bool
+../source/Timer2.h:58:62: error: unknown type name 'bool'; did you mean '_Bool'?
+ int Timer_AddCallback(void (*newCallback)(void), int period, bool callOnce);
+                                                              ^~~~
+                                                              _Bool
+../source/App.c:23:1: error: unknown type name 'tim_id_t'
+ tim_id_t timPeriodico;
+ ^~~~~~~~
+../source/App.c:24:1: error: unknown type name 'tim_id_t'
+ tim_id_t timerUpdatePos;
+ ^~~~~~~~
+../source/App.c: In function 'App_Init':
+../source/App.c:100:13: warning: implicit declaration of function 'Timer_AddCallback' [-Wimplicit-function-declaration]
+  idtimer1 = Timer_AddCallback(&Position_Update,200,false);
+             ^~~~~~~~~~~~~~~~~
+make: *** [source/App.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../source/Timer2.c
+ 
+Finished building: ../source/SysTick2.c
+ 
+00:48:34 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+In file included from ../source/App.c:13:0:
+../source/Timer2.h:32:2: error: unknown type name 'bool'
+  bool paused;
+  ^~~~
+../source/Timer2.h:33:2: error: unknown type name 'bool'
+  bool callOnce;
+  ^~~~
+../source/Timer2.h:45:1: error: unknown type name 'bool'; did you mean '_Bool'?
+ bool Timer_Init (void);
+ ^~~~
+ _Bool
+../source/Timer2.h:58:62: error: unknown type name 'bool'; did you mean '_Bool'?
+ int Timer_AddCallback(void (*newCallback)(void), int period, bool callOnce);
+                                                              ^~~~
+                                                              _Bool
+../source/App.c: In function 'App_Init':
+../source/App.c:100:13: warning: implicit declaration of function 'Timer_AddCallback' [-Wimplicit-function-declaration]
+  idtimer1 = Timer_AddCallback(&Position_Update,200,false);
+             ^~~~~~~~~~~~~~~~~
+make: *** [source/App.o] Error 1
+00:49:53 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/Timer2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer2.d" -MT"source/Timer2.o" -MT"source/Timer2.d" -o "source/Timer2.o" "../source/Timer2.c"
+Finished building: ../source/App.c
+ 
+Finished building: ../source/Timer2.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+./source/SysTick2.o: In function `SysTick_Init':
+   PROGRAM_FLASH:       11848 B         1 MB      1.13%
+      SRAM_UPPER:         10 KB       192 KB      5.21%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick2.c:47: multiple definition of `SysTick_Init'
+        FLEX_RAM:          0 GB         4 KB      0.00%
+./source/SysTick.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick.c:18: first defined here
+./source/SysTick2.o: In function `SysTick_Handler':
+C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick2.c:196: multiple definition of `SysTick_Handler'
+./source/SysTick.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick.c:28: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [Blink.axf] Error 1
+00:50:57 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/SysTick2.c
+Building file: ../source/Timer2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick2.d" -MT"source/SysTick2.o" -MT"source/SysTick2.d" -o "source/SysTick2.o" "../source/SysTick2.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer2.d" -MT"source/Timer2.o" -MT"source/Timer2.d" -o "source/Timer2.o" "../source/Timer2.c"
+Finished building: ../source/Timer2.c
+ 
+Finished building: ../source/SysTick2.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11848 B         1 MB      1.13%
+./source/SysTick2.o: In function `SysTick_Handler':
+      SRAM_UPPER:         10 KB       192 KB      5.21%
+C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick2.c:196: multiple definition of `SysTick_Handler'
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+./source/SysTick.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/SysTick.c:28: first defined here
+        FLEX_RAM:          0 GB         4 KB      0.00%
+collect2.exe: error: ld returned 1 exit status
+make: *** [Blink.axf] Error 1
+00:51:55 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/SysTick2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick2.d" -MT"source/SysTick2.o" -MT"source/SysTick2.d" -o "source/SysTick2.o" "../source/SysTick2.c"
+Finished building: ../source/SysTick2.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11848 B         1 MB      1.13%
+      SRAM_UPPER:         10 KB       192 KB      5.21%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11784	     64	  10176	  22024	   5608	Blink.axf
+ 
+00:53:15 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:53:23 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:53:51 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:54:36 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:54:46 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:54:54 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:55:11 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:55:45 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:56:43 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+00:58:02 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12840 B         1 MB      1.22%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12776	     64	  10576	  23416	   5b78	Blink.axf
+ 
+00:59:30 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13368 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13296	     72	  10832	  24200	   5e88	Blink.axf
+ 
+01:00:04 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:00:12 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:00:48 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:02:13 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:07:31 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13360 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13288	     72	  10832	  24192	   5e80	Blink.axf
+ 
+01:15:16 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13368 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13296	     72	  10832	  24200	   5e88	Blink.axf
+ 
+01:21:44 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13360 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13288	     72	  10832	  24192	   5e80	Blink.axf
+ 
+01:22:39 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13368 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13296	     72	  10832	  24200	   5e88	Blink.axf
+ 
+01:27:06 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13368 B         1 MB      1.27%
+      SRAM_UPPER:       10904 B       192 KB      5.55%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13296	     72	  10832	  24200	   5e88	Blink.axf
+ 
+01:27:57 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:99:3: warning: implicit declaration of function 'timerInit'; did you mean 'Timer_Init'? [-Wimplicit-function-declaration]
+   timerInit();
+   ^~~~~~~~~
+   Timer_Init
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12832 B         1 MB      1.22%
+      SRAM_UPPER:       10880 B       192 KB      5.53%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12760	     72	  10808	  23640	   5c58	Blink.axf
+ 
+01:28:07 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:32:00 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:32:31 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:32:54 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:33:39 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:33:55 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:34:42 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:35:29 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12312 B         1 MB      1.17%
+      SRAM_UPPER:       10616 B       192 KB      5.40%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12248	     64	  10552	  22864	   5950	Blink.axf
+ 
+01:36:20 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12840 B         1 MB      1.22%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12776	     64	  10576	  23416	   5b78	Blink.axf
+ 
+01:37:53 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:45:39 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12840 B         1 MB      1.22%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12776	     64	  10576	  23416	   5b78	Blink.axf
+ 
+01:52:52 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+01:54:36 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12848 B         1 MB      1.23%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12784	     64	  10576	  23424	   5b80	Blink.axf
+ 
+01:59:43 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12848 B         1 MB      1.23%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12784	     64	  10576	  23424	   5b80	Blink.axf
+ 
+02:00:26 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+02:03:29 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12992 B         1 MB      1.24%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12928	     64	  10576	  23568	   5c10	Blink.axf
+ 
+02:13:55 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/SysTick2.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick2.d" -MT"source/SysTick2.o" -MT"source/SysTick2.d" -o "source/SysTick2.o" "../source/SysTick2.c"
+Finished building: ../source/SysTick2.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       12992 B         1 MB      1.24%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  12928	     64	  10576	  23568	   5c10	Blink.axf
+ 
+02:19:49 **** Clean-only build of configuration Debug for project Blink ****
+make -r -j8 clean 
+rm -rf  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/SysTick2.o ./source/Timer2.o ./source/gpio.o ./source/i2c.o ./source/timer.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o  ./source/App.d ./source/Posicionamiento.d ./source/Sensores.d ./source/SysTick.d ./source/SysTick2.d ./source/Timer2.d ./source/gpio.d ./source/i2c.d ./source/timer.d ./source/uart.d  ./SDK/startup/hardware.d ./SDK/startup/main.d ./SDK/startup/semihost_hardfault.d ./SDK/startup/startup_mk64f12.d  ./SDK/CMSIS/system_MK64F12.d  Blink.axf
+ 
+02:19:49 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/Posicionamiento.c
+Building file: ../source/Sensores.c
+Building file: ../source/SysTick.c
+Building file: ../source/Timer.c
+Building file: ../source/gpio.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Sensores.d" -MT"source/Sensores.o" -MT"source/Sensores.d" -o "source/Sensores.o" "../source/Sensores.c"
+Invoking: MCU C Compiler
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick.d" -MT"source/SysTick.o" -MT"source/SysTick.d" -o "source/SysTick.o" "../source/SysTick.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer.d" -MT"source/Timer.o" -MT"source/Timer.d" -o "source/Timer.o" "../source/Timer.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/gpio.d" -MT"source/gpio.o" -MT"source/gpio.d" -o "source/gpio.o" "../source/gpio.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+Building file: ../source/uart.c
+In file included from ../source/App.c:13:0:
+../source/Timer.h:32:2: error: unknown type name 'bool'
+  bool paused;
+  ^~~~
+../source/Timer.h:33:2: error: unknown type name 'bool'
+  bool callOnce;
+  ^~~~
+../source/Timer.h:45:1: error: unknown type name 'bool'; did you mean '_Bool'?
+ bool Timer_Init (void);
+ ^~~~
+ _Bool
+../source/Timer.h:58:62: error: unknown type name 'bool'; did you mean '_Bool'?
+ int Timer_AddCallback(void (*newCallback)(void), int period, bool callOnce);
+                                                              ^~~~
+                                                              _Bool
+../source/App.c: In function 'App_Init':
+../source/App.c:101:13: warning: implicit declaration of function 'Timer_AddCallback' [-Wimplicit-function-declaration]
+  idtimer1 = Timer_AddCallback(&Position_Update,200,false);
+             ^~~~~~~~~~~~~~~~~
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+make: *** [source/App.o] Error 1
+make: *** Waiting for unfinished jobs....
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/uart.d" -MT"source/uart.o" -MT"source/uart.d" -o "source/uart.o" "../source/uart.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:62:11: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+           ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:121:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/Timer.c
+ 
+Finished building: ../source/Sensores.c
+ 
+Finished building: ../source/gpio.c
+ 
+Finished building: ../source/SysTick.c
+Finished building: ../source/i2c.c
+ 
+Finished building: ../source/Posicionamiento.c
+ 
+ 
+Finished building: ../source/uart.c
+ 
+02:20:26 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Building file: ../source/Posicionamiento.c
+Building file: ../source/Timer.c
+Building file: ../SDK/startup/hardware.c
+Building file: ../SDK/startup/main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+Building file: ../SDK/startup/semihost_hardfault.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer.d" -MT"source/Timer.o" -MT"source/Timer.d" -o "source/Timer.o" "../source/Timer.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/hardware.d" -MT"SDK/startup/hardware.o" -MT"SDK/startup/hardware.d" -o "SDK/startup/hardware.o" "../SDK/startup/hardware.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/main.d" -MT"SDK/startup/main.o" -MT"SDK/startup/main.d" -o "SDK/startup/main.o" "../SDK/startup/main.c"
+Building file: ../SDK/startup/startup_mk64f12.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/semihost_hardfault.d" -MT"SDK/startup/semihost_hardfault.o" -MT"SDK/startup/semihost_hardfault.d" -o "SDK/startup/semihost_hardfault.o" "../SDK/startup/semihost_hardfault.c"
+Building file: ../SDK/CMSIS/system_MK64F12.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/startup_mk64f12.d" -MT"SDK/startup/startup_mk64f12.o" -MT"SDK/startup/startup_mk64f12.d" -o "SDK/startup/startup_mk64f12.o" "../SDK/startup/startup_mk64f12.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/CMSIS/system_MK64F12.d" -MT"SDK/CMSIS/system_MK64F12.o" -MT"SDK/CMSIS/system_MK64F12.d" -o "SDK/CMSIS/system_MK64F12.o" "../SDK/CMSIS/system_MK64F12.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:62:11: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+           ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:121:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/App.c
+ 
+Finished building: ../source/Timer.c
+Finished building: ../SDK/startup/semihost_hardfault.c
+ 
+ 
+Finished building: ../SDK/startup/startup_mk64f12.c
+ 
+Finished building: ../SDK/startup/hardware.c
+Finished building: ../SDK/startup/main.c
+ 
+ 
+Finished building: ../source/Posicionamiento.c
+Finished building: ../SDK/CMSIS/system_MK64F12.c
+ 
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13160 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13096	     64	  10576	  23736	   5cb8	Blink.axf
+ 
+02:21:05 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+02:21:33 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+02:26:30 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/AccelMagn_drv.c:3:10: fatal error: Led.h: No such file or directory
+ #include "Led.h"
+          ^~~~~~~
+compilation terminated.
+make: *** [source/AccelMagn_drv.o] Error 1
+make: *** Waiting for unfinished jobs....
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:63:2: error: unknown type name 'I2C_FAIL'; did you mean 'I2C_F_ICR'?
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+  ^~~~~~~~
+  I2C_F_ICR
+../source/Posicionamiento.c:63:11: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+           ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_Update':
+../source/Posicionamiento.c:86:3: warning: implicit declaration of function 'ReadAccelMagnData'; did you mean 'AccelMagn_getData'? [-Wimplicit-function-declaration]
+   ReadAccelMagnData(&accel_Read);
+   ^~~~~~~~~~~~~~~~~
+   AccelMagn_getData
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [source/Posicionamiento.o] Error 1
+02:26:58 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:185:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:63:2: error: unknown type name 'I2C_FAIL'; did you mean 'I2C_F_ICR'?
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+  ^~~~~~~~
+  I2C_F_ICR
+../source/Posicionamiento.c:63:11: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_FAIL realStatus =_mqx_ints_FXOS8700CQ_start();
+           ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_Update':
+../source/Posicionamiento.c:86:3: warning: implicit declaration of function 'ReadAccelMagnData'; did you mean 'AccelMagn_getData'? [-Wimplicit-function-declaration]
+   ReadAccelMagnData(&accel_Read);
+   ^~~~~~~~~~~~~~~~~
+   AccelMagn_getData
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [source/Posicionamiento.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../source/AccelMagn_drv.c
+ 
+02:27:42 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:63:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus =_mqx_ints_FXOS8700CQ_start();
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_Update':
+../source/Posicionamiento.c:86:3: warning: implicit declaration of function 'ReadAccelMagnData'; did you mean 'AccelMagn_getData'? [-Wimplicit-function-declaration]
+   ReadAccelMagnData(&accel_Read);
+   ^~~~~~~~~~~~~~~~~
+   AccelMagn_getData
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Posicionamiento.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13176 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+./source/Sensores.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/Sensores.c:39: multiple definition of `i2c_com'
+        FLEX_RAM:          0 GB         4 KB      0.00%
+./source/AccelMagn_drv.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/AccelMagn_drv.c:21: first defined here
+./source/Sensores.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/Sensores.c:42: multiple definition of `Buffer'
+./source/AccelMagn_drv.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/AccelMagn_drv.c:24: first defined here
+./source/Sensores.o: In function `_mqx_ints_FXOS8700CQ_start':
+C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/Sensores.c:78: multiple definition of `_mqx_ints_FXOS8700CQ_start'
+./source/AccelMagn_drv.o:C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/AccelMagn_drv.c:43: first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [Blink.axf] Error 1
+02:28:22 **** Clean-only build of configuration Debug for project Blink ****
+make -r -j8 clean 
+rm -rf  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/Sensores.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o  ./source/AccelMagn_drv.d ./source/App.d ./source/Posicionamiento.d ./source/Sensores.d ./source/SysTick.d ./source/Timer.d ./source/gpio.d ./source/i2c.d ./source/uart.d  ./SDK/startup/hardware.d ./SDK/startup/main.d ./SDK/startup/semihost_hardfault.d ./SDK/startup/startup_mk64f12.d  ./SDK/CMSIS/system_MK64F12.d  Blink.axf
+ 
+02:28:22 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+make: stat: source/gpio.o: Bad file number
+Building file: ../source/App.c
+Building file: ../source/Posicionamiento.c
+Building file: ../source/SysTick.c
+Building file: ../source/Timer.c
+Invoking: MCU C Compiler
+Building file: ../source/gpio.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+Building file: ../source/i2c.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick.d" -MT"source/SysTick.o" -MT"source/SysTick.d" -o "source/SysTick.o" "../source/SysTick.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/gpio.d" -MT"source/gpio.o" -MT"source/gpio.d" -o "source/gpio.o" "../source/gpio.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer.d" -MT"source/Timer.o" -MT"source/Timer.d" -o "source/Timer.o" "../source/Timer.c"
+Building file: ../source/uart.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/uart.d" -MT"source/uart.o" -MT"source/uart.d" -o "source/uart.o" "../source/uart.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:100:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:185:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:63:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus =_mqx_ints_FXOS8700CQ_start();
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_Update':
+../source/Posicionamiento.c:86:3: warning: implicit declaration of function 'ReadAccelMagnData'; did you mean 'AccelMagn_getData'? [-Wimplicit-function-declaration]
+   ReadAccelMagnData(&accel_Read);
+   ^~~~~~~~~~~~~~~~~
+   AccelMagn_getData
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/App.c
+ 
+Building file: ../SDK/startup/hardware.c
+Invoking: MCU C Compiler
+Finished building: ../source/Timer.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/hardware.d" -MT"SDK/startup/hardware.o" -MT"SDK/startup/hardware.d" -o "SDK/startup/hardware.o" "../SDK/startup/hardware.c"
+ 
+Building file: ../SDK/startup/main.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/main.d" -MT"SDK/startup/main.o" -MT"SDK/startup/main.d" -o "SDK/startup/main.o" "../SDK/startup/main.c"
+Finished building: ../source/AccelMagn_drv.c
+Finished building: ../source/gpio.c
+ 
+ 
+Finished building: ../source/i2c.c
+Finished building: ../source/Posicionamiento.c
+Building file: ../SDK/startup/semihost_hardfault.c
+Building file: ../SDK/startup/startup_mk64f12.c
+ 
+ 
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/semihost_hardfault.d" -MT"SDK/startup/semihost_hardfault.o" -MT"SDK/startup/semihost_hardfault.d" -o "SDK/startup/semihost_hardfault.o" "../SDK/startup/semihost_hardfault.c"
+Finished building: ../source/SysTick.c
+Invoking: MCU C Compiler
+Building file: ../SDK/CMSIS/system_MK64F12.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/startup_mk64f12.d" -MT"SDK/startup/startup_mk64f12.o" -MT"SDK/startup/startup_mk64f12.d" -o "SDK/startup/startup_mk64f12.o" "../SDK/startup/startup_mk64f12.c"
+Finished building: ../source/uart.c
+Invoking: MCU C Compiler
+ 
+ 
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/CMSIS/system_MK64F12.d" -MT"SDK/CMSIS/system_MK64F12.o" -MT"SDK/CMSIS/system_MK64F12.d" -o "SDK/CMSIS/system_MK64F12.o" "../SDK/CMSIS/system_MK64F12.c"
+Finished building: ../SDK/startup/hardware.c
+ 
+Finished building: ../SDK/startup/semihost_hardfault.c
+ 
+Finished building: ../SDK/startup/main.c
+ 
+Finished building: ../SDK/startup/startup_mk64f12.c
+ 
+Finished building: ../SDK/CMSIS/system_MK64F12.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+./source/Posicionamiento.o: In function `Position_Update':
+   PROGRAM_FLASH:       12704 B         1 MB      1.21%
+      SRAM_UPPER:       10616 B       192 KB      5.40%
+C:\Users\malem\Desktop\i2c2\i2c+main\projects\Blink\Debug/../source/Posicionamiento.c:86: undefined reference to `ReadAccelMagnData'
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+collect2.exe: error: ld returned 1 exit status
+        FLEX_RAM:          0 GB         4 KB      0.00%
+make: *** [Blink.axf] Error 1
+02:29:52 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:63:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus =_mqx_ints_FXOS8700CQ_start();
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:122:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Posicionamiento.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13184 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13120	     64	  10576	  23760	   5cd0	Blink.axf
+ 
+02:32:11 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13184 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13120	     64	  10576	  23760	   5cd0	Blink.axf
+ 
+02:38:15 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:184:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:61:41: error: expected expression before 'void'
+  I2C_STATUS realStatus = AccelMagn_init(void)
+                                         ^~~~
+../source/Posicionamiento.c:61:26: error: too many arguments to function 'AccelMagn_init'
+  I2C_STATUS realStatus = AccelMagn_init(void)
+                          ^~~~~~~~~~~~~~
+In file included from ../source/Posicionamiento.c:11:0:
+../source/AccelMagn_drv.h:35:12: note: declared here
+ I2C_STATUS AccelMagn_init(void);
+            ^~~~~~~~~~~~~~
+../source/Posicionamiento.c:63:2: error: expected ',' or ';' before 'changeCallback'
+  changeCallback = funcallback;
+  ^~~~~~~~~~~~~~
+../source/Posicionamiento.c:61:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus = AccelMagn_init(void)
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:120:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [source/Posicionamiento.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../source/AccelMagn_drv.c
+ 
+02:39:14 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:61:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus = AccelMagn_init();
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:120:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/Posicionamiento.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13184 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13120	     64	  10576	  23760	   5cd0	Blink.axf
+ 
+03:02:07 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/Posicionamiento.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:61:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus = AccelMagn_init();
+             ^~~~~~~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:120:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/Posicionamiento.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       13184 B         1 MB      1.26%
+      SRAM_UPPER:       10640 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  13120	     64	  10576	  23760	   5cd0	Blink.axf
+ 
+03:05:25 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/App.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:98:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+Finished building: ../source/App.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11904 B         1 MB      1.14%
+      SRAM_UPPER:       10632 B       192 KB      5.41%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11840	     64	  10568	  22472	   57c8	Blink.axf
+ 
+03:06:30 **** Clean-only build of configuration Debug for project Blink ****
+make -r -j8 clean 
+rm -rf  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o ./source/uart.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o  ./source/AccelMagn_drv.d ./source/App.d ./source/Posicionamiento.d ./source/SysTick.d ./source/Timer.d ./source/gpio.d ./source/i2c.d ./source/uart.d  ./SDK/startup/hardware.d ./SDK/startup/main.d ./SDK/startup/semihost_hardfault.d ./SDK/startup/startup_mk64f12.d  ./SDK/CMSIS/system_MK64F12.d  Blink.axf
+ 
+03:06:30 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/App.c
+Building file: ../source/Posicionamiento.c
+Building file: ../source/SysTick.c
+Building file: ../source/Timer.c
+Building file: ../source/gpio.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+make: stat: SDK/startup/hardware.o: Bad file number
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/App.d" -MT"source/App.o" -MT"source/App.d" -o "source/App.o" "../source/App.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Posicionamiento.d" -MT"source/Posicionamiento.o" -MT"source/Posicionamiento.d" -o "source/Posicionamiento.o" "../source/Posicionamiento.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/SysTick.d" -MT"source/SysTick.o" -MT"source/SysTick.d" -o "source/SysTick.o" "../source/SysTick.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/Timer.d" -MT"source/Timer.o" -MT"source/Timer.d" -o "source/Timer.o" "../source/Timer.c"
+Building file: ../source/i2c.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/gpio.d" -MT"source/gpio.o" -MT"source/gpio.d" -o "source/gpio.o" "../source/gpio.c"
+Invoking: MCU C Compiler
+Building file: ../SDK/startup/hardware.c
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/hardware.d" -MT"SDK/startup/hardware.o" -MT"SDK/startup/hardware.d" -o "SDK/startup/hardware.o" "../SDK/startup/hardware.c"
+../source/App.c: In function 'App_Init':
+../source/App.c:98:7: warning: unused variable 'timOK' [-Wunused-variable]
+  bool timOK = Timer_Init();
+       ^~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/Posicionamiento.c: In function 'Position_InitDrv':
+../source/Posicionamiento.c:61:13: warning: unused variable 'realStatus' [-Wunused-variable]
+  I2C_STATUS realStatus = AccelMagn_init();
+             ^~~~~~~~~~
+../source/Posicionamiento.c: In function 'Position_GetChangeEvent':
+../source/Posicionamiento.c:120:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/App.c
+ 
+Building file: ../SDK/startup/main.c
+Finished building: ../source/Timer.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/main.d" -MT"SDK/startup/main.o" -MT"SDK/startup/main.d" -o "SDK/startup/main.o" "../SDK/startup/main.c"
+ 
+Building file: ../SDK/startup/semihost_hardfault.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/semihost_hardfault.d" -MT"SDK/startup/semihost_hardfault.o" -MT"SDK/startup/semihost_hardfault.d" -o "SDK/startup/semihost_hardfault.o" "../SDK/startup/semihost_hardfault.c"
+Finished building: ../source/AccelMagn_drv.c
+Finished building: ../source/gpio.c
+ 
+ 
+Building file: ../SDK/startup/startup_mk64f12.c
+Finished building: ../source/SysTick.c
+Finished building: ../SDK/startup/hardware.c
+Finished building: ../source/Posicionamiento.c
+Building file: ../SDK/CMSIS/system_MK64F12.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/startup/startup_mk64f12.d" -MT"SDK/startup/startup_mk64f12.o" -MT"SDK/startup/startup_mk64f12.d" -o "SDK/startup/startup_mk64f12.o" "../SDK/startup/startup_mk64f12.c"
+Finished building: ../source/i2c.c
+ 
+ 
+ 
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"SDK/CMSIS/system_MK64F12.d" -MT"SDK/CMSIS/system_MK64F12.o" -MT"SDK/CMSIS/system_MK64F12.d" -o "SDK/CMSIS/system_MK64F12.o" "../SDK/CMSIS/system_MK64F12.c"
+ 
+Finished building: ../SDK/startup/semihost_hardfault.c
+ 
+Finished building: ../SDK/startup/main.c
+ 
+Finished building: ../SDK/startup/startup_mk64f12.c
+ 
+Finished building: ../SDK/CMSIS/system_MK64F12.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11440 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11376	     64	   9744	  21184	   52c0	Blink.axf
+ 
+03:08:52 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/gpio.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/gpio.d" -MT"source/gpio.o" -MT"source/gpio.d" -o "source/gpio.o" "../source/gpio.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/gpio.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11440 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11376	     64	   9744	  21184	   52c0	Blink.axf
+ 
+03:10:20 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+In file included from ../source/i2c.c:7:0:
+../source/board.h:14:10: fatal error: gpio2.h: No such file or directory
+ #include <gpio2.h>
+          ^~~~~~~~~
+compilation terminated.
+make: *** [source/i2c.o] Error 1
+03:10:56 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11440 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11376	     64	   9744	  21184	   52c0	Blink.axf
+ 
+12:32:00 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11440 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11376	     64	   9744	  21184	   52c0	Blink.axf
+ 
+13:54:48 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:488:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11320 B         1 MB      1.08%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11256	     64	   9744	  21064	   5248	Blink.axf
+ 
+13:58:54 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:480:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11320 B         1 MB      1.08%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11256	     64	   9744	  21064	   5248	Blink.axf
+ 
+14:06:49 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:480:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11320 B         1 MB      1.08%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11256	     64	   9744	  21064	   5248	Blink.axf
+ 
+14:23:29 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cInit':
+../source/i2c.c:238:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C0_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:239:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C0_SDA);
+   ^~~~~~~~
+../source/i2c.c:246:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:246:15: error: redefinition of 'port_SDA'
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+               ^~~~~~~~
+../source/i2c.c:238:15: note: previous definition of 'port_SDA' was here
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C0_SDA)];
+               ^~~~~~~~
+../source/i2c.c:247:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C1_SDA);
+   ^~~~~~~~
+../source/i2c.c:248:15: error: redefinition of 'port_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C1_SCL)];
+               ^~~~~~~~
+../source/i2c.c:240:15: note: previous definition of 'port_SCL' was here
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C0_SCL)];
+               ^~~~~~~~
+../source/i2c.c:249:12: error: redefinition of 'pin_SCL'
+   uint32_t pin_SCL = PIN2NUM(I2C1_SCL);
+            ^~~~~~~
+../source/i2c.c:241:12: note: previous definition of 'pin_SCL' was here
+   uint32_t pin_SCL = PIN2NUM(I2C0_SCL);
+            ^~~~~~~
+../source/i2c.c:254:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:254:15: error: redefinition of 'port_SDA'
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+               ^~~~~~~~
+../source/i2c.c:246:15: note: previous definition of 'port_SDA' was here
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+               ^~~~~~~~
+../source/i2c.c:255:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C2_SDA);
+   ^~~~~~~~
+../source/i2c.c:256:15: error: redefinition of 'port_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+               ^~~~~~~~
+../source/i2c.c:248:15: note: previous definition of 'port_SCL' was here
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C1_SCL)];
+               ^~~~~~~~
+In file included from ../source/board.h:14:0,
+                 from ../source/i2c.c:7:
+../source/board.h:49:31: error: 'P1' undeclared (first use in this function); did you mean 'PE'?
+ #define I2C2_SCL  PORTNUM2PIN(P1,14)
+                               ^
+../source/gpio.h:30:32: note: in definition of macro 'PIN2PORT'
+ #define PIN2PORT(p)         (((p)>>5) & 0x07)
+                                ^
+../source/board.h:49:19: note: in expansion of macro 'PORTNUM2PIN'
+ #define I2C2_SCL  PORTNUM2PIN(P1,14)
+                   ^~~~~~~~~~~
+../source/i2c.c:256:45: note: in expansion of macro 'I2C2_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+                                             ^~~~~~~~
+../source/board.h:49:31: note: each undeclared identifier is reported only once for each function it appears in
+ #define I2C2_SCL  PORTNUM2PIN(P1,14)
+                               ^
+../source/gpio.h:30:32: note: in definition of macro 'PIN2PORT'
+ #define PIN2PORT(p)         (((p)>>5) & 0x07)
+                                ^
+../source/board.h:49:19: note: in expansion of macro 'PORTNUM2PIN'
+ #define I2C2_SCL  PORTNUM2PIN(P1,14)
+                   ^~~~~~~~~~~
+../source/i2c.c:256:45: note: in expansion of macro 'I2C2_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+                                             ^~~~~~~~
+../source/i2c.c:257:12: error: redefinition of 'pin_SCL'
+   uint32_t pin_SCL = PIN2NUM(I2C2_SCL);
+            ^~~~~~~
+../source/i2c.c:249:12: note: previous definition of 'pin_SCL' was here
+   uint32_t pin_SCL = PIN2NUM(I2C1_SCL);
+            ^~~~~~~
+../source/i2c.c:257:12: warning: unused variable 'pin_SCL' [-Wunused-variable]
+   uint32_t pin_SCL = PIN2NUM(I2C2_SCL);
+            ^~~~~~~
+../source/i2c.c:256:15: warning: unused variable 'port_SCL' [-Wunused-variable]
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+               ^~~~~~~~
+../source/i2c.c:254:15: warning: unused variable 'port_SDA' [-Wunused-variable]
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+               ^~~~~~~~
+../source/i2c.c:278:3: error: 'port_SDA' undeclared (first use in this function); did you mean 'I2C2_SDA'?
+   port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
+   ^~~~~~~~
+   I2C2_SDA
+../source/i2c.c:278:17: error: 'pin_SDA' undeclared (first use in this function); did you mean 'port_SDA'?
+   port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
+                 ^~~~~~~
+                 port_SDA
+../source/i2c.c:280:3: error: 'port_SCL' undeclared (first use in this function); did you mean 'port_SDA'?
+   port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
+   ^~~~~~~~
+   port_SDA
+../source/i2c.c:280:17: error: 'pin_SCL' undeclared (first use in this function); did you mean 'pin_SDA'?
+   port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
+                 ^~~~~~~
+                 pin_SDA
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:491:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+14:24:55 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cInit':
+../source/i2c.c:238:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C0_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:239:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C0_SDA);
+   ^~~~~~~~
+../source/i2c.c:246:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:246:15: error: redefinition of 'port_SDA'
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+               ^~~~~~~~
+../source/i2c.c:238:15: note: previous definition of 'port_SDA' was here
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C0_SDA)];
+               ^~~~~~~~
+../source/i2c.c:247:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C1_SDA);
+   ^~~~~~~~
+../source/i2c.c:248:15: error: redefinition of 'port_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C1_SCL)];
+               ^~~~~~~~
+../source/i2c.c:240:15: note: previous definition of 'port_SCL' was here
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C0_SCL)];
+               ^~~~~~~~
+../source/i2c.c:249:12: error: redefinition of 'pin_SCL'
+   uint32_t pin_SCL = PIN2NUM(I2C1_SCL);
+            ^~~~~~~
+../source/i2c.c:241:12: note: previous definition of 'pin_SCL' was here
+   uint32_t pin_SCL = PIN2NUM(I2C0_SCL);
+            ^~~~~~~
+../source/i2c.c:254:3: error: a label can only be part of a statement and a declaration is not a statement
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+   ^~~~~~~~~
+../source/i2c.c:254:15: error: redefinition of 'port_SDA'
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+               ^~~~~~~~
+../source/i2c.c:246:15: note: previous definition of 'port_SDA' was here
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C1_SDA)];
+               ^~~~~~~~
+../source/i2c.c:255:3: error: expected expression before 'uint32_t'
+   uint32_t pin_SDA = PIN2NUM(I2C2_SDA);
+   ^~~~~~~~
+../source/i2c.c:256:15: error: redefinition of 'port_SCL'
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+               ^~~~~~~~
+../source/i2c.c:248:15: note: previous definition of 'port_SCL' was here
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C1_SCL)];
+               ^~~~~~~~
+../source/i2c.c:257:12: error: redefinition of 'pin_SCL'
+   uint32_t pin_SCL = PIN2NUM(I2C2_SCL);
+            ^~~~~~~
+../source/i2c.c:249:12: note: previous definition of 'pin_SCL' was here
+   uint32_t pin_SCL = PIN2NUM(I2C1_SCL);
+            ^~~~~~~
+../source/i2c.c:257:12: warning: unused variable 'pin_SCL' [-Wunused-variable]
+   uint32_t pin_SCL = PIN2NUM(I2C2_SCL);
+            ^~~~~~~
+../source/i2c.c:256:15: warning: unused variable 'port_SCL' [-Wunused-variable]
+   PORT_Type * port_SCL = portsPtrs[PIN2PORT(I2C2_SCL)];
+               ^~~~~~~~
+../source/i2c.c:254:15: warning: unused variable 'port_SDA' [-Wunused-variable]
+   PORT_Type * port_SDA = portsPtrs[PIN2PORT(I2C2_SDA)];
+               ^~~~~~~~
+../source/i2c.c:278:3: error: 'port_SDA' undeclared (first use in this function); did you mean 'I2C2_SDA'?
+   port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
+   ^~~~~~~~
+   I2C2_SDA
+../source/i2c.c:278:3: note: each undeclared identifier is reported only once for each function it appears in
+../source/i2c.c:278:17: error: 'pin_SDA' undeclared (first use in this function); did you mean 'port_SDA'?
+   port_SDA->PCR[pin_SDA] |= PORT_PCR_MUX(5); // cambia los pines a alternativa i2c
+                 ^~~~~~~
+                 port_SDA
+../source/i2c.c:280:3: error: 'port_SCL' undeclared (first use in this function); did you mean 'port_SDA'?
+   port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
+   ^~~~~~~~
+   port_SDA
+../source/i2c.c:280:17: error: 'pin_SCL' undeclared (first use in this function); did you mean 'pin_SDA'?
+   port_SCL->PCR[pin_SCL] |= PORT_PCR_MUX(5);
+                 ^~~~~~~
+                 pin_SDA
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:491:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+14:28:16 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:494:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11432 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11368	     64	   9744	  21176	   52b8	Blink.axf
+ 
+14:28:45 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+14:30:38 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:498:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11432 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11368	     64	   9744	  21176	   52b8	Blink.axf
+ 
+14:46:03 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:496:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11432 B         1 MB      1.09%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11368	     64	   9744	  21176	   52b8	Blink.axf
+ 
+15:31:23 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:493:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11512 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11448	     64	   9744	  21256	   5308	Blink.axf
+ 
+15:32:06 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+15:39:16 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:62:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:493:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11512 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11448	     64	   9744	  21256	   5308	Blink.axf
+ 
+15:47:34 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:494:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11504 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11440	     64	   9744	  21248	   5300	Blink.axf
+ 
+15:47:52 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+15:49:06 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:63:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:494:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11504 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11440	     64	   9744	  21248	   5300	Blink.axf
+ 
+15:51:01 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c:22:0: warning: "I2C_SLAVE_ADDRESS_R" redefined
+ #define I2C_SLAVE_ADDRESS_R(slave_addr)  ((i2c_com->slave_addr << 1) & 0b11111110)
+ 
+../source/i2c.c:21:0: note: this is the location of the previous definition
+ #define I2C_SLAVE_ADDRESS_R(slave_addr)  ((i2c_com->slave_addr << 1) | 0b00000001)
+ 
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:64:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_StartCommunication':
+../source/i2c.c:308:22: warning: implicit declaration of function 'I2C_SLAVE_ADDRESS_W'; did you mean 'I2C_SLAVE_ADDRESS_R'? [-Wimplicit-function-declaration]
+   device_address_w = I2C_SLAVE_ADDRESS_W(slave_address);//(i2c_com->slave_address << 1) & 0b11111110;
+                      ^~~~~~~~~~~~~~~~~~~
+                      I2C_SLAVE_ADDRESS_R
+../source/i2c.c:308:42: error: 'slave_address' undeclared (first use in this function); did you mean 'device_address_w'?
+   device_address_w = I2C_SLAVE_ADDRESS_W(slave_address);//(i2c_com->slave_address << 1) & 0b11111110;
+                                          ^~~~~~~~~~~~~
+                                          device_address_w
+../source/i2c.c:308:42: note: each undeclared identifier is reported only once for each function it appears in
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:495:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+15:52:23 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:64:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:495:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11512 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11448	     64	   9744	  21256	   5308	Blink.axf
+ 
+16:08:27 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/i2c.c: In function 'I2C0_IRQHandler':
+../source/i2c.c:64:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:495:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11512 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11448	     64	   9744	  21256	   5308	Blink.axf
+ 
+16:42:49 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cWriteMsgBlocking':
+../source/i2c.c:346:27: error: 'ch' undeclared (first use in this function)
+  NVIC_DisableIRQ(i2c_irqs[ch]);
+                           ^~
+../source/i2c.c:346:27: note: each undeclared identifier is reported only once for each function it appears in
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:447:27: error: 'ch' undeclared (first use in this function)
+  NVIC_DisableIRQ(i2c_irqs[ch]);
+                           ^~
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../source/AccelMagn_drv.c
+ 
+16:44:00 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cWriteMsgBlocking':
+../source/i2c.c:437:26: error: 'ch' undeclared (first use in this function)
+  NVIC_EnableIRQ(i2c_irqs[ch]);
+                          ^~
+../source/i2c.c:437:26: note: each undeclared identifier is reported only once for each function it appears in
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:447:27: error: 'ch' undeclared (first use in this function)
+  NVIC_DisableIRQ(i2c_irqs[ch]);
+                           ^~
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+16:44:54 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c:592:26: error: 'ch' undeclared (first use in this function)
+  NVIC_EnableIRQ(i2c_irqs[ch]);
+                          ^~
+../source/i2c.c:592:26: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [source/i2c.o] Error 1
+16:45:42 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c:592:26: error: 'ch' undeclared (first use in this function)
+  NVIC_EnableIRQ(i2c_irqs[ch]);
+                          ^~
+../source/i2c.c:592:26: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [source/i2c.o] Error 1
+16:47:14 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:512:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11544 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11480	     64	   9744	  21288	   5328	Blink.axf
+ 
+16:57:11 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:94:16: error: 'I2C_STATE_WRITE_DATA' undeclared (first use in this function); did you mean 'I2C_STATE_NONE'?
+        state = I2C_STATE_WRITE_DATA;
+                ^~~~~~~~~~~~~~~~~~~~
+                I2C_STATE_NONE
+../source/i2c.c:94:16: note: each undeclared identifier is reported only once for each function it appears in
+../source/i2c.c:135:15: error: 'I2C_STATE_WRITE_DEV_ADDRESS_R' undeclared (first use in this function); did you mean 'I2C_STATE_WRITE_DATA'?
+       state = I2C_STATE_WRITE_DEV_ADDRESS_R;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               I2C_STATE_WRITE_DATA
+../source/i2c.c:150:15: error: 'I2C_STATE_READ_DUMMY_DATA' undeclared (first use in this function); did you mean 'I2C_R_DUMMY_DATA'?
+       state = I2C_STATE_READ_DUMMY_DATA;
+               ^~~~~~~~~~~~~~~~~~~~~~~~~
+               I2C_R_DUMMY_DATA
+../source/i2c.c:172:15: error: 'I2C_STATE_READ_DATA' undeclared (first use in this function); did you mean 'I2C_STATE_WRITE_DATA'?
+       state = I2C_STATE_READ_DATA;
+               ^~~~~~~~~~~~~~~~~~~
+               I2C_STATE_WRITE_DATA
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:509:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../source/AccelMagn_drv.c
+ 
+17:05:59 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:509:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11544 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11480	     64	   9744	  21288	   5328	Blink.axf
+ 
+17:08:35 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: At top level:
+../source/i2c.c:208:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:503:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+17:12:35 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:491:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11560 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11496	     64	   9744	  21304	   5338	Blink.axf
+ 
+17:17:10 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:119:2: error: expected '}' before 'else'
+  else if (mode == I2C_R)
+  ^~~~
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:476:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+make: *** [source/i2c.o] Error 1
+17:18:03 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:81:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:477:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+17:22:37 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:83:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:479:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+18:26:32 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+18:27:37 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+19:26:44 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/i2c.c
+Building file: ../source/AccelMagn_drv.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/AccelMagn_drv.c: In function 'AccelMagn_init':
+../source/AccelMagn_drv.c:80:2: warning: implicit declaration of function 'I2C_WriteMsg'; did you mean 'i2cWriteMsg'? [-Wimplicit-function-declaration]
+  I2C_WriteMsg(&i2c_com);
+  ^~~~~~~~~~~~
+  i2cWriteMsg
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/AccelMagn_drv.c:197:2: warning: implicit declaration of function 'I2C_ReadMsg'; did you mean 'i2cReadMsg'? [-Wimplicit-function-declaration]
+  I2C_ReadMsg(&i2c_com);
+  ^~~~~~~~~~~
+  i2cReadMsg
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+Finished building: ../source/i2c.c
+Finished building: ../source/AccelMagn_drv.c
+ 
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+19:27:03 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+make: Nothing to be done for `all'.
+19:28:18 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+19:30:36 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 

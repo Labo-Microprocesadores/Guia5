@@ -60,7 +60,6 @@ void I2C0_IRQHandler(void)
 {
 	I2C_CLEAR_IRQ_FLAG;
 	uint8_t dummy_data;
-
 	switch(mode)
 	{
 		case(I2C_MODE_READ):
@@ -73,14 +72,12 @@ void I2C0_IRQHandler(void)
 					{
 						stage = I2C_STAGE_WRITE_DEV_ADDRESS_R;
 						I2C_WRITE_BYTE(i2c_com->register_address);
-
 					}
 					else
 					{
 						finish_com(I2C_SLAVE_ERROR);
 					}
 					break;
-
 				}
 				case I2C_STAGE_WRITE_DEV_ADDRESS_R:
 				{
@@ -99,21 +96,15 @@ void I2C0_IRQHandler(void)
 				}
 				case I2C_STAGE_READ_DUMMY_DATA:
 				{
-
 					if(I2C_GET_RX_ACK == 0)// me llego un ACK
 					{
 						stage = I2C_STAGE_READ_DATA;
 						I2C_SET_RX_MODE;
-
-
 						if(data_index == i2c_com->data_size-1) //voy a leer mi último dato
 						{
 							I2C_SET_NACK;
 						}
-
 						dummy_data = I2C_READ_BYTE;
-
-
 					}
 					else
 					{
@@ -125,9 +116,7 @@ void I2C0_IRQHandler(void)
 				{
 					if(data_index == i2c_com->data_size-1)
 					{
-
 						finish_com(I2C_NO_FAULT);
-
 					}
 					else
 					{
@@ -135,18 +124,14 @@ void I2C0_IRQHandler(void)
 						{
 							I2C_SET_NACK;
 						}
-
-
 					i2c_com->data[data_index] = I2C_READ_BYTE;
 					data_index++;
 
 					}
-
 					break;
 				}
 				default:
 					break;
-
 			}
 			break;
 		}

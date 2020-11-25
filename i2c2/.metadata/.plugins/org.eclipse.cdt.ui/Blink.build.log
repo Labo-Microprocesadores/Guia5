@@ -1,0 +1,43 @@
+19:30:36 **** Incremental Build of configuration Debug for project Blink ****
+make -r -j8 all 
+Building file: ../source/AccelMagn_drv.c
+Building file: ../source/i2c.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/AccelMagn_drv.d" -MT"source/AccelMagn_drv.o" -MT"source/AccelMagn_drv.d" -o "source/AccelMagn_drv.o" "../source/AccelMagn_drv.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DCPU_MK64FN1M0VLL12 -D__USE_CMSIS -DDEBUG -I../source -I../ -I../SDK/CMSIS -I../SDK/startup -O0 -fno-common -g3 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -MMD -MP -MF"source/i2c.d" -MT"source/i2c.o" -MT"source/i2c.d" -o "source/i2c.o" "../source/i2c.c"
+../source/i2c.c: In function 'i2cReadMsgBlocking':
+../source/i2c.c:299:14: warning: unused variable 'dummy_data' [-Wunused-variable]
+      uint8_t dummy_data = I2C_READ_BYTE;
+              ^~~~~~~~~~
+../source/i2c.c: In function 'I2C_Handler':
+../source/i2c.c:453:10: warning: variable 'dummy_data' set but not used [-Wunused-but-set-variable]
+  uint8_t dummy_data;
+          ^~~~~~~~~~
+../source/AccelMagn_drv.c: In function 'AccelMagn_getData':
+../source/AccelMagn_drv.c:192:19: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  i2c_com.callback = AccelMagn_readSensors;
+                   ^
+Finished building: ../source/AccelMagn_drv.c
+ 
+Finished building: ../source/i2c.c
+ 
+Building target: Blink.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T "Blink_Debug.ld" -o "Blink.axf"  ./source/AccelMagn_drv.o ./source/App.o ./source/Posicionamiento.o ./source/SysTick.o ./source/Timer.o ./source/gpio.o ./source/i2c.o  ./SDK/startup/hardware.o ./SDK/startup/main.o ./SDK/startup/semihost_hardfault.o ./SDK/startup/startup_mk64f12.o  ./SDK/CMSIS/system_MK64F12.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:       11552 B         1 MB      1.10%
+      SRAM_UPPER:        9808 B       192 KB      4.99%
+      SRAM_LOWER:          0 GB        64 KB      0.00%
+        FLEX_RAM:          0 GB         4 KB      0.00%
+Finished building target: Blink.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "Blink.axf"; # arm-none-eabi-objcopy -v -O binary "Blink.axf" "Blink.bin" ; # checksum -p MK64FN1M0xxx12 -d "Blink.bin";
+   text	   data	    bss	    dec	    hex	filename
+  11488	     64	   9744	  21296	   5330	Blink.axf
+ 
+
+19:30:37 Build Finished (took 830ms)
+

@@ -44,7 +44,7 @@ void callback_init (void);
 //I2C_STATUS AccelMagn_init(void)
 I2C_STATUS _mqx_ints_FXOS8700CQ_start(void)
 {
-	Led_Toggle(LED_RED);
+	//Led_Toggle(LED_RED);
 	i2cInit(I2C_0);
 	uint8_t databyte;
 
@@ -59,7 +59,7 @@ I2C_STATUS _mqx_ints_FXOS8700CQ_start(void)
 		//Led_Toggle(LED_RED);
 		return (I2C_ERROR);
 	}
-	Led_Toggle(LED_RED);
+	//Led_Toggle(LED_RED);
 
 	// write 0000 0000 = 0x00 to accelerometer control register 1 to place FXOS8700CQ into standby
 	// [7-1] = 0000 000

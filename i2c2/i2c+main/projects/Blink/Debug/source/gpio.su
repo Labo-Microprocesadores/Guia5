@@ -1,0 +1,11 @@
+gpio.c:17:9:PORTD_IRQHandler	24	static
+gpio.c:29:9:PORTA_IRQHandler	24	static
+gpio.c:41:9:PORTB_IRQHandler	24	static
+gpio.c:53:9:PORTE_IRQHandler	24	static
+gpio.c:66:9:PORTC_IRQHandler	24	static
+gpio.c:78:6:gpioMode	32	static
+gpio.c:120:6:gpioWrite	32	static
+gpio.c:135:6:gpioToggle	32	static
+gpio.c:151:6:gpioRead	32	static
+gpio.c:166:6:gpioIRQ	24	static
+gpio.c:177:6:PORT_ClearInterruptFlag	24	static

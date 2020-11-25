@@ -66,7 +66,7 @@ static read_data accel_Read;
 /* Función que se llama 1 vez, al comienzo del programa */
 void App_Init(void)
 {
-	Led_Init();
+	//Led_Init();
 	I2C_STATUS realStatus = _mqx_ints_FXOS8700CQ_start();//AccelMagn_init();
 	uart_cfg_t config = {9600, UART_PARITY_NONE, UART_DATA_BITS_8, UART_STOP_BITS_1};
 	UART_init(0, config);
