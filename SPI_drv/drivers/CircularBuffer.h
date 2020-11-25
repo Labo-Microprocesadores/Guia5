@@ -12,6 +12,7 @@
 //                             Included header files                           //
 /////////////////////////////////////////////////////////////////////////////////
 #include <stdbool.h>
+#include <stdint.h>
 
 /////////////////////////////////////////////////////////////////////////////////
 //                    Enumerations, structures and typedefs                    //
@@ -22,8 +23,8 @@
  */
 typedef struct
 {
-	void * const buffer;     /** Pointer to statically reserved memory array. */
-	void * const buffer_end; /** Pointer to end of the array. */
+	void * buffer;     /** Pointer to statically reserved memory array. */
+	void * buffer_end; /** Pointer to end of the array. */
 	void * head;	         /** Pointer to the head of the buffer. */
 	void * tail;	         /** Pointer to the tail of the buffer. */
 	int capacity;            /** Maximum number of elements in the buffer. */

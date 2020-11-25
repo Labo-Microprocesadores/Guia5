@@ -17,16 +17,16 @@ uint16_t recieveBuffer[RX_QUEUE_SIZE];  // Buffer for rx
 
 static void turnTheWheel(SPI_Instance_t instance);
 
-__ISR__  SPI0_IRQn(void);
-__ISR__  SPI1_IRQn(void);
-__ISR__  SPI2_IRQn(void);
+__ISR__  SPI0_IRQ_Callback(void);
+__ISR__  SPI1_IRQ_Callback(void);
+__ISR__  SPI2_IRQ_Callback(void);
+static void SPI_IRQHandler(SPI_Instance_t instance);
+static void SPI_EOQFDispatcher(SPI_Instance_t instance);
+static void SPI_RFDFDispatcher(SPI_Instance_t instance);
 
 //*Creates the array of spis and sets on the default value
-static SPI_Instance_t *SPIs[] = SPI_BASE_ADDRS;
+static SPI_Type *SPIs[] = SPI_BASE_ADDRS;
 
-static SPI_onTransferCompleteCallback transferCallback;
-// Bytes left in current transfer
-static uint8_t bytesLeft;
 
 typedef struct
 {
@@ -167,7 +167,7 @@ bool SPI_SendMessage(SPI_Instance_t instance, SPI_PCSignal_t pcsSignal, const ui
             bool reachedFifoSize = false; //untilFifoSizeCounter reached fifoSize.
             bool eoq = false;             //eoq flag to send.
 
-            if (++untilFifoSizeCounter == SPIs[instance].hwFifoSize)
+            if (++untilFifoSizeCounter == SPIs[instance]->hwFifoSize)
             {
                 reachedFifoSize = true;
                 untilFifoSizeCounter = 0; //Reinitiates counter.
@@ -195,7 +195,7 @@ static void turnTheWheel(SPI_Instance_t instance)
 {
     while ((SPIs[instance]->SR & SPI_SR_TFFF_MASK) && !isEmpty(&txCircularBuffer))
     {
-        uint32_t bufferData;
+    	SPI_Data_t bufferData;
         if (pop(&txCircularBuffer, &bufferData))
         {
             SPIs[instance]->PUSHR = SPI_PUSHR_CONT(1) | SPI_PUSHR_CTAS(0b000) | SPI_PUSHR_EOQ(bufferData.eoq) |
@@ -208,17 +208,17 @@ static void turnTheWheel(SPI_Instance_t instance)
 
 //TODO: CAMBIAR DESDE ACA
 
-__ISR__  SPI0_IRQn(void)
+__ISR__  SPI0_IRQ_Callback(void)
 {
   SPI_IRQHandler(SPI_0);
 }
 
-__ISR__  SPI1_IRQn(void)
+__ISR__  SPI1_IRQ_Callback(void)
 {
   SPI_IRQHandler(SPI_1);
 }
 
-__ISR__  SPI2_IRQn(void)
+__ISR__  SPI2_IRQ_Callback(void)
 {
   SPI_IRQHandler(SPI_2); 
 }
@@ -246,7 +246,7 @@ static void SPI_IRQHandler(SPI_Instance_t instance)
 static void SPI_EOQFDispatcher(SPI_Instance_t instance)
 {
   if (isEmpty(&(spiInstances[id].txQueue))) //if there's nothing else to send
-  {1
+  {
     SPIs[instance]->MCR = (SPIs[instance]->MCR & ~SPI_MCR_HALT_MASK) | SPI_MCR_HALT(1); //stop transmission!
     SPIs[instance].transferComplete = true;
   }
