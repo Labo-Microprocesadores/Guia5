@@ -120,6 +120,9 @@ typedef struct
     uint32_t baudRate;
 } SPI_MasterConfig_t;
 
+
+
+
 void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config);
 
 typedef void (*SPI_onTransferCompleteCallback)(void);
