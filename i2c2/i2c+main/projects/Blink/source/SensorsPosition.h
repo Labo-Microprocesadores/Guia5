@@ -1,61 +1,56 @@
 /*
- * Posicionamiento.h
+ * SensorsPosition.h
  *
- *  Created on: 20 Sep 2019
- *      Author: Marcelo
+ *  Created on: 23 Nov 2020
+ *      Author: Grupo 2 - Labo de Micros
  */
 
-#ifndef POSICIONAMIENTO_H_
-#define POSICIONAMIENTO_H_
+#ifndef SENSORS_POSITION_H_
+#define SENSORS_POSITION_H_
 
 #include <stdint.h>
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
-typedef int16_t roll_t;			// Rolido
-typedef	int16_t pitching_t;		// Cabeceo
-typedef int16_t orientation_t;	// Orientacion
 
-#define ROLL_EVENT 1
-#define PITCHING_EVENT 2
-#define ORIENTATION_EVENT 3
+typedef enum {ROLL, PITCH, YAW} SensorsPosition_Angles_t;
 
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
 /**
- * @brief Initializes drivers for roll, pitching and orientation measures.
+ * @brief Initializes drivers for roll, pitching and yaw measures.
  */
-void Position_InitDrv(void (*funcallback)(void));
+void SensorsPosition_Init(void (*funcallback)(void));
 
 /**
  * @brief updates sensors internal data. (PASAR COMO CALLBACK)
  */
-void Position_Update(void);
+void SensorsPosition_ReadAccelerometer(void);
 
 /**
  * @brief calculates the new rolling angle from the last aceleration data.
  * @return roll angle.
  */
-roll_t Position_GetRoll(void);
+int16_t SensorsPosition_GetRollAngle(void);
 
 /**
  * @brief calculates the new pitching angle from the last aceleration data.
  * @return pitching angle.
  */
-pitching_t Position_GetPitch(void);
+int16_t SensorsPosition_GetPitchAngle(void);
 
 /**
- * @brief calculates the new orientation from the last magnetometer data.
- * @return orientation angle.
+ * @brief calculates the new yaw from the last magnetometer data.
+ * @return yaw angle.
  */
-orientation_t Position_GetOrientation(void);
+int16_t SensorsPosition_GetYawAngle(void);
 
 /**
  * @brief gets the parameter that changed.
  * @return parameter_EVENT.
  */
-int Position_GetChangeEvent(void);
+SensorsPosition_Angles_t SensorsPosition_GetChangedAngle(void);
 
-#endif /* POSICIONAMIENTO_H_ */
+#endif /* SENSORS_POSITION_H_ */

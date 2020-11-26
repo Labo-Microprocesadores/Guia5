@@ -6,7 +6,7 @@
 C_SRCS += \
 ../source/AccelMagn_drv.c \
 ../source/App.c \
-../source/Posicionamiento.c \
+../source/SensorsPosition.c \
 ../source/SysTick.c \
 ../source/Timer.c \
 ../source/gpio.c \
@@ -15,7 +15,7 @@ C_SRCS += \
 OBJS += \
 ./source/AccelMagn_drv.o \
 ./source/App.o \
-./source/Posicionamiento.o \
+./source/SensorsPosition.o \
 ./source/SysTick.o \
 ./source/Timer.o \
 ./source/gpio.o \
@@ -24,7 +24,7 @@ OBJS += \
 C_DEPS += \
 ./source/AccelMagn_drv.d \
 ./source/App.d \
-./source/Posicionamiento.d \
+./source/SensorsPosition.d \
 ./source/SysTick.d \
 ./source/Timer.d \
 ./source/gpio.d \
