@@ -20,6 +20,8 @@ typedef struct
 	bool valueChanged;
 }SensorsPosition_AngleData_t;
 
+
+
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
@@ -34,7 +36,7 @@ SensorsPosition_AngleData_t yaw ={.currentValue = 0, .previousValue = 0, .valueC
 static read_data sensorsData;
 static bool isReading = false;
 
-void (*__onAngleChangedCallback)(void);
+void (*_onAngleChangedCallback)(void);
 
 
 /*******************************************************************************
@@ -61,22 +63,28 @@ void SensorsPosition_Init(void (*onAngleChangedCallback)(void)){
 
 static void callback_updatePos (void)
 {
-	if (!sensorsData.error == I2C_OK)
+	if (sensorsData.error != I2C_OK)
 	{
 		isReading = false;
 		return;
 	}
 	Position_CalculateRoll();
-	Position_CalculatePitching();
+	Position_CalculatePitch();
 	Position_CalculateYaw();
 }
 
-void SensorsPosition_ReadAccelerometer(void)
+SensorsPosition_EulerAngles_t SensorsPosition_GetEulerAngles(void)
+{
+	SensorsPosition_EulerAngles_t angles = {.roll = roll.currentValue, .yaw = yaw.currentValue, .pitch = pitch.currentValue};
+	return angles;
+}
+
+void SensorsPosition_ReadData(void)
 {
 	if (isReading)
 		return;
+	isReading = true;
 	AccelMagn_getData(&sensorsData);
-
 }
 
 int16_t SensorsPosition_GetRollAngle(void)
@@ -111,6 +119,7 @@ SensorsPosition_Angles_t SensorsPosition_GetChangedAngle(void)
 		yaw.valueChanged = false;
 		return YAW;
 	}
+	return -1;
 }
 
 static void Position_CalculateRoll(void)
@@ -155,7 +164,6 @@ static void Position_CalculateYaw(void)
 		yaw.currentValue =  (int)180*atan((float)magnetometerCoordinates.y/ (float)magnetometerCoordinates.x)/M_PI;
 	else
 		yaw.currentValue = 90;
-
 
 	int diference = fabsf(fabsf(yaw.previousValue) - fabsf(yaw.currentValue));
 

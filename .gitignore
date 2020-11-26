@@ -38,3 +38,9 @@ i2c2/i2c+main/projects/Blink/Debug/source/SysTick.o
 i2c2/i2c+main/projects/Blink/Debug/source/Timer.d
 i2c2/i2c+main/projects/Blink/Debug/source/Timer.o
 i2c2/i2c+main/projects/Blink/Debug/sources.mk
+i2c2/i2c+main/projects/Blink/source/App.c
+i2c2/i2c+main/projects/Blink/Debug/source/SensorsPosition.o
+i2c2/i2c+main/projects/Blink/Debug/source/SensorsPosition.d
+i2c2/i2c+main/projects/Blink/Debug/Blink_Debug_memory.ld
+i2c2/i2c+main/projects/Blink/Debug/Blink_Debug_library.ld
+i2c2/i2c+main/projects/Blink/Debug/Blink_Debug.ld

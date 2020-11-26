@@ -8,7 +8,7 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 
-#include "Posicionamiento.h"
+#include "SensorsPosition.h"
 #include "Timer.h"
 
 

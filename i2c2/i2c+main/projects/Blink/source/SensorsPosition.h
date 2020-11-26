@@ -14,42 +14,52 @@
  ******************************************************************************/
 
 typedef enum {ROLL, PITCH, YAW} SensorsPosition_Angles_t;
-
+typedef struct
+{
+	int16_t roll, pitch, yaw;
+}SensorsPosition_EulerAngles_t;
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
 /**
- * @brief Initializes drivers for roll, pitching and yaw measures.
+ * @brief Initializes the driver.
+ * param onAngleChangedCallback callback to be called when an angle changes. A change is determined by a difference of at least 5 degrees from the last measurement.
  */
-void SensorsPosition_Init(void (*funcallback)(void));
+void SensorsPosition_Init(void (*onAngleChangedCallback)(void));
 
 /**
- * @brief updates sensors internal data. (PASAR COMO CALLBACK)
+ * @brief Get roll, pitch and yaw angles.
  */
-void SensorsPosition_ReadAccelerometer(void);
+SensorsPosition_EulerAngles_t SensorsPosition_GetEulerAngles(void);
+
 
 /**
- * @brief calculates the new rolling angle from the last aceleration data.
- * @return roll angle.
+ * @brief Reads the data from magnetometer and accelerometer sensors.
+ */
+void SensorsPosition_ReadData(void);
+
+/**
+ * @brief Returns the "roll" angle.
+ * @return roll angle. -180 to +180
  */
 int16_t SensorsPosition_GetRollAngle(void);
 
 /**
- * @brief calculates the new pitching angle from the last aceleration data.
- * @return pitching angle.
+ * @brief Returns the "pitch" angle.
+ * @return pitch angle. -90 to +90
  */
 int16_t SensorsPosition_GetPitchAngle(void);
 
 /**
- * @brief calculates the new yaw from the last magnetometer data.
- * @return yaw angle.
+ * @brief Returns the "yaw" angle.
+ * @return yaw angle. -180 to +180
  */
 int16_t SensorsPosition_GetYawAngle(void);
 
 /**
- * @brief gets the parameter that changed.
- * @return parameter_EVENT.
+ * @brief returns the angle that has changed. A change is determined by a difference of at least 5 degrees from the last measurement.
+ * @return SensorsPosition_Angles_t angle.
  */
 SensorsPosition_Angles_t SensorsPosition_GetChangedAngle(void);
 
