@@ -121,9 +121,15 @@ SensorsPosition_Angles_t SensorsPosition_GetChangedAngle(void)
 static void Position_CalculateRoll(void)
 {
 	uint8_t clock_type;
-	int tita;
+	int theta;
 
-	if(accelerometerCoordinates.x < 0){
+	if (accelerometerCoordinates.x != 0)
+		theta = (int)180*atan((float)accelerometerCoordinates.z/ (float)accelerometerCoordinates.x)/M_PI;
+	else
+		theta = 90;
+
+
+	/*if(accelerometerCoordinates.x < 0){
 		clock_type = CLOCKWISE;
 	}else if(accelerometerCoordinates.x > 0){
 		clock_type = COUNTER_CLOCKWISE;
@@ -133,23 +139,23 @@ static void Position_CalculateRoll(void)
 
 	if(clock_type != ZERO){
 
-		tita = (int)180*atan((float)accelerometerCoordinates.z/ (float)accelerometerCoordinates.x)/M_PI;
+		theta = (int)180*atan((float)accelerometerCoordinates.z/ (float)accelerometerCoordinates.x)/M_PI;
 
 	}else{
-		tita = 90;
-	}
+		theta = 90;
+	}*/
 
 	switch (clock_type) {
 		case CLOCKWISE:
 			if(accelerometerCoordinates.z != 0){
-				previousRoll = - 90 - tita;
+				previousRoll = - 90 - theta;
 			}else{
 				previousRoll = - 90;
 			}
 			break;
 		case COUNTER_CLOCKWISE:
 			if(accelerometerCoordinates.z != 0){
-				previousRoll = 90 - tita;
+				previousRoll = 90 - theta;
 			}else{
 				previousRoll = 90;
 			}
@@ -159,7 +165,7 @@ static void Position_CalculateRoll(void)
 			if(accelerometerCoordinates.z > 0){
 				previousRoll = 0;
 			}else if(accelerometerCoordinates.z < 0){
-				previousRoll = 180; // Por defecto, podria ser tambien
+				previousRoll = 180;
 			}
 			break;
 	}
@@ -177,7 +183,7 @@ static void Position_CalculateRoll(void)
 static void Position_CalculatePitching(void)
 {
 	uint8_t clock_type;
-	int tita;
+	int theta;
 
 	if(accelerometerCoordinates.y < 0){
 		clock_type = CLOCKWISE;
@@ -189,23 +195,23 @@ static void Position_CalculatePitching(void)
 
 	if(clock_type != ZERO){
 
-		tita = (int)180*atan((float)accelerometerCoordinates.z/ (float)accelerometerCoordinates.y)/M_PI;
+		theta = (int)180*atan((float)accelerometerCoordinates.z/ (float)accelerometerCoordinates.y)/M_PI;
 
 	}else{
-		tita = 90;
+		theta = 90;
 	}
 
 	switch (clock_type) {
 		case CLOCKWISE:
 			if(accelerometerCoordinates.z != 0){
-				previousPitch = - 90 - tita;
+				previousPitch = - 90 - theta;
 			}else{
 				previousPitch = - 90;
 			}
 			break;
 		case COUNTER_CLOCKWISE:
 			if(accelerometerCoordinates.z != 0){
-				previousPitch = 90 - tita;
+				previousPitch = 90 - theta;
 			}else{
 				previousPitch = 90;
 			}
@@ -233,7 +239,7 @@ static void Position_CalculateYaw(void)
 {
 
 	uint8_t clock_type;
-	int tita;
+	int theta;
 
 	if(magentometerCoordinates.y < 0){
 		clock_type = CLOCKWISE;
@@ -245,36 +251,36 @@ static void Position_CalculateYaw(void)
 
 	if(clock_type != ZERO){
 
-		tita = (int)180*atan((float)magentometerCoordinates.y/ (float)magentometerCoordinates.x)/M_PI;
+		theta = (int)180*atan((float)magentometerCoordinates.y/ (float)magentometerCoordinates.x)/M_PI;
 
 	}else{
-		tita = 90;
+		theta = 90;
 	}
 
 	switch (clock_type) {
 		case CLOCKWISE:
 			if(magentometerCoordinates.x > 0){
-				previousYaw = - 90 + tita;
+				previousYaw = - 90 + theta;
 			}else if(magentometerCoordinates.x < 0){
-				previousYaw = 90 + tita;
+				previousYaw = 90 + theta;
 			}else{
 				previousYaw = 180;
 			}
 			break;
 		case COUNTER_CLOCKWISE:
 			if(magentometerCoordinates.x < 0){
-				previousYaw = 90 + tita;
+				previousYaw = 90 + theta;
 			}else if(magentometerCoordinates.x > 0){
-				previousYaw = - 90 + tita;
+				previousYaw = - 90 + theta;
 			}else{
 				previousYaw = 0;
 			}
 			break;
 		case ZERO:
 			if(magentometerCoordinates.x < 0){
-				previousYaw = tita;
+				previousYaw = theta;
 			}else if(magentometerCoordinates.x > 0){
-				previousYaw = 0 - tita; // Por defecto, podria ser tambien
+				previousYaw = 0 - theta; // Por defecto, podria ser tambien
 			}
 			break;
 	}
