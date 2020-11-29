@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include "stdbool.h"
 
-
-
 // Clock polarity
 typedef enum
 {
@@ -65,7 +63,7 @@ typedef enum
     SPI_PCS_1,
     SPI_PCS_2,
     SPI_PCS_3,
-    SPI_PCS_4 ,
+    SPI_PCS_4,
     SPI_PCS_5
 } SPI_PCSignal_t;
 
@@ -119,7 +117,6 @@ typedef struct
     uint8_t clockDelayScaler;
     uint32_t baudRate;
 } SPI_MasterConfig_t;
-
 
 uint8_t spi_transaction(uint8_t *data_ptr, uint8_t len, uint8_t *recieve_ptr);
 
