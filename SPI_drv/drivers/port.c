@@ -31,7 +31,7 @@ void PORT_GetPinDefaultConfig(PORT_Config * config)
 
 void PORT_PinConfig (PORT_Instance n, uint32_t pin, PORT_Config *config, PORT_Mux mux)
 {
-	ASSERT(n<FSL_FEATURE_SOC_PORT_COUNT);
+	//ASSERT(n<FSL_FEATURE_SOC_PORT_COUNT);
 
 	//* Clock gating
 	uint32_t PORT_SCG[] = {SIM_SCGC5_PORTA_MASK, 

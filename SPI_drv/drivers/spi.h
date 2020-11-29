@@ -55,8 +55,8 @@ typedef enum
 
 typedef enum
 {
-    SPI_SS_POLARITY_ACTIVE_HIGH,
-    SPI_SS_POLARITY_ACTIVE_LOW,
+    SPI_SS_POLARITY_ACTIVE_HIGH = 0x3F,
+    SPI_SS_POLARITY_ACTIVE_LOW = 0x00,
 } SPI_SlaveSelectPolarity_t;
 
 typedef enum
@@ -121,7 +121,7 @@ typedef struct
 } SPI_MasterConfig_t;
 
 
-
+uint8_t spi_transaction(uint8_t *data_ptr, uint8_t len, uint8_t *recieve_ptr);
 
 void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config);
 
