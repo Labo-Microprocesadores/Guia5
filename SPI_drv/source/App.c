@@ -8,7 +8,7 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 #include "board.h"
-#include "Timer.h"
+#include "SysTick.h"
 #include "spi.h"
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
@@ -47,7 +47,12 @@
 
  *  */
 
-
+void send(void)
+{
+	static uint8_t recive[100];
+	static uint8_t send[] = {21};
+	spi_transaction(send, sizeof(send), recive);
+}
 /*******************************************************************************
  *******************************************************************************
                         FUNCTION DEFINITIONS
@@ -62,22 +67,21 @@ void App_Init(void)
 			SPI_BIT_ORDER_MSB_FIRST, 1000, 1000, 15000};
 	SPI_MasterInit(SPI_0, &config);
 
-
-
+	SysTick_Init();
+	SysTick_AddCallback(&send,10);
 }
 
 /* Función que se llama constantemente en un ciclo infinito */
 void App_Run(void)
 {
-	static bool var = true;
-	static uint8_t recive[100];
-	static uint8_t send[] = {21, 40};
+	/*static bool var = true;
+
 	if(var)
 	{
 		//bool ret =  SPI_SendMessage(SPI_0, SPI_PCS_0, m, 4, false);
 		spi_transaction(send, sizeof(send), recive);
 		var = false;
-	}
+	}*/
 }
 
 

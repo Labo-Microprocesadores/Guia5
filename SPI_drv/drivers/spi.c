@@ -102,8 +102,8 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         SPI_CTAR_CPOL(config->clockConfig.clockPolarity) |
         SPI_CTAR_CPHA(config->clockConfig.clockPhase) |
         SPI_CTAR_LSBFE(config->bitOrder) |
-        SPI_CTAR_PCSSCK(1) | //* This function configures the PCS to SCK delay pre-scalar
-        //SPI_CTAR_CSSCK(config->chipSelectToClkDelay) | //* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
+        SPI_CTAR_PCSSCK(3) | //* This function configures the PCS to SCK delay pre-scalar
+        SPI_CTAR_CSSCK(4) | //* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
         SPI_CTAR_PASC(1) |                        //* This function configures the after SCK delay delay pre-scalar
         SPI_CTAR_ASC(config->clockDelayScaler) |  //*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
         SPI_CTAR_PDT(7) |                         //*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
@@ -124,7 +124,7 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
       SPI_MCR_DCONF(0) |                                   //* 0 is the only option available
       SPI_MCR_FRZ(0) |                                     //* Halt serial transfers in Debug mode.
       SPI_MCR_MTFE(0) |                                    //* Modified SPI transfer format disabled.
-      SPI_MCR_PCSSE(1) |                                   //* PCS5/ PCSS is used as the Peripheral Chip Select[5] signal.
+      SPI_MCR_PCSSE(0) |                                   //* PCS5/ PCSS is used as the Peripheral Chip Select[5] signal.
       SPI_MCR_ROOE(config->enableRxFIFOverflowOverwrite) | //* Receive FIFO Overflow Overwrite Enable (0 Incoming data is ignored. 1 Incoming data is shifted into the shift register.)
       SPI_MCR_PCSIS(config->chipSelectPolarity) |          //* Peripheral Chip Select x Inactive State (0 The inactive state of PCSx is low. 1 The inactive state of PCSx is high.)
       SPI_MCR_DOZE(0) |                                    //* Doze mode has no effect on the module

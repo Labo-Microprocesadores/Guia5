@@ -53,8 +53,8 @@ typedef enum
 
 typedef enum
 {
-    SPI_SS_POLARITY_ACTIVE_HIGH = 0x3F,
-    SPI_SS_POLARITY_ACTIVE_LOW = 0x00,
+    SPI_SS_POLARITY_ACTIVE_LOW = 0xFF,
+	SPI_SS_POLARITY_ACTIVE_HIGH = 0x00
 } SPI_SlaveSelectPolarity_t;
 
 typedef enum
