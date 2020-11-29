@@ -58,7 +58,7 @@ const uint16_t m[] = {'a', 'b', 'c', 'd'};
 void App_Init(void)
 {
 	static SPI_MasterConfig_t config = {true, false, false, false, SPI_CTAR_0, SPI_PCS_0, SPI_eightBitsFrame,
-			{SPI_CLOCK_POLARITY_ACTIVE_HIGH, SPI_CLOCK_PHASE_FIRST_EDGE, SPI_CLOCK_SCALER_32}, SPI_SS_POLARITY_ACTIVE_LOW,
+			{SPI_CLOCK_POLARITY_ACTIVE_HIGH, SPI_CLOCK_PHASE_FIRST_EDGE, SPI_CLOCK_SCALER_32}, SPI_SS_POLARITY_ACTIVE_HIGH,
 			SPI_BIT_ORDER_MSB_FIRST, 1000, 1000, 15000};
 	SPI_MasterInit(SPI_0, &config);
 
@@ -71,7 +71,7 @@ void App_Run(void)
 {
 	static bool var = true;
 	static uint8_t recive[100];
-	static uint8_t send[] = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7};
+	static uint8_t send[] = {21, 40};
 	if(var)
 	{
 		//bool ret =  SPI_SendMessage(SPI_0, SPI_PCS_0, m, 4, false);

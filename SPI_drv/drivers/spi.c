@@ -106,7 +106,7 @@ void SPI_MasterInit(SPI_Instance_t n, SPI_MasterConfig_t *config)
         //SPI_CTAR_CSSCK(config->chipSelectToClkDelay) | //* PCS to SCK Delay Scaler: then t_CSC = (1/fP ) x PCSSCK x CSSCK. (page 1513 ref manual)
         SPI_CTAR_PASC(1) |                        //* This function configures the after SCK delay delay pre-scalar
         SPI_CTAR_ASC(config->clockDelayScaler) |  //*After SCK Delay Scaler: tASC = (1/fP) x PASC x ASC (page 1513 ref manual)
-        SPI_CTAR_PDT(3) |                         //*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
+        SPI_CTAR_PDT(7) |                         //*This function configures delayAfterTransferPreScale (PDT) 3 means 11 wich represent that the Delay after Transfer Prescaler value is 7.
         SPI_CTAR_DT(config->delayAfterTransfer) | //*Delay After Transfer Scaler: tDT = (1/fP ) x PDT x DT
         SPI_CTAR_DBR(baudrateConfiguration.DBR) |                         //* Double Baud Rate, Doubles the effective baud rate of the Serial Communications Clock
         SPI_CTAR_PBR(baudrateConfiguration.PBR) |                         //* Sets the SCK Duty Cycle on 50/50
