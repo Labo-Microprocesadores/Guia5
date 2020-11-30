@@ -4,6 +4,7 @@
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h> 
+#include "string.h"
 
 unsigned long  lastMillis;
 
@@ -20,22 +21,19 @@ unsigned long  lastMillis;
 #if CLOUD==CLOUD_MALE
 char ssid[] = "Airport Extreme";
 char password[] = "malena1996";
-IPAddress MqttServer(192,168,0,2);
+//IPAddress MqttServer(192,168,0,9);
+IPAddress MqttServer(34,121,212,49);
 const unsigned int MqttPort=1883; 
-const char MqttUser[]="";
-const char MqttPassword[]="";
+//const char MqttUser[]="";
+//const char MqttPassword[]="";
+const char MqttUser[]="admin";
+const char MqttPassword[]="mnb";
 const char MqttClientID[]="";
 
 #elif CLOUD==CLOUD_SANTI
-<<<<<<< HEAD
 char ssid[] = "Speedy-Fibra-9C0FC1"; 
 char password[] = "54873eF953Ac7a9XFe3b"; 
 IPAddress MqttServer(192,168,1,37);
-=======
-char ssid[] = ""; //COMPLETAR
-char password[] = " "; //COMPLETAR
-IPAddress MqttServer(192,168,0,2); //COMPLETAR
->>>>>>> fe1b6210765f8f326fc2ca962e813f486f2c22b0
 const unsigned int MqttPort=1883; 
 const char MqttUser[]="";
 const char MqttPassword[]="";
@@ -117,6 +115,8 @@ void loop()
 }
 
 
+
+
 void setup_gpios(void )
 {
   pinMode(Board_LED, OUTPUT);
@@ -162,8 +162,11 @@ void reconnect()
  if (client.connect(MqttClientID,MqttUser,MqttPassword)) 
  {
   debug_message("connected \r\n");
-  // ... and subscribe to topic
-  client.subscribe("myTopic"); 
+  //subscribe to topic
+  client.subscribe("myTopic");
+  client.subscribe("play"); 
+  client.subscribe("pause"); 
+  client.subscribe("level");  
  } 
  else 
  {
@@ -191,6 +194,17 @@ void callback(char* topic, byte* payload, unsigned int length)
     debug_message((char)payload[i]);
   }
   debug_message("\r\n");
-  client.publish("myAnswerTopic","chau",false); //answers
- // ParseTopic(topic,payload,length);
+  //client.publish("myAnswerTopic","chau",false); //answers
+  //String new_topic = topic;
+  //debug_message(new_topic);
+ ParseTopic(topic,payload,length);
+}
+
+void ParseTopic(char* topic, byte* payload, unsigned int length)
+{
+  debug_message("lll");
+  if(!strcmp(topic,"level"))
+  {
+    debug_message("NIVEL");
+  }
 }
